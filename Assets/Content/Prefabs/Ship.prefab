@@ -194,6 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2146644247430032085}
   characterType: 2
-  defaultSpeed: 3
+  defaultSpeed: 2
   characterTransform: {fileID: 4184794058148834470}
   characterController: {fileID: 8215044995445011551}

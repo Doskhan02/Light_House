@@ -8,7 +8,7 @@ public class LightController : MonoBehaviour
     [SerializeField] private Light spotLight;   // Ссылка на источник света (объект с компонентом Light)
     private Ray ray;
     private Camera mainCamera;
-    private RaycastHit hit;
+    public RaycastHit hit;
     public float radius = 100;
     public LayerMask mask;
     private Vector3 offset;
@@ -19,6 +19,7 @@ public class LightController : MonoBehaviour
         mainCamera = Camera.main;
         ray = new Ray(transform.position, transform.forward);
         offset = transform.position - mainCamera.transform.position;
+        Physics.Raycast(ray, out hit, Mathf.Infinity);
     }
 
     public void Initialize()

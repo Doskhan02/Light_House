@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField] private CharacterData characterData;
-
+    public virtual Character Target { get; }
     public CharacterData CharacterData => characterData;
 
     public IMovementComponent movementComponent;

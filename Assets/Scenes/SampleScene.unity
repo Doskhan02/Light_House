@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 288158967}
   - component: {fileID: 288158966}
   - component: {fileID: 288158965}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,13 +889,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 23.5, z: -14.2}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 0, y: 31.5, z: -14.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!1 &1075030881
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,11 +997,10 @@ Transform:
   m_GameObject: {fileID: 1075030881}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.6, z: 0}
+  m_LocalPosition: {x: 0, y: 2.6, z: 6.7}
   m_LocalScale: {x: 2, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1271344700}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1271344699
@@ -1031,11 +1030,11 @@ Transform:
   m_GameObject: {fileID: 1271344699}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26516512, y: -0, z: -0, w: 0.96420306}
-  m_LocalPosition: {x: 0, y: 1.17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 31.5, z: -14.4}
+  m_LocalScale: {x: 2, y: 4.2155757, z: 2.7844243}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1075030885}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30.754, y: 0, z: 0}
 --- !u!114 &1271344701
 MonoBehaviour:
@@ -1050,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotLight: {fileID: 1271344702}
-  radius: 0
+  radius: 5
   mask:
     serializedVersion: 2
     m_Bits: 0
@@ -1068,7 +1067,7 @@ Light:
   m_Color: {r: 0.98490566, g: 0.8764835, b: 0.6745674, a: 1}
   m_Intensity: 5
   m_Range: 25
-  m_SpotAngle: 15
+  m_SpotAngle: 13
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1265,6 +1264,7 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1744802205}
   - {fileID: 1075030885}
+  - {fileID: 1271344700}
   - {fileID: 288158968}
   - {fileID: 1995483844}
   - {fileID: 411868607}
