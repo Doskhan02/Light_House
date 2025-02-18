@@ -17,6 +17,9 @@ public class EnemyCharacter : Character
             {
                 if (!list[i].gameObject.activeSelf)
                     continue;
+                float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
+                if(distanceToLight < 3)
+                    continue;
                 if (list[i].CharacterData.CharacterType == CharacterType.Enemy)
                     continue;
                 float distanceBetween = Vector3.Distance(list[i].transform.position, transform.position);
@@ -56,10 +59,14 @@ public class EnemyCharacter : Character
             }
             else
             {
+                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 2)
+                {
+                    Target.gameObject.GetComponent<AllyCharacter>().Sinked();
+                }
                 Vector3 rotationDirection = Target.transform.position - transform.position;
                 movementComponent.Rotate(rotationDirection);
                 movementComponent.Move(rotationDirection);
             }
-        }
+        }       
     }
 }

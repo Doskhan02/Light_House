@@ -40,7 +40,7 @@ public class EnemySpawnSystem : MonoBehaviour
         switch (type)
         {
             case CharacterType.Enemy:
-                character = GameObject.Instantiate(enemyPrefab, null);
+                character = GameObject.Instantiate(enemyPrefab, new Vector3(Random.Range(-30, 30), 0.5f, 30), Quaternion.LookRotation(Vector3.back));
                 break;
 
             default:

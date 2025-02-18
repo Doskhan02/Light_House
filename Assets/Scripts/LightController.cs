@@ -15,6 +15,7 @@ public class LightController : MonoBehaviour
 
     void Start()
     {
+        spotLight.gameObject.SetActive(false);
         LayerMask mask = LayerMask.GetMask("LightTarget");
         mainCamera = Camera.main;
         ray = new Ray(transform.position, transform.forward);
@@ -35,10 +36,9 @@ public class LightController : MonoBehaviour
             mousePosition.z = 100f;                                         
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);       //Меняем координаты с экранных коор в мировые
 
-            if (mousePosition.y < -38)                                          // Создаем ограничения цифра взята через дебаггинг
+            if (mousePosition.y < -37)                                          // Создаем ограничения цифра взята через дебаггинг
             {
-                mousePosition.y = -38;
-                mousePosition.z = 0;
+                mousePosition = new Vector3 (mousePosition.x, -37,0);
             }
                 
             Vector3 direction = mousePosition - (transform.position + offset);  
@@ -48,10 +48,14 @@ public class LightController : MonoBehaviour
             if (Physics.Raycast(ray,out hit, Mathf.Infinity))    //Этот блок для высчитывания угла источника света в зависимости от дальности                                    
             {
                 float distance = hit.distance;
+                
                 spotLight.range = distance + 10;    //цифру 10 можно менять если края диска света хуже видны
                 spotLight.spotAngle = 2 * (Mathf.Atan((radius/spotLight.range)) * Mathf.Rad2Deg);
                 spotLight.intensity = spotLight.range / 10; //тут тоже можно поменять 10ку если интенсивность тусклая
-                                                            //чем меньше цифра тем больше интенсивность
+                if(distance< 50)
+                {
+                    spotLight.intensity =0; spotLight.range = 0;
+                }                                           //чем меньше цифра тем больше интенсивность
             }
                 
         }
