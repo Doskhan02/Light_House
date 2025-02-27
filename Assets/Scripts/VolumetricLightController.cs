@@ -32,7 +32,7 @@ public class VolumetricLightController : MonoBehaviour
     {
         if (GameManager.Instance.IsGameActive)
         {
-            Vector3 mousePosition = Input.mousePosition;
+            Vector3 mousePosition = GameManager.Instance.InputManager.TouchPosition();
             mousePosition.z = 100f;                                         
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);       //Меняем координаты с экранных коор в мировые
 
@@ -40,7 +40,7 @@ public class VolumetricLightController : MonoBehaviour
                 
             Vector3 direction = mousePosition - (transform.position + offset);  
             spotLight.transform.rotation = Quaternion.LookRotation(direction);  
-            ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            ray = mainCamera.ScreenPointToRay(GameManager.Instance.InputManager.TouchPosition());
 
             if (Physics.Raycast(ray,out hit, Mathf.Infinity))    //Этот блок для высчитывания угла источника света в зависимости от дальности                                    
             {

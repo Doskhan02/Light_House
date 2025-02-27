@@ -41,7 +41,7 @@ public class ShipSpawnSystem : MonoBehaviour
         switch (type)
         {
             case CharacterType.Ally:
-                character = GameObject.Instantiate(shipPrefab, new Vector3(Random.Range(-30,30), 0.5f,50), Quaternion.LookRotation(Vector3.back));
+                character = GameObject.Instantiate(shipPrefab, new Vector3(0, 0.5f,50), Quaternion.LookRotation(Vector3.back));
                 break;
 
             default:
@@ -53,9 +53,9 @@ public class ShipSpawnSystem : MonoBehaviour
     }
     public void ReturnCharacter(Character character)
     {
-        Queue<Character> characters = disabledCharacters[character.CharacterData.CharacterType];
+        Queue<Character> characters = disabledCharacters[character.CharacterType];
         characters.Enqueue(character);
-
+        Debug.Log(characters.Count + "" + characters.Peek());
         activeCharacters.Remove(character);
     }
 }

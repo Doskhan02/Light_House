@@ -32,8 +32,9 @@ public class EnemyCharacter : Character
             return target; 
         } 
     }
-    void Start()
+    public override void Initialize()
     {
+        lifeComponent = new LifeComponent();
         base.Initialize();
         movementComponent.Move(transform.position);
     }
@@ -46,6 +47,7 @@ public class EnemyCharacter : Character
 
         if (distance < 7f)
         {
+            //lifeComponent.SetDamage(5);
             direction = transform.position - hit.point;
             movementComponent.Rotate(direction);
             movementComponent.Move(direction);
@@ -59,9 +61,9 @@ public class EnemyCharacter : Character
             }
             else
             {
-                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 2)
+                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 2.25f)
                 {
-                    Target.gameObject.GetComponent<AllyCharacter>().Sinked();
+                    Target.lifeComponent.SetDamage(50);
                 }
                 Vector3 rotationDirection = Target.transform.position - transform.position;
                 movementComponent.Rotate(rotationDirection);
@@ -69,4 +71,5 @@ public class EnemyCharacter : Character
             }
         }       
     }
+
 }

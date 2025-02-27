@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 3894886706183249410}
+  characterType: 1
 --- !u!1 &5287429281821567293
 GameObject:
   m_ObjectHideFlags: 0

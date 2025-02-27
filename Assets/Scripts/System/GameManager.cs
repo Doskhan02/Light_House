@@ -5,16 +5,21 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] ShipSpawnSystem shipSpawnSystem;
-    [SerializeField] EnemySpawnSystem enemySpawnSystem;
+    [SerializeField] private ShipSpawnSystem shipSpawnSystem;
+    [SerializeField] private EnemySpawnSystem enemySpawnSystem;
+    [SerializeField] private InputManager inputManager;
+
     [SerializeField] private GameObject lightHouse;
     [SerializeField] private LightController lh_Light;
     [SerializeField] private VolumetricLightController VLight;
     [SerializeField] private ScoreSystem scoreSystem;
     [SerializeField] private GamePlayWindow gamePlayWindow;
+    [SerializeField] private VictoryWindow victoryWindow;
 
     public ShipSpawnSystem ShipSpawnSystem => shipSpawnSystem;
     public EnemySpawnSystem EnemySpawnSystem => enemySpawnSystem;
+    public InputManager InputManager => inputManager;
+
     public GameObject LightHouse => lightHouse;
     public LightController LightController => lh_Light;
     public ScoreSystem ScoreSystem => scoreSystem;
@@ -59,7 +64,11 @@ public class GameManager : MonoBehaviour
         gamePlayWindow.Initialize();
         scoreSystem.StartGame();
         sessionTime = 0;
+        sessionTimeInSeconds = 0;
+        sessionTimeInMinutes = 0;
         Time.timeScale = 1;
+        timeBetweenShipSpawn = 3;
+        timeBetweenEnemySpawn = 5;
     }
 
     private void Update()
@@ -108,7 +117,8 @@ public class GameManager : MonoBehaviour
 
     private void GameVictory()
     {
-        Debug.Log("You Won!");
+        victoryWindow.gameObject.SetActive(true);
+        victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes);
         isGameActive = false;
         Time.timeScale = 0;
     }
@@ -118,11 +128,44 @@ public class GameManager : MonoBehaviour
         Debug.Log("You Lost:(");
         isGameActive = false;
     }
+
+    public void Restart()
+    {
+        timeBetweenEnemySpawn = 5;
+        timeBetweenShipSpawn = 3;
+
+        List<Character> shipList = shipSpawnSystem.ActiveCharacters;
+        for (int i = 0; i <= shipList.Count; i++)
+        {
+            shipList[i].gameObject.SetActive(false);
+            shipSpawnSystem.ReturnCharacter(shipList[i]);
+            
+        }
+
+        List<Character> enemyList = enemySpawnSystem.ActiveCharacters;
+        for (int i = 0; i <= enemyList.Count; i++)
+        {
+            enemyList[i].gameObject.SetActive(false);
+            enemySpawnSystem.ReturnCharacter(enemyList[i]);
+            
+        }
+
+        victoryWindow.gameObject.SetActive(false);
+        StartGame();
+
+    }
+
     private void SpawnShips()
     {
-        Character ship = ShipSpawnSystem.GetCharacter(CharacterType.Ally);
+        Character ship = shipSpawnSystem.GetCharacter(CharacterType.Ally);
         ship.transform.position = new Vector3(Random.Range(-30,30), 0.5f, 80);
-       
+        ship.gameObject.SetActive(true);
+        ship.Initialize();
+        ship.lifeComponent.Initialize(ship);
+        ship.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
+
+
+
         /*float GetOffset()
         {
             bool isPlus = Random.Range(0, 100) % 2 == 0;
@@ -136,6 +179,27 @@ public class GameManager : MonoBehaviour
     {
         Character enemy = EnemySpawnSystem.GetCharacter(CharacterType.Enemy);
         enemy.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, Random.Range(40,50));
-                
+        enemy.gameObject.SetActive(true);
+        enemy.Initialize();
+        enemy.lifeComponent.Initialize(enemy);
+        enemy.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
+
+    }
+    private void CharacterDeathHandler(Character deathCharacter)
+    {
+        switch (deathCharacter.CharacterData.CharacterType)
+        {
+            case CharacterType.Ally:
+                deathCharacter.gameObject.SetActive(false);
+                shipSpawnSystem.ReturnCharacter(deathCharacter);
+                break;
+
+            case CharacterType.Enemy:
+                deathCharacter.gameObject.SetActive(false);
+                enemySpawnSystem.ReturnCharacter(deathCharacter);
+                break;
+        }
+        
+        deathCharacter.lifeComponent.OnCharacterDeath -= CharacterDeathHandler;
     }
 }
