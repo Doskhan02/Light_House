@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AllyCharacter : Character
 {
     [SerializeField] private GameObject target;
+    [SerializeField] private GameObject geo;
     private Vector3 direction;
+    private Vector3[] sailed;
     private int score;
 
 
@@ -20,7 +19,9 @@ public class AllyCharacter : Character
         }
         
         movementComponent.Rotate(direction);
-        score = UnityEngine.Random.Range(2, 4);
+        score = Random.Range(2, 4);
+
+        sailed = new Vector3[4];
     }
     public override void Update()
     {
@@ -39,13 +40,25 @@ public class AllyCharacter : Character
         movementComponent.Rotate(direction);
         if (direction.magnitude < 9)
         {
+            Returned();
             lifeComponent.SetDamage(lifeComponent.MaxHealth);
             GameManager.Instance.ScoreSystem.AddScore(score);
             gameObject.SetActive(false);
 
+
         }
     }
 
-    
+    public void Returned()
+    {
+        sailed[0] = new Vector3(6.83f, 1, Random.Range(12f, 13f));
+        sailed[1] = new Vector3(3.63f, 1, Random.Range(12f, 13f));
+        sailed[2] = new Vector3(-6.23f, 1, Random.Range(12f, 13f));
+        sailed[3] = new Vector3(-2, 1, Random.Range(12f, 13f));
 
+        GameObject ghost = Instantiate(geo);
+        int i = Random.Range(0,sailed.Length);
+        ghost.transform.position = sailed[(i - 1)];
+        ghost.transform.rotation = Quaternion.LookRotation(Vector3.back);
+    }
 }

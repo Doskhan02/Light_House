@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     public ScoreSystem ScoreSystem => scoreSystem;
 
     private bool isGameActive;
-    private float timeBetweenShipSpawn = 3;
-    private float timeBetweenEnemySpawn = 5;
+    private float timeBetweenShipSpawn;
+    private float timeBetweenEnemySpawn;
     private float sessionTime;
     private int sessionTimeInSeconds;
     private int sessionTimeInMinutes;
@@ -93,8 +93,21 @@ public class GameManager : MonoBehaviour
             }
         }
 
-            if (timeBetweenShipSpawn < 0)
+        if (sessionTimeInMinutes == 1 && sessionTimeInSeconds == 30)
         {
+            if (scoreSystem.Score < 10)
+            {
+                GameOver();
+            }
+        }
+        if (scoreSystem.Score >= 10)
+        {
+            GameVictory();
+            ScoreSystem.EndGame();
+        }
+
+        if (timeBetweenShipSpawn < 0)
+            {
             SpawnShips();
             timeBetweenShipSpawn = 3;
         }
@@ -106,12 +119,6 @@ public class GameManager : MonoBehaviour
                 SpawnEnemies();
                 timeBetweenEnemySpawn = 5;
             }
-        }
-
-        if (scoreSystem.Score == 10 || scoreSystem.Score > 10) 
-        {
-            GameVictory();
-            ScoreSystem.EndGame();
         }
     }
 
@@ -127,6 +134,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You Lost:(");
         isGameActive = false;
+        Time.timeScale = 0;
     }
 
     public void Restart()
@@ -137,17 +145,13 @@ public class GameManager : MonoBehaviour
         List<Character> shipList = shipSpawnSystem.ActiveCharacters;
         for (int i = 0; i <= shipList.Count; i++)
         {
-            shipList[i].gameObject.SetActive(false);
-            shipSpawnSystem.ReturnCharacter(shipList[i]);
-            
+            shipList[i].lifeComponent.SetDamage(shipList[i].lifeComponent.MaxHealth);         
         }
 
         List<Character> enemyList = enemySpawnSystem.ActiveCharacters;
         for (int i = 0; i <= enemyList.Count; i++)
         {
-            enemyList[i].gameObject.SetActive(false);
-            enemySpawnSystem.ReturnCharacter(enemyList[i]);
-            
+            enemyList[i].lifeComponent.SetDamage(enemyList[i].lifeComponent.MaxHealth);
         }
 
         victoryWindow.gameObject.SetActive(false);
@@ -158,22 +162,11 @@ public class GameManager : MonoBehaviour
     private void SpawnShips()
     {
         Character ship = shipSpawnSystem.GetCharacter(CharacterType.Ally);
-        ship.transform.position = new Vector3(Random.Range(-30,30), 0.5f, 80);
+        ship.transform.position = new Vector3(Random.Range(-30,30), 0.5f, 100);
         ship.gameObject.SetActive(true);
         ship.Initialize();
         ship.lifeComponent.Initialize(ship);
         ship.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
-
-
-
-        /*float GetOffset()
-        {
-            bool isPlus = Random.Range(0, 100) % 2 == 0;
-            float offset = Random.Range(0, 30);
-            return (isPlus) ? offset : (-1 * offset);
-        }*/
-     
-
     }
     private void SpawnEnemies()
     {

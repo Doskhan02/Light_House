@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7536824057244514223}
   - component: {fileID: 234826818184083378}
   - component: {fileID: 1172423817786840296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 2146644247430032085}
   - component: {fileID: 8215044995445011551}
   - component: {fileID: 2382913020897062257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   characterData: {fileID: 2382913020897062257}
   characterType: 2
   target: {fileID: 0}
+  geo: {fileID: 5107240990733703018}
 --- !u!143 &8215044995445011551
 CharacterController:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 2
-  m_SlopeLimit: 45
+  m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -200,6 +201,9 @@ MonoBehaviour:
   defaultSpeed: 2
   characterTransform: {fileID: 4184794058148834470}
   characterController: {fileID: 8215044995445011551}
+  characterMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &6682528256865132635
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2836696397040728623}
   - component: {fileID: 5609018139468757918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,11 +362,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood_BoatV1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b9c2549002de7a4fbba40dfaf37b661, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b9c2549002de7a4fbba40dfaf37b661, type: 3}
+--- !u!1 &5107240990733703018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b9c2549002de7a4fbba40dfaf37b661, type: 3}
+  m_PrefabInstance: {fileID: 5341824749912861243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5596637552683470288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b9c2549002de7a4fbba40dfaf37b661, type: 3}

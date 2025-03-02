@@ -9,10 +9,12 @@ public class CharacterData : MonoBehaviour
     [SerializeField] private float defaultSpeed;
     [SerializeField] private Transform characterTransform;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private LayerMask characterMask;
 
     public Character Character => character;
     public CharacterType CharacterType => characterType;
     public float DefaultSpeed => defaultSpeed;
     public Transform CharacterTransform => characterTransform;
     public CharacterController CharacterController => characterController;
+    public LayerMask CharacterMask => characterMask;
 }

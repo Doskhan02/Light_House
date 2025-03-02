@@ -34,7 +34,7 @@ public class LightController : MonoBehaviour
             Vector3 mousePosition = GameManager.Instance.InputManager.TouchPosition();
             mousePosition.z = 100f;                                         
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);       //Меняем координаты с экранных коор в мировые
-
+            Debug.Log(mousePosition);
             if (mousePosition.y < -37)                                          // Создаем ограничения цифра взята через дебаггинг
             {
                 mousePosition = new Vector3 (mousePosition.x, -37,mainCamera.nearClipPlane);

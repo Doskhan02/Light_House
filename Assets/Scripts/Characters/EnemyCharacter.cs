@@ -6,6 +6,7 @@ public class EnemyCharacter : Character
 {
     private RaycastHit hit;
     private Vector3 direction;
+    private Coroutine patrolRoutine;
     public override Character Target 
     { 
         get 
@@ -19,6 +20,8 @@ public class EnemyCharacter : Character
                     continue;
                 float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
                 if(distanceToLight < 3)
+                    continue;
+                if (list[i].transform.position.z >= 60)
                     continue;
                 if (list[i].CharacterData.CharacterType == CharacterType.Enemy)
                     continue;
@@ -37,6 +40,7 @@ public class EnemyCharacter : Character
         lifeComponent = new LifeComponent();
         base.Initialize();
         movementComponent.Move(transform.position);
+        patrolRoutine = StartCoroutine(Patrol());
     }
 
     
@@ -57,10 +61,14 @@ public class EnemyCharacter : Character
         {
             if (Target == null)
             {
-                transform.position = this.transform.position;
+                if(patrolRoutine == null)
+                {
+                    patrolRoutine = StartCoroutine(Patrol());
+                }
             }
             else
             {
+                StopPatrolling();
                 if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 2.25f)
                 {
                     Target.lifeComponent.SetDamage(50);
@@ -71,5 +79,40 @@ public class EnemyCharacter : Character
             }
         }       
     }
+    private void StopPatrolling()
+    {
+        if (patrolRoutine != null)
+        {
+            StopCoroutine(patrolRoutine);
+            patrolRoutine = null;
+        }
+    }
+    private IEnumerator Patrol()
+    {
+        while (true)
+        {
+            float GetOffset()
+            {
+                bool isPlus = Random.Range(0, 100) % 2 == 0;
+                float offset = Random.Range(10, 30);
+                return (isPlus) ? offset : (-1 * offset);
+            }
+            Vector3 target = new Vector3(GetOffset(), 0, GetOffset());
+            direction = target - transform.position;
 
+            movementComponent.Rotate(direction);
+
+            float patrolTime = Random.Range(2f, 4f);
+            float elapsedTime = 0f;
+
+            while (elapsedTime < patrolTime)
+            {
+                movementComponent.Move(direction);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 }
