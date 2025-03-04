@@ -58,7 +58,7 @@ public class AllyCharacter : Character
 
         GameObject ghost = Instantiate(geo);
         int i = Random.Range(0,sailed.Length);
-        ghost.transform.position = sailed[(i - 1)];
+        ghost.transform.position = sailed[i];
         ghost.transform.rotation = Quaternion.LookRotation(Vector3.back);
     }
 }

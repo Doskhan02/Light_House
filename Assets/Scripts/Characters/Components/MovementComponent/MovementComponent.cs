@@ -60,7 +60,6 @@ public class MovementComponent : IMovementComponent
             direction.Normalize();  // Normalize to maintain speed
 
             Debug.DrawRay(hit.point, normal * 2, Color.red); // Debugging: Show normal direction
-            Debug.Log("Collision detected! Adjusting movement.");
         }
 
         return direction;

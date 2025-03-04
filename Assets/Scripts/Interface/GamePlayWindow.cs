@@ -9,12 +9,14 @@ public class GamePlayWindow : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Button gameStartButton;
+    [SerializeField] private GameObject BG;
 
     public void Initialize()
     {
         scoreText.gameObject.SetActive(true);
         timeText.gameObject.SetActive(true);
         gameStartButton.gameObject.SetActive(false);
+        BG.SetActive(false);
     }
 
     void Start()
@@ -22,6 +24,7 @@ public class GamePlayWindow : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         gameStartButton.gameObject.SetActive(true);
+        BG.SetActive(true);
     }
 
 
