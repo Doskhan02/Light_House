@@ -16,10 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GamePlayWindow gamePlayWindow;
     [SerializeField] private VictoryWindow victoryWindow;
 
+    [SerializeField] private GameData GameData;
+
     public ShipSpawnSystem ShipSpawnSystem => shipSpawnSystem;
     public EnemySpawnSystem EnemySpawnSystem => enemySpawnSystem;
     public InputManager InputManager => inputManager;
-
+    public GameData gameData => GameData;
     public GameObject LightHouse => lightHouse;
     public LightController LightController => lh_Light;
     public ScoreSystem ScoreSystem => scoreSystem;
@@ -67,8 +69,7 @@ public class GameManager : MonoBehaviour
         sessionTimeInSeconds = 0;
         sessionTimeInMinutes = 0;
         Time.timeScale = 1;
-        timeBetweenShipSpawn = 3;
-        timeBetweenEnemySpawn = 5;
+        
     }
 
     private void Update()
@@ -93,14 +94,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (sessionTimeInMinutes == 1 && sessionTimeInSeconds == 30)
+        if (sessionTimeInMinutes == GameData.sessionMaxTimeInMinutes && 
+            sessionTimeInSeconds == GameData.sessionMaxTimeInSeconds)
         {
-            if (scoreSystem.Score < 10)
+            if (scoreSystem.Score < GameData.targetScore)
             {
                 GameOver();
             }
         }
-        if (scoreSystem.Score >= 10)
+        if (scoreSystem.Score >= GameData.targetScore)
         {
             GameVictory();
             ScoreSystem.EndGame();
@@ -109,15 +111,15 @@ public class GameManager : MonoBehaviour
         if (timeBetweenShipSpawn < 0)
             {
             SpawnShips();
-            timeBetweenShipSpawn = 3;
+            timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         }
 
         if (timeBetweenEnemySpawn < 0)
         {
-            if (EnemySpawnSystem.ActiveCharacters.Count < 3)
+            if (EnemySpawnSystem.ActiveCharacters.Count < 10)
             {
                 SpawnEnemies();
-                timeBetweenEnemySpawn = 5;
+                timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
             }
         }
     }
@@ -139,8 +141,8 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        timeBetweenEnemySpawn = 5;
-        timeBetweenShipSpawn = 3;
+        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
+        timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
 
         List<Character> shipList = shipSpawnSystem.ActiveCharacters;
         for (int i = 0; i <= shipList.Count; i++)
@@ -174,6 +176,7 @@ public class GameManager : MonoBehaviour
         enemy.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, Random.Range(40,50));
         enemy.gameObject.SetActive(true);
         enemy.Initialize();
+        enemy.aiComponent.Initialize(enemy);
         enemy.lifeComponent.Initialize(enemy);
         enemy.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
 

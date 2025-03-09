@@ -51,15 +51,15 @@ public class MovementComponent : IMovementComponent
 
     private Vector3 AdjustDirectionWithCollision(Vector3 direction)
     {
-        Vector3 origin = characterData.CharacterTransform.position + Vector3.up * 0.5f; // Adjust height if needed
+        Vector3 origin = characterData.CharacterTransform.position + Vector3.up * 0.5f;
 
         if (Physics.SphereCast(origin, characterData.CharacterController.radius * 2, direction, out RaycastHit hit, characterData.CharacterController.radius * 2, characterData.CharacterMask.value))
         {
             Vector3 normal = new Vector3 (hit.normal.x, 0,hit.normal.z) ;
-            direction += normal;  // Adjust direction by adding the normal
-            direction.Normalize();  // Normalize to maintain speed
+            direction += normal;
+            direction.Normalize();  
 
-            Debug.DrawRay(hit.point, normal * 2, Color.red); // Debugging: Show normal direction
+            Debug.DrawRay(hit.point, normal * 2, Color.red); 
         }
 
         return direction;

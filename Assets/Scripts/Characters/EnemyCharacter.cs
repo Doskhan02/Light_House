@@ -6,7 +6,8 @@ public class EnemyCharacter : Character
 {
     private RaycastHit hit;
     private Vector3 direction;
-    private Coroutine patrolRoutine;
+    private float timeBetweenAttacks;
+    private float timeBetweenBurn;
     public override Character Target 
     { 
         get 
@@ -19,9 +20,9 @@ public class EnemyCharacter : Character
                 if (!list[i].gameObject.activeSelf)
                     continue;
                 float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
-                if(distanceToLight < 3)
+                if(distanceToLight < 5)
                     continue;
-                if (list[i].transform.position.z >= 60)
+                if (list[i].transform.position.z >= 70)
                     continue;
                 if (list[i].CharacterData.CharacterType == CharacterType.Enemy)
                     continue;
@@ -38,81 +39,44 @@ public class EnemyCharacter : Character
     public override void Initialize()
     {
         lifeComponent = new LifeComponent();
+        aiComponent = new BasicEnemyAIHandler();
         base.Initialize();
         movementComponent.Move(transform.position);
-        patrolRoutine = StartCoroutine(Patrol());
+        timeBetweenAttacks = 1;
+        timeBetweenBurn = 0.5f;
     }
 
     
     public override void Update()
     {
+        timeBetweenBurn -= Time.deltaTime;
         hit = GameManager.Instance.LightController.hit;
         float distance = Vector3.Distance(hit.point, transform.position);
-
-        if (distance < 7f)
+        
+        if (distance < 5f)
         {
-            //lifeComponent.SetDamage(5);
-            direction = transform.position - hit.point;
-            movementComponent.Rotate(direction);
-            movementComponent.Move(direction);
+            if (timeBetweenBurn <= 0) 
+            {
+                lifeComponent.SetDamage(5);
+                timeBetweenBurn = 0.5f;
+            }
+            aiComponent.AIAction(Target, AIState.Fear);
             
         }
         else
         {
             if (Target == null)
             {
-                if(patrolRoutine == null)
-                {
-                    patrolRoutine = StartCoroutine(Patrol());
-                }
+                aiComponent.AIAction(Target,AIState.Idle);
             }
             else
             {
-                StopPatrolling();
-                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 2.25f)
-                {
-                    Target.lifeComponent.SetDamage(50);
-                }
-                Vector3 rotationDirection = Target.transform.position - transform.position;
-                movementComponent.Rotate(rotationDirection);
-                movementComponent.Move(rotationDirection);
+                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 3f)
+                    aiComponent.AIAction(Target,AIState.Attack);
+                else
+                aiComponent.AIAction(Target, AIState.MoveToTarget);
+
             }
         }       
-    }
-    private void StopPatrolling()
-    {
-        if (patrolRoutine != null)
-        {
-            StopCoroutine(patrolRoutine);
-            patrolRoutine = null;
-        }
-    }
-    private IEnumerator Patrol()
-    {
-        while (true)
-        {
-            float GetOffset()
-            {
-                bool isPlus = Random.Range(0, 100) % 2 == 0;
-                float offset = Random.Range(10, 30);
-                return (isPlus) ? offset : (-1 * offset);
-            }
-            Vector3 target = new Vector3(GetOffset(), 0, GetOffset());
-            direction = target - transform.position;
-
-            movementComponent.Rotate(direction);
-
-            float patrolTime = Random.Range(2f, 4f);
-            float elapsedTime = 0f;
-
-            while (elapsedTime < patrolTime)
-            {
-                movementComponent.Move(direction);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(0.2f);
-        }
     }
 }

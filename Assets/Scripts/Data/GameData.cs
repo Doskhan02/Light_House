@@ -5,11 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameData")]
 public class GameData : ScriptableObject
 {
-    public int sessionTimeInSeconds;
-    public int sessionTimeInMinutes;
+    public float sessionTimeInSeconds;
+    public float sessionTimeInMinutes;
 
-    public int timeBetweenShipSpawn;
-    public int timeBetweenEnemySpawn;
+    public float timeBetweenShipSpawn;
+    public float timeBetweenEnemySpawn;
 
-    public int targetScore;
+    public float targetScore;
+    public float sessionMaxTimeInMinutes;
+    public float sessionMaxTimeInSeconds;
+
 }

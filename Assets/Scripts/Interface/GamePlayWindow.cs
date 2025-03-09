@@ -31,11 +31,11 @@ public class GamePlayWindow : MonoBehaviour
     void Update()
     {
         
-        scoreText.text = GameManager.Instance.ScoreSystem.Score + "/10";
+        scoreText.text = GameManager.Instance.ScoreSystem.Score + " / " + GameManager.Instance.gameData.targetScore;
 
         if (GameManager.Instance.SessionTimeInSeconds<10)
             timeText.text = GameManager.Instance.SessionTimeInMinutes + " : 0" + GameManager.Instance.SessionTimeInSeconds;
         else
-            timeText.text = GameManager.Instance.SessionTimeInMinutes + " :" + GameManager.Instance.SessionTimeInSeconds;
+            timeText.text = GameManager.Instance.SessionTimeInMinutes + " : " + GameManager.Instance.SessionTimeInSeconds;
     }
 }

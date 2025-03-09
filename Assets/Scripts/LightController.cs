@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField] private Light spotLight;   // Ссылка на источник света (объект с компонентом Light)
+    [SerializeField] private Light spotLight;
     [SerializeField] private LayerMask mask;
     private Ray ray;
     private Camera mainCamera;
@@ -24,7 +26,7 @@ public class LightController : MonoBehaviour
 
     public void Initialize()
     {
-        spotLight.gameObject.SetActive(true);   //Метод для запуска в менеджере
+        spotLight.gameObject.SetActive(true);
     }
 
     void Update()
@@ -32,33 +34,27 @@ public class LightController : MonoBehaviour
         if (GameManager.Instance.IsGameActive)
         {
             Vector3 mousePosition = GameManager.Instance.InputManager.TouchPosition();
-            mousePosition.z = 100f;                                         
-            mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);       //Меняем координаты с экранных коор в мировые
-            
-            if (mousePosition.y < -37)                                          // Создаем ограничения цифра взята через дебаггинг
-            {
-                mousePosition = new Vector3 (mousePosition.x, -37,mainCamera.nearClipPlane);
-            }
-                
-            Vector3 direction = mousePosition - (transform.position + offset);  
-            spotLight.transform.rotation = Quaternion.LookRotation(direction);  
+            mousePosition.z = 100f;
+            mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
+
             ray = mainCamera.ScreenPointToRay(GameManager.Instance.InputManager.TouchPosition());
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-            if (Physics.Raycast(ray,out hit, Mathf.Infinity,mask.value))    //Этот блок для высчитывания угла источника света в зависимости от дальности                                    
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask.value))
             {
-                Debug.DrawLine(ray.origin, hit.point, Color.red);
-                float distance = hit.distance;
-                
-                spotLight.range = distance + 10;    //цифру 10 можно менять если края диска света хуже видны
-                spotLight.spotAngle = 2 * (Mathf.Atan((radius/spotLight.range)) * Mathf.Rad2Deg);
-                spotLight.intensity = spotLight.range / 5; //тут тоже можно поменять 10ку если интенсивность тусклая
-                if(distance< 50)
+                float distance = hit.distance - offset.magnitude;
+
+                spotLight.range = distance * 1.25f;
+                spotLight.spotAngle = 2 * (Mathf.Atan((radius / spotLight.range)) * Mathf.Rad2Deg);
+                spotLight.intensity = spotLight.range;
+                if (distance < 45)
                 {
-                    spotLight.intensity =0; spotLight.range = 0;
-                }                                           
+                    spotLight.intensity = 0; spotLight.range = 0;
+                }
             }
-                
+
+            Vector3 direction = hit.point - transform.position;
+            spotLight.transform.rotation = Quaternion.LookRotation(direction);
+
         }
-                       
     }
 }
+

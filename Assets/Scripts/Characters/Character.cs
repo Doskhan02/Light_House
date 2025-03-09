@@ -11,6 +11,7 @@ public abstract class Character : MonoBehaviour
 
     public IMovementComponent movementComponent;
     public ILifeComponent lifeComponent;
+    public IAIComponent aiComponent;
     public CharacterType CharacterType => characterType;
 
     public virtual void Initialize()
