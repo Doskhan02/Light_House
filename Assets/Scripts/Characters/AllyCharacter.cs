@@ -4,13 +4,18 @@ public class AllyCharacter : Character
 {
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject geo;
+
+    private UpgradeManager upgradeManager;
+    private LightData lightData;
     private Vector3 direction;
     private Vector3[] sailed;
-    private int score;
+    private int score = 2;
 
 
     public override void Initialize()
     {
+        upgradeManager = GameManager.Instance.UpgradeManager;
+        lightData = GameManager.Instance.LightController.LightData;
         base.Initialize();
         lifeComponent = new LifeComponent();
         if (target == null)
@@ -19,16 +24,16 @@ public class AllyCharacter : Character
         }
         
         movementComponent.Rotate(direction);
-        score = Random.Range(2, 4);
 
         sailed = new Vector3[4];
     }
     public override void Update()
     {
         float distance = Vector3.Distance(GameManager.Instance.LightController.hit.point, transform.position);
-        if (distance < 4)
+
+        if (distance < upgradeManager.Radius - 1)
         {
-            movementComponent.Speed = CharacterData.DefaultSpeed + 2;
+            movementComponent.Speed = CharacterData.DefaultSpeed + lightData.shipSpeedUpFactor;
         }
         else
         {

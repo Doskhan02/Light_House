@@ -18,12 +18,12 @@ public class CameraService : MonoBehaviour
         if (GameManager.Instance.IsGameActive)
         {
             Vector2 mousePosition = GameManager.Instance.InputManager.TouchPosition();
-            if (mousePosition.x > 880 && mainCamera.gameObject.transform.position.x < 2)
+            if (mousePosition.x > Screen.width * 0.8f && mainCamera.gameObject.transform.position.x < 2)
             {
                 Vector3 offsetPos = mainCamera.gameObject.transform.position + new Vector3(2,0,0);
                 mainCamera.gameObject.transform.position = Vector3.Lerp(mainCamera.gameObject.transform.position, offsetPos, 0.01f);
             }
-            else if (mousePosition.x < 200 && mainCamera.gameObject.transform.position.x > -2)
+            else if (mousePosition.x < Screen.width * 0.2f && mainCamera.gameObject.transform.position.x > -2)
             {
                 Vector3 offsetPos = mainCamera.gameObject.transform.position + new Vector3(-2, 0, 0);
                 mainCamera.gameObject.transform.position = Vector3.Lerp(mainCamera.gameObject.transform.position, offsetPos, 0.01f);

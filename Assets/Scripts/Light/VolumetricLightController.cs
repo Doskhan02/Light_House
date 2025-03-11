@@ -7,6 +7,8 @@ public class VolumetricLightController : MonoBehaviour
 {
     [SerializeField] private VLight spotLight;   
     [SerializeField] private LayerMask mask;
+
+    private LightData lightData;
     private Ray ray;
     private Camera mainCamera;
     public RaycastHit hit;
@@ -25,6 +27,7 @@ public class VolumetricLightController : MonoBehaviour
     public void Initialize()
     {
         spotLight.gameObject.SetActive(true);   
+        lightData = GameManager.Instance.LightController.LightData;
     }
 
     void Update()
@@ -41,7 +44,7 @@ public class VolumetricLightController : MonoBehaviour
                 float distance = hit.distance - offset.magnitude;
 
                 spotLight.spotRange = distance * 1.25f;    
-                spotLight.spotAngle = 2 * (Mathf.Atan((radius / spotLight.spotRange)) * Mathf.Rad2Deg);
+                spotLight.spotAngle = 2 * (Mathf.Atan((lightData.baseRadius / spotLight.spotRange)) * Mathf.Rad2Deg);
             }
 
             Vector3 direction = hit.point - transform.position;  

@@ -5,19 +5,20 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private ShipSpawnSystem shipSpawnSystem;
-    [SerializeField] private EnemySpawnSystem enemySpawnSystem;
-    [SerializeField] private InputManager inputManager;
-
     [SerializeField] private GameObject lightHouse;
     [SerializeField] private LightController lh_Light;
     [SerializeField] private VolumetricLightController VLight;
-    [SerializeField] private ScoreSystem scoreSystem;
     [SerializeField] private GamePlayWindow gamePlayWindow;
     [SerializeField] private VictoryWindow victoryWindow;
 
+    #region Systems
+    [SerializeField] private ShipSpawnSystem shipSpawnSystem;
+    [SerializeField] private EnemySpawnSystem enemySpawnSystem;
+    [SerializeField] private InputManager inputManager;
+    [SerializeField] private ScoreSystem scoreSystem;
+    [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private GameData GameData;
-
+    
     public ShipSpawnSystem ShipSpawnSystem => shipSpawnSystem;
     public EnemySpawnSystem EnemySpawnSystem => enemySpawnSystem;
     public InputManager InputManager => inputManager;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject LightHouse => lightHouse;
     public LightController LightController => lh_Light;
     public ScoreSystem ScoreSystem => scoreSystem;
+    public UpgradeManager UpgradeManager => upgradeManager;
+    #endregion
 
     private bool isGameActive;
     private float timeBetweenShipSpawn;
@@ -116,7 +119,7 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenEnemySpawn < 0)
         {
-            if (EnemySpawnSystem.ActiveCharacters.Count < 10)
+            if (EnemySpawnSystem.ActiveCharacters.Count < GameData.maxEnemyCount)
             {
                 SpawnEnemies();
                 timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
@@ -144,19 +147,20 @@ public class GameManager : MonoBehaviour
         timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
 
-        List<Character> shipList = shipSpawnSystem.ActiveCharacters;
-        for (int i = 0; i <= shipList.Count; i++)
+        List<Character> shipList = ShipSpawnSystem.ActiveCharacters;
+        for (int i = 0; i < shipList.Count; i++)
         {
-            shipList[i].lifeComponent.SetDamage(shipList[i].lifeComponent.MaxHealth);         
+            CharacterDeathHandler(shipList[i]);
         }
 
-        List<Character> enemyList = enemySpawnSystem.ActiveCharacters;
-        for (int i = 0; i <= enemyList.Count; i++)
+        List<Character> enemyList = EnemySpawnSystem.ActiveCharacters;
+        for (int i = 0; i < enemyList.Count; i++)
         {
-            enemyList[i].lifeComponent.SetDamage(enemyList[i].lifeComponent.MaxHealth);
+            CharacterDeathHandler(enemyList[i]);
         }
-
+        
         victoryWindow.gameObject.SetActive(false);
+        
         StartGame();
 
     }

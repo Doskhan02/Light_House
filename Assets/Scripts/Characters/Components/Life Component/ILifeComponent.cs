@@ -9,4 +9,5 @@ public interface ILifeComponent : ICharacterComponent
     float MaxHealth { get; }
     float Health { get; }
     public void SetDamage(float damage);
+    public void Heal(float healPoints);
 }

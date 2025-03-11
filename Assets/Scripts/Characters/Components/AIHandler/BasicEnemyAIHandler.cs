@@ -6,8 +6,11 @@ public class BasicEnemyAIHandler : IAIComponent
     private Character character;
     private float timeBetweenAttacks;
     private float timeBetweenBurn;
+    private float timeBetweenHeal;
     private float distanceToTarget;
     private Vector3 lightHit = GameManager.Instance.LightController.hit.point;
+    private LightData lightData = GameManager.Instance.LightController.LightData;
+    private UpgradeManager upgradeManager = GameManager.Instance.UpgradeManager;
     private Coroutine patrolRoutine;
 
     private Vector3 patrolTarget;
@@ -19,7 +22,7 @@ public class BasicEnemyAIHandler : IAIComponent
         this.character = selfCharacter;
     }
 
-    public void AIAction(Character target, AIState currentState) 
+    public void AIAction(Character target, AIState currentState, BasicEnemyData data) 
     {
         switch (currentState) 
         {
@@ -27,15 +30,25 @@ public class BasicEnemyAIHandler : IAIComponent
                 break;
 
             case AIState.Idle:
+
                 Patrol();
+
+                if (timeBetweenHeal <= 0)
+                {
+                    character.lifeComponent.Heal(data.healAmount);
+                    timeBetweenHeal = data.healTime;
+                }
+                if (timeBetweenHeal > 0)
+                    timeBetweenHeal -= Time.deltaTime;
+
                 break;
 
             case AIState.Fear:
 
-                if (timeBetweenBurn <= 0)
+                if (Vector3.Distance(lightHit, character.transform.position) > upgradeManager.Radius && timeBetweenBurn <= 0)
                 {
-                    character.lifeComponent.SetDamage(5);
-                    timeBetweenBurn = 0.5f;
+                    character.lifeComponent.SetDamage(upgradeManager.Damage);
+                    timeBetweenBurn = upgradeManager.AttackRate;
                 }
                 if (timeBetweenBurn > 0)
                     timeBetweenBurn -= Time.deltaTime;
@@ -57,8 +70,8 @@ public class BasicEnemyAIHandler : IAIComponent
                 
                 if (timeBetweenAttacks <= 0)
                 {
-                    target.lifeComponent.SetDamage(20);
-                    timeBetweenAttacks = 1;
+                    target.lifeComponent.SetDamage(data.damage);
+                    timeBetweenAttacks = data.timeBetweenAttacks;
                 }
                 if (timeBetweenAttacks > 0)
                     timeBetweenAttacks -= Time.deltaTime;

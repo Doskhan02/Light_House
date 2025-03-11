@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicEnemyData", menuName = "CharacterTypeData/BasicEnemyData")]
+[CreateAssetMenu(fileName = "BasicEnemyData", menuName = "Scriptable Objects/Character Type Data/Basic Enemy Data")]
 public class BasicEnemyData : ScriptableObject
 {
     public float timeBetweenAttacks;
+    public float damage;
+    public float attackDistance;
+
+    public float healTime;
+    public float healAmount;
 }

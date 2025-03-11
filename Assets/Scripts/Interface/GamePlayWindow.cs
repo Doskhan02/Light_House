@@ -9,28 +9,38 @@ public class GamePlayWindow : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Button gameStartButton;
-    [SerializeField] private GameObject BG;
+    [SerializeField] private TMP_Text money;
+    [SerializeField] private GameObject[] upgrades;
 
     public void Initialize()
     {
         scoreText.gameObject.SetActive(true);
         timeText.gameObject.SetActive(true);
+        money.gameObject.SetActive(false);
         gameStartButton.gameObject.SetActive(false);
-        BG.SetActive(false);
+        for (int i = 0; i < upgrades.Length; i++) 
+        {
+            upgrades[i].SetActive(false);
+        }
     }
 
     void Start()
     {
+        money.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         gameStartButton.gameObject.SetActive(true);
-        BG.SetActive(true);
+        for (int i = 0; i < upgrades.Length; i++)
+        {
+            upgrades[i].SetActive(true);
+        }
     }
 
 
     void Update()
     {
-        
+        money.text = CurrencySystem.Instance.GetCurrency().ToString();
+
         scoreText.text = GameManager.Instance.ScoreSystem.Score + " / " + GameManager.Instance.gameData.targetScore;
 
         if (GameManager.Instance.SessionTimeInSeconds<10)

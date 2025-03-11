@@ -52,4 +52,9 @@ public class LifeComponent : ILifeComponent
         Debug.Log("Character " + selfCharacter.name + " has died.");
         OnCharacterDeath?.Invoke(selfCharacter);
     }
+
+    public void Heal(float healPoints)
+    {
+        Health += healPoints;
+    }
 }

@@ -7,16 +7,22 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class LightController : MonoBehaviour
 {
+    [SerializeField] private LightData data;
+
+    public LightData LightData => data;
+
     [SerializeField] private Light spotLight;
     [SerializeField] private LayerMask mask;
+
+    private UpgradeManager upgradeManager;
     private Ray ray;
     private Camera mainCamera;
     public RaycastHit hit;
-    public float radius = 100;
     private Vector3 offset;
 
     void Start()
     {
+        upgradeManager = GameManager.Instance.UpgradeManager;
         spotLight.gameObject.SetActive(false);
         mainCamera = Camera.main;
         ray = new Ray(transform.position, transform.forward);
@@ -43,7 +49,7 @@ public class LightController : MonoBehaviour
                 float distance = hit.distance - offset.magnitude;
 
                 spotLight.range = distance * 1.25f;
-                spotLight.spotAngle = 2 * (Mathf.Atan((radius / spotLight.range)) * Mathf.Rad2Deg);
+                spotLight.spotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);
                 spotLight.intensity = spotLight.range;
                 if (distance < 45)
                 {

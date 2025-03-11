@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
+    [SerializeField] private BasicEnemyData data;
+
+    private LightData LightData;
     private RaycastHit hit;
     private Vector3 direction;
-    private float timeBetweenAttacks;
     private float timeBetweenBurn;
+    private float timeBetweenHeal;
     public override Character Target 
     { 
         get 
@@ -20,7 +23,7 @@ public class EnemyCharacter : Character
                 if (!list[i].gameObject.activeSelf)
                     continue;
                 float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
-                if(distanceToLight < 5)
+                if(distanceToLight < LightData.baseRadius)
                     continue;
                 if (list[i].transform.position.z >= 70)
                     continue;
@@ -42,39 +45,32 @@ public class EnemyCharacter : Character
         aiComponent = new BasicEnemyAIHandler();
         base.Initialize();
         movementComponent.Move(transform.position);
-        timeBetweenAttacks = 1;
-        timeBetweenBurn = 0.5f;
+        LightData = GameManager.Instance.LightController.LightData;
     }
 
     
     public override void Update()
     {
-        timeBetweenBurn -= Time.deltaTime;
         hit = GameManager.Instance.LightController.hit;
+
         float distance = Vector3.Distance(hit.point, transform.position);
         
-        if (distance < 5f)
+        if (distance < LightData.baseRadius + 2)
         {
-            if (timeBetweenBurn <= 0) 
-            {
-                lifeComponent.SetDamage(5);
-                timeBetweenBurn = 0.5f;
-            }
-            aiComponent.AIAction(Target, AIState.Fear);
-            
+            aiComponent.AIAction(Target, AIState.Fear, data);
         }
         else
         {
             if (Target == null)
             {
-                aiComponent.AIAction(Target,AIState.Idle);
+                aiComponent.AIAction(Target,AIState.Idle,data);
             }
             else
             {
-                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < 3f)
-                    aiComponent.AIAction(Target,AIState.Attack);
+                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < data.attackDistance)
+                    aiComponent.AIAction(Target,AIState.Attack, data);
                 else
-                aiComponent.AIAction(Target, AIState.MoveToTarget);
+                aiComponent.AIAction(Target, AIState.MoveToTarget, data);
 
             }
         }       

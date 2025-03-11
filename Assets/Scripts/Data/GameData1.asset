@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sessionTimeInSeconds: 0
   sessionTimeInMinutes: 0
-  timeBetweenShipSpawn: 7
-  timeBetweenEnemySpawn: 5
+  timeBetweenShipSpawn: 4
+  timeBetweenEnemySpawn: 3
   targetScore: 20
   sessionMaxTimeInMinutes: 1
   sessionMaxTimeInSeconds: 30
+  maxEnemyCount: 10
