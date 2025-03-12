@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeManager : MonoBehaviour
+public class UpgradeManager : MonoBehaviour, IDataPersistance
 {
-
+    [SerializeField] private List<UpgradeBlock> upgrades;
     private LightData LightData;
+
+    private int damageLevel;
+    private int radiusLevel;
+    private int attckRateLevel;
 
     private float currentDamage;
     private float currentRadius;
@@ -19,9 +23,29 @@ public class UpgradeManager : MonoBehaviour
 
 
     private int upgradeCost;
+    private bool isNew = true;
     public void Initialize()
     {
-        
+        foreach (UpgradeBlock upgrade in upgrades) 
+        {
+            if (upgrade.Upgrade.upgradeName == "Damage Increase")
+            {
+                upgrade.level = damageLevel;
+                ApplyUpgrades(damageLevel, upgrade.Upgrade, false);
+            }
+            else if (upgrade.Upgrade.upgradeName == "Radius Increase")
+            {
+                upgrade.level = radiusLevel;
+                ApplyUpgrades(radiusLevel, upgrade.Upgrade, false);
+            }
+            else if (upgrade.Upgrade.upgradeName == "Attack Rate Increase")
+            {
+                upgrade.level = attckRateLevel;
+                ApplyUpgrades(attckRateLevel, upgrade.Upgrade, false);
+            }
+
+        }
+
     }
     void Start()
     {
@@ -29,32 +53,40 @@ public class UpgradeManager : MonoBehaviour
         currentDamage = LightData.baseDamage;
         currentRadius = LightData.baseRadius;
         currentAttackRate = LightData.baseAttackRate;
-        Debug.Log("D: " + currentDamage);
-        Debug.Log("R: " + currentRadius);
-        Debug.Log("AR: " + currentAttackRate);
+        Initialize();
     }
 
-    public void ApplyUpgrades(int level, BaseStatUpgrade upgrade)
+    public void ApplyUpgrades(int level, BaseStatUpgrade upgrade, bool isNew)
     {
-        upgradeCost = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level));
+        if (isNew)
+        {
+            upgradeCost = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level));
+        }
+        else 
+        { 
+            upgradeCost = 0; 
+        }
 
         if (CurrencySystem.Instance.SpendCurrency(upgradeCost) && level < upgrade.maxLevel)
         {
             if (upgrade.upgradeName == "Damage Increase")
             {
                 currentDamage = LightData.baseDamage + (upgrade.incrementPerLevel * level);
+                damageLevel = level;
                 upgradeSuccessful = true;
                 Debug.Log("D: " + currentDamage);
             }
             if (upgrade.upgradeName == "Radius Increase")
             {
                 currentRadius = LightData.baseRadius + (upgrade.incrementPerLevel * level);
+                radiusLevel = level ;
                 upgradeSuccessful = true;
                 Debug.Log("R: " + currentRadius);
             }
             if (upgrade.upgradeName == "Attack Rate Increase")
             {
                 currentAttackRate = LightData.baseAttackRate + (upgrade.incrementPerLevel * level);
+                attckRateLevel = level;
                 upgradeSuccessful = true;
                 Debug.Log("AR: " + currentAttackRate);
             }
@@ -64,5 +96,19 @@ public class UpgradeManager : MonoBehaviour
             Debug.Log("Not enough money");
             upgradeSuccessful = false;
         }
+    }
+
+    public void LoadData(GamePesistantData data)
+    {
+        damageLevel = data.damageUpgradeLevel;
+        radiusLevel = data.radiusUpgradeLevel;
+        attckRateLevel = data.attackRateUpgradeLevel;
+    }
+
+    public void SaveData(ref GamePesistantData data)
+    {
+        data.damageUpgradeLevel = damageLevel;
+        data.radiusUpgradeLevel = radiusLevel;
+        data.attackRateUpgradeLevel = attckRateLevel;
     }
 }

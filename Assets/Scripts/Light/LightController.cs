@@ -8,6 +8,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 public class LightController : MonoBehaviour
 {
     [SerializeField] private LightData data;
+    [SerializeField] private GameObject target;
 
     public LightData LightData => data;
 

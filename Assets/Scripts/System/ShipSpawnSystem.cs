@@ -55,7 +55,6 @@ public class ShipSpawnSystem : MonoBehaviour
     {
         Queue<Character> characters = disabledCharacters[character.CharacterType];
         characters.Enqueue(character);
-        Debug.Log(characters.Count + "" + characters.Peek());
         activeCharacters.Remove(character);
     }
 }

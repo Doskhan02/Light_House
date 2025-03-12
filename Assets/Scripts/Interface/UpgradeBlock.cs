@@ -9,6 +9,7 @@ public class UpgradeBlock : MonoBehaviour
 {
     [SerializeField] BaseStatUpgrade upgrade;
 
+    public BaseStatUpgrade Upgrade => upgrade;
 
     [SerializeField] private Button purchaseButton;
     [SerializeField] private Image icon;
@@ -17,23 +18,24 @@ public class UpgradeBlock : MonoBehaviour
     [SerializeField] private TMP_Text upgradeLevel;
     [SerializeField] private TMP_Text upgradeCost;
 
-    private int level = 1;
-
+    public int level;
+    private bool isNew;
 
     void Start()
     {
-        PlayerPrefs.GetInt(upgradeName.text, 0);
+        isNew = true;
         purchaseButton.onClick.RemoveAllListeners();
         purchaseButton.onClick.AddListener(PurchaseUpgrade);
         icon.sprite = upgrade.image;
         upgradeName.text = upgrade.upgradeName;
         upgradeDescription.text = upgrade.upgradeDescription;
+        upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level)).ToString();
         UpdateUI();
     }
 
     private void PurchaseUpgrade()
     {
-        GameManager.Instance.UpgradeManager.ApplyUpgrades(level, upgrade);
+        GameManager.Instance.UpgradeManager.ApplyUpgrades(level, upgrade, isNew);
         if (GameManager.Instance.UpgradeManager.UpgradeSuccessful)
         {
             level++;
@@ -49,9 +51,5 @@ public class UpgradeBlock : MonoBehaviour
             upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level)).ToString();
         }
         
-    }
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.SetInt(upgradeName.text, level);
     }
 }

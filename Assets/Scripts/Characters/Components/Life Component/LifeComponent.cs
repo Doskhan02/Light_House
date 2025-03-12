@@ -43,13 +43,10 @@ public class LifeComponent : ILifeComponent
     public void SetDamage(float damage)
     {
         Health -= damage;
-        Debug.Log("Character " + selfCharacter.name + " took damage: " + damage + ". Current Health: " + Health);
-
     }
 
     private void SetDeath()
     {
-        Debug.Log("Character " + selfCharacter.name + " has died.");
         OnCharacterDeath?.Invoke(selfCharacter);
     }
 

@@ -132,32 +132,20 @@ public class GameManager : MonoBehaviour
         victoryWindow.gameObject.SetActive(true);
         victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes);
         isGameActive = false;
-        Time.timeScale = 0;
+        StartCoroutine(DisableAllCharacters());
     }
 
     public void GameOver()
     {
         Debug.Log("You Lost:(");
         isGameActive = false;
-        Time.timeScale = 0;
+        StartCoroutine(DisableAllCharacters());
     }
 
     public void Restart()
     {
         timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
-
-        List<Character> shipList = ShipSpawnSystem.ActiveCharacters;
-        for (int i = 0; i < shipList.Count; i++)
-        {
-            CharacterDeathHandler(shipList[i]);
-        }
-
-        List<Character> enemyList = EnemySpawnSystem.ActiveCharacters;
-        for (int i = 0; i < enemyList.Count; i++)
-        {
-            CharacterDeathHandler(enemyList[i]);
-        }
         
         victoryWindow.gameObject.SetActive(false);
         
@@ -187,6 +175,8 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterDeathHandler(Character deathCharacter)
     {
+        deathCharacter.lifeComponent.OnCharacterDeath -= CharacterDeathHandler;
+
         switch (deathCharacter.CharacterData.CharacterType)
         {
             case CharacterType.Ally:
@@ -199,7 +189,25 @@ public class GameManager : MonoBehaviour
                 enemySpawnSystem.ReturnCharacter(deathCharacter);
                 break;
         }
-        
-        deathCharacter.lifeComponent.OnCharacterDeath -= CharacterDeathHandler;
+    }
+    private IEnumerator DisableAllCharacters()
+    {
+        List<Character> shipList = new List<Character>(ShipSpawnSystem.ActiveCharacters);
+        List<Character> enemyList = new List<Character>(EnemySpawnSystem.ActiveCharacters);
+
+        foreach (Character ship in shipList)
+        {
+            CharacterDeathHandler(ship);
+            yield return null;
+        }
+
+        foreach (Character enemy in enemyList)
+        {
+            CharacterDeathHandler(enemy);
+            yield return null;
+        }
+
+        Debug.Log("All characters disabled.");
+        Time.timeScale = 0;
     }
 }

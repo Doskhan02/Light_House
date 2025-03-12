@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrencySystem : MonoBehaviour
+public class CurrencySystem : MonoBehaviour, IDataPersistance
 {
     public static CurrencySystem Instance;
 
@@ -17,7 +17,6 @@ public class CurrencySystem : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            LoadCurrency();
         }
         else
         {
@@ -34,7 +33,6 @@ public class CurrencySystem : MonoBehaviour
     {
         softCurrency += amount;
         OnCurrencyChanged?.Invoke(softCurrency);
-        SaveCurrency();
     }
 
     public bool SpendCurrency(int amount)
@@ -43,21 +41,18 @@ public class CurrencySystem : MonoBehaviour
         {
             softCurrency -= amount;
             OnCurrencyChanged?.Invoke(softCurrency);
-            SaveCurrency();
             return true;
         }
         return false;
     }
 
-    private void SaveCurrency()
+    public void LoadData(GamePesistantData data)
     {
-        PlayerPrefs.SetInt("SoftCurrency", softCurrency);
-        PlayerPrefs.Save();
+        softCurrency= data.softCurrency;
     }
 
-    private void LoadCurrency()
+    public void SaveData(ref GamePesistantData data)
     {
-        softCurrency = PlayerPrefs.GetInt("SoftCurrency", 500); 
+        data.softCurrency = softCurrency;
     }
-
 }
