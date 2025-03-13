@@ -5,26 +5,36 @@ using UnityEngine.UI;
 
 public class Joystick : MonoBehaviour
 {
+    public RectTransform target;
+    public RectTransform canvasRect; 
+    public CanvasScaler canvasScaler;
+    public float speed = 50f;
+
+    private Vector2 direction;
     private InputManager inputManager;
 
-    [SerializeField] private GameObject target;
-    [SerializeField] private CanvasScaler canvasScaler;
-
-    private float speed;
-
-    public Vector2 direction;
     void Start()
     {
         inputManager = GameManager.Instance.InputManager;
-        speed = 250;
     }
 
     void Update()
     {
-        float scaleFactor = canvasScaler.referenceResolution.x / (float)Screen.width;
+        float scaleFactor = canvasScaler.scaleFactor;
         float adjustedSpeed = speed / scaleFactor;
 
         direction = inputManager.Joystick().normalized;
-        target.transform.Translate(direction * adjustedSpeed * Time.deltaTime);
+        Vector3 newPosition = target.anchoredPosition + (direction * adjustedSpeed * Time.deltaTime);
+
+        float halfWidth = canvasRect.rect.width / 2;
+        float halfHeight = canvasRect.rect.height / 2;
+
+        float targetHalfWidth = target.rect.width / 2;
+        float targetHalfHeight = target.rect.height / 2;
+
+        newPosition.x = Mathf.Clamp(newPosition.x, -halfWidth + targetHalfWidth, halfWidth - targetHalfWidth);
+        newPosition.y = Mathf.Clamp(newPosition.y, -halfHeight + targetHalfHeight, halfHeight - targetHalfHeight);
+
+        target.anchoredPosition = newPosition;
     }
 }

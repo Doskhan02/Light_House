@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraService : MonoBehaviour
 {
+    [SerializeField] GameObject target;
     private Camera mainCamera;
     private float maxOffset;
     private Vector3 startPos;
@@ -17,7 +18,7 @@ public class CameraService : MonoBehaviour
     {
         if (GameManager.Instance.IsGameActive)
         {
-            Vector2 mousePosition = GameManager.Instance.InputManager.TouchPosition();
+            Vector2 mousePosition = target.transform.position;
             if (mousePosition.x > Screen.width * 0.8f && mainCamera.gameObject.transform.position.x < 2)
             {
                 Vector3 offsetPos = mainCamera.gameObject.transform.position + new Vector3(2,0,0);
