@@ -40,11 +40,7 @@ public class LightController : MonoBehaviour
     {
         if (GameManager.Instance.IsGameActive)
         {
-            Vector3 mousePosition = GameManager.Instance.InputManager.TouchPosition();
-            mousePosition.z = 100f;
-            mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
-            ray = mainCamera.ScreenPointToRay(GameManager.Instance.InputManager.TouchPosition());
+            ray = mainCamera.ScreenPointToRay(target.transform.position);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask.value))
             {
                 float distance = hit.distance - offset.magnitude;

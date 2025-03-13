@@ -17,6 +17,6 @@ MonoBehaviour:
   timeBetweenShipSpawn: 4
   timeBetweenEnemySpawn: 3
   targetScore: 20
-  sessionMaxTimeInMinutes: 1
+  sessionMaxTimeInMinutes: 2
   sessionMaxTimeInSeconds: 30
   maxEnemyCount: 10

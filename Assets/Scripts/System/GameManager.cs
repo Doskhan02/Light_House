@@ -130,14 +130,15 @@ public class GameManager : MonoBehaviour
     private void GameVictory()
     {
         victoryWindow.gameObject.SetActive(true);
-        victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes);
+        victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes, true);
         isGameActive = false;
         StartCoroutine(DisableAllCharacters());
     }
 
     public void GameOver()
     {
-        Debug.Log("You Lost:(");
+        victoryWindow.gameObject.SetActive(true);
+        victoryWindow.Initialize(ScoreSystem.Score, sessionTimeInSeconds, sessionTimeInMinutes, false);
         isGameActive = false;
         StartCoroutine(DisableAllCharacters());
     }

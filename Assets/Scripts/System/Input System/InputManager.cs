@@ -23,4 +23,9 @@ public class InputManager : MonoBehaviour
     {
         return playerAction.TouchScreen.TouchPosition.ReadValue<Vector2>();
     }
+
+    public Vector2 Joystick()
+    {
+        return playerAction.TouchScreen.Move.ReadValue<Vector2>();
+    }
 }
