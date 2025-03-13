@@ -3155,6 +3155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa4abbea81047942a2b2ac1921d8add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &1025600179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e3602842a5588248babd21610bfa39b, type: 3}
@@ -5224,8 +5225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 571277864}
+  canvasRect: {fileID: 0}
   canvasScaler: {fileID: 411868605}
-  direction: {x: 0, y: 0}
+  speed: 0
 --- !u!1 &1914733153
 GameObject:
   m_ObjectHideFlags: 0
