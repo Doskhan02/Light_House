@@ -23,7 +23,6 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
 
 
     private int upgradeCost;
-    private bool isNew = true;
     public void Initialize()
     {
         foreach (UpgradeBlock upgrade in upgrades) 

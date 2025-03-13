@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject lightHouse;
     [SerializeField] private LightController lh_Light;
-    [SerializeField] private VolumetricLightController VLight;
     [SerializeField] private GamePlayWindow gamePlayWindow;
     [SerializeField] private VictoryWindow victoryWindow;
 
@@ -65,7 +64,6 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         lh_Light.Initialize();
-        VLight.Initialize();
         gamePlayWindow.Initialize();
         scoreSystem.StartGame();
         sessionTime = 0;

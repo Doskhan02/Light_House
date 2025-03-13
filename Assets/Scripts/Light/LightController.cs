@@ -47,7 +47,8 @@ public class LightController : MonoBehaviour
 
                 spotLight.range = distance * 1.25f;
                 spotLight.spotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);
-                spotLight.intensity = spotLight.range;
+                spotLight.innerSpotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);
+                spotLight.intensity = spotLight.range * 30;
                 if (distance < 45)
                 {
                     spotLight.intensity = 0; spotLight.range = 0;

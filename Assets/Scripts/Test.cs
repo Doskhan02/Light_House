@@ -13,6 +13,6 @@ public class Test : MonoBehaviour
 
     void Update()
     {
-        transform.position = GameManager.Instance.LightController.hit.point;
+        transform.position = GameManager.Instance.LightController.hit.point + new Vector3 (0,0.1f,0); 
     }
 }
