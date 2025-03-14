@@ -31,7 +31,7 @@ public class MovementComponent : IMovementComponent
 
     public void Move(Vector3 direction)
     {
-        Speed = characterData.DefaultSpeed;
+
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         Vector3 move = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
         move = AdjustDirectionWithCollision(move);

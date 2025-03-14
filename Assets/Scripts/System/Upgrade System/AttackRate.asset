@@ -16,6 +16,6 @@ MonoBehaviour:
   upgradeDescription: Time between attacks are decreased
   maxLevel: 10
   image: {fileID: 21300000, guid: a026f6b22517bd64a8df79f32113a300, type: 3}
-  incrementPerLevel: 0.1
+  incrementPerLevel: 0.01
   multiplier: 1.2
   cost: 300

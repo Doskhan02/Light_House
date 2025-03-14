@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162435597}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LightGeo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5638,6 +5638,7 @@ MonoBehaviour:
   scoreSystem: {fileID: 1894700994}
   upgradeManager: {fileID: 1611266764}
   GameData: {fileID: 11400000, guid: cc37916eec6eea849ada346e9a3aa0e6, type: 2}
+  returnedShips: []
 --- !u!1 &2130414317
 GameObject:
   m_ObjectHideFlags: 0

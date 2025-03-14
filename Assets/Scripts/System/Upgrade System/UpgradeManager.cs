@@ -84,7 +84,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
             }
             if (upgrade.upgradeName == "Attack Rate Increase")
             {
-                currentAttackRate = LightData.baseAttackRate + (upgrade.incrementPerLevel * level);
+                currentAttackRate = LightData.baseAttackRate - (upgrade.incrementPerLevel * level);
                 attckRateLevel = level;
                 upgradeSuccessful = true;
                 Debug.Log("AR: " + currentAttackRate);

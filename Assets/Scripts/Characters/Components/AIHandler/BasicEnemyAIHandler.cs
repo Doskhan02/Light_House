@@ -43,7 +43,8 @@ public class BasicEnemyAIHandler : IAIComponent
                 break;
 
             case AIState.Fear:
-
+                if (character.isActiveAndEnabled == false)
+                    return;
                 if (Vector3.Distance(lightHit, character.transform.position) > upgradeManager.Radius && timeBetweenBurn <= 0)
                 {
                     character.lifeComponent.SetDamage(upgradeManager.Damage);
@@ -54,6 +55,7 @@ public class BasicEnemyAIHandler : IAIComponent
 
                 Vector3 direction = character.transform.position - lightHit;
                 direction.Normalize();
+
                 character.movementComponent.Move(direction);
                 character.movementComponent.Rotate(direction);
                 break;
@@ -80,7 +82,7 @@ public class BasicEnemyAIHandler : IAIComponent
     private void Patrol()
     {
         elapsedPatrolTime += Time.deltaTime;
-        if (elapsedPatrolTime >= patrolTime)
+        if (Vector3.Distance(character.transform.position, patrolTarget) < 0.5f || elapsedPatrolTime >= patrolTime)
         {
             SetNewPatrolTarget();
         }

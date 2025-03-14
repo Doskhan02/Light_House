@@ -49,6 +49,7 @@ public class EnemyCharacter : Character
         base.Initialize();
         movementComponent.Move(transform.position);
         LightData = GameManager.Instance.LightController.LightData;
+        isCoroutineRunning = false;
     }
 
 

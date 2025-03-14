@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public int SessionTimeInMinutes => sessionTimeInMinutes;
     public int SessionTimeInSeconds => sessionTimeInSeconds;
 
+    public List<GameObject> returnedShips;
+
     public bool IsGameActive {  get { return isGameActive; } }
     public static GameManager Instance { get; private set; }
 
@@ -131,6 +133,10 @@ public class GameManager : MonoBehaviour
         victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes, true);
         isGameActive = false;
         StartCoroutine(DisableAllCharacters());
+        for(int i = 0; i < returnedShips.Count; i++)
+        {
+            Destroy(returnedShips[i]);
+        }
     }
 
     public void GameOver()
@@ -139,6 +145,10 @@ public class GameManager : MonoBehaviour
         victoryWindow.Initialize(ScoreSystem.Score, sessionTimeInSeconds, sessionTimeInMinutes, false);
         isGameActive = false;
         StartCoroutine(DisableAllCharacters());
+        for (int i = 0; i < returnedShips.Count; i++)
+        {
+            Destroy(returnedShips[i]);
+        }
     }
 
     public void Restart()
@@ -174,6 +184,7 @@ public class GameManager : MonoBehaviour
     }
     private void CharacterDeathHandler(Character deathCharacter)
     {
+        deathCharacter.StopAllCoroutines();
         deathCharacter.lifeComponent.OnCharacterDeath -= CharacterDeathHandler;
 
         switch (deathCharacter.CharacterData.CharacterType)

@@ -9,7 +9,7 @@ public class AllyCharacter : Character
     private LightData lightData;
     private Vector3 direction;
     private Vector3[] sailed;
-    private int score = 2;
+    private readonly int score = 2;
 
 
     public override void Initialize()
@@ -31,7 +31,7 @@ public class AllyCharacter : Character
     {
         float distance = Vector3.Distance(GameManager.Instance.LightController.hit.point, transform.position);
 
-        if (distance < upgradeManager.Radius - 1)
+        if (distance < upgradeManager.Radius)
         {
             movementComponent.Speed = CharacterData.DefaultSpeed + lightData.shipSpeedUpFactor;
         }
@@ -56,12 +56,14 @@ public class AllyCharacter : Character
 
     public void Returned()
     {
-        sailed[0] = new Vector3(6.83f, 1, Random.Range(12f, 13f));
-        sailed[1] = new Vector3(3.63f, 1, Random.Range(12f, 13f));
-        sailed[2] = new Vector3(-6.23f, 1, Random.Range(12f, 13f));
-        sailed[3] = new Vector3(-2, 1, Random.Range(12f, 13f));
+        sailed[0] = new Vector3(6.83f, 1, 13);
+        sailed[1] = new Vector3(3.63f, 1, 12);
+        sailed[2] = new Vector3(-6.23f, 1, 13);
+        sailed[3] = new Vector3(-2, 1, 12);
 
-        GameObject ghost = Instantiate(geo, sailed[Random.Range(0, sailed.Length)],Quaternion.Euler(direction));
-        ghost.transform.rotation = Quaternion.Euler(direction);
+        GameObject ghost = Instantiate(geo, sailed[Random.Range(0, sailed.Length)], Quaternion.identity);
+        Vector3 direction = target.transform.position - ghost.transform.position;
+        ghost.transform.rotation = Quaternion.LookRotation(direction);
+        GameManager.Instance.returnedShips.Add(ghost);
     }
 }
