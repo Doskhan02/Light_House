@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class EnemyCharacter : Character
 {
@@ -11,6 +12,8 @@ public class EnemyCharacter : Character
     private Vector3 direction;
     private float timeBetweenBurn;
     private float timeBetweenHeal;
+    private bool isCoroutineRunning = false;
+
     public override Character Target 
     { 
         get 
@@ -25,7 +28,7 @@ public class EnemyCharacter : Character
                 float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
                 if(distanceToLight < LightData.baseRadius)
                     continue;
-                if (list[i].transform.position.z >= 70)
+                if (list[i].transform.position.z >= 60)
                     continue;
                 if (list[i].CharacterData.CharacterType == CharacterType.Enemy)
                     continue;
@@ -48,31 +51,44 @@ public class EnemyCharacter : Character
         LightData = GameManager.Instance.LightController.LightData;
     }
 
-    
+
     public override void Update()
     {
+        if(isCoroutineRunning)
+            return;
         hit = GameManager.Instance.LightController.hit;
 
         float distance = Vector3.Distance(hit.point, transform.position);
         
         if (distance < LightData.baseRadius + 2)
         {
-            aiComponent.AIAction(Target, AIState.Fear, data);
+            StartCoroutine(Fear());
         }
         else
         {
             if (Target == null)
             {
-                aiComponent.AIAction(Target,AIState.Idle,data);
+                aiComponent.AIAction(Target, AIState.Idle, data);
             }
             else
             {
                 if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < data.attackDistance)
-                    aiComponent.AIAction(Target,AIState.Attack, data);
+                    aiComponent.AIAction(Target, AIState.Attack, data);
                 else
-                aiComponent.AIAction(Target, AIState.MoveToTarget, data);
-
+                    aiComponent.AIAction(Target, AIState.MoveToTarget, data);
             }
         }       
+    }
+    private IEnumerator Fear()
+    {
+        isCoroutineRunning = true;
+        float elapsedTime = 0;
+        while (elapsedTime < data.fearDuration)
+        {
+            aiComponent.AIAction(Target, AIState.Fear, data);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        isCoroutineRunning=false;
     }
 }

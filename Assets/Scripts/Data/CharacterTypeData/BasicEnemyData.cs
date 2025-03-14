@@ -6,6 +6,7 @@ public class BasicEnemyData : ScriptableObject
     public float timeBetweenAttacks;
     public float damage;
     public float attackDistance;
+    public float fearDuration;
 
     public float healTime;
     public float healAmount;

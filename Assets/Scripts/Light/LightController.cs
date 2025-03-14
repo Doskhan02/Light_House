@@ -9,6 +9,7 @@ public class LightController : MonoBehaviour
 {
     [SerializeField] private LightData data;
     [SerializeField] private GameObject target;
+    [SerializeField] private GameObject lightGeo;
 
     public LightData LightData => data;
 
@@ -27,7 +28,7 @@ public class LightController : MonoBehaviour
         spotLight.gameObject.SetActive(false);
         mainCamera = Camera.main;
         ray = new Ray(transform.position, transform.forward);
-        offset = transform.position - mainCamera.transform.position;
+        offset = lightGeo.transform.position - mainCamera.transform.position;
         Physics.Raycast(ray, out hit, Mathf.Infinity);
     }
 
@@ -43,7 +44,11 @@ public class LightController : MonoBehaviour
             ray = mainCamera.ScreenPointToRay(target.transform.position);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask.value))
             {
+                Debug.DrawLine(ray.origin, hit.point);
                 float distance = hit.distance - offset.magnitude;
+
+                lightGeo.transform.rotation = Quaternion.LookRotation(hit.point - lightGeo.transform.position);
+                lightGeo.transform.localScale = new Vector3(upgradeManager.Radius, upgradeManager.Radius, distance * 0.6f);
 
                 spotLight.range = distance * 1.25f;
                 spotLight.spotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);

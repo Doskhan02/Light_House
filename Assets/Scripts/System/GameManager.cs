@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
     private void SpawnEnemies()
     {
         Character enemy = EnemySpawnSystem.GetCharacter(CharacterType.Enemy);
-        enemy.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, Random.Range(40,50));
+        enemy.transform.position = new Vector3(Random.Range(-30, 30), -0.4f, Random.Range(40,50));
         enemy.gameObject.SetActive(true);
         enemy.Initialize();
         enemy.aiComponent.Initialize(enemy);

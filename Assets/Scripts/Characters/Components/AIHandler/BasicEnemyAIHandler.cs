@@ -9,7 +9,6 @@ public class BasicEnemyAIHandler : IAIComponent
     private float timeBetweenHeal;
     private float distanceToTarget;
     private Vector3 lightHit = GameManager.Instance.LightController.hit.point;
-    private LightData lightData = GameManager.Instance.LightController.LightData;
     private UpgradeManager upgradeManager = GameManager.Instance.UpgradeManager;
     private Coroutine patrolRoutine;
 
@@ -30,7 +29,7 @@ public class BasicEnemyAIHandler : IAIComponent
                 break;
 
             case AIState.Idle:
-
+                character.StopAllCoroutines();
                 Patrol();
 
                 if (timeBetweenHeal <= 0)
@@ -67,7 +66,6 @@ public class BasicEnemyAIHandler : IAIComponent
                 break;
 
             case AIState.Attack:
-                
                 if (timeBetweenAttacks <= 0)
                 {
                     target.lifeComponent.SetDamage(data.damage);
@@ -97,7 +95,11 @@ public class BasicEnemyAIHandler : IAIComponent
     private void SetNewPatrolTarget()
     {
         float GetOffset() => (Random.Range(0, 2) == 0 ? 1 : -1) * Random.Range(10, 30);
-        patrolTarget = new Vector3(GetOffset(), 0, Random.Range(10, 30));
+        patrolTarget = new Vector3(GetOffset(), -0.4f, Random.Range(10, 30));
+        if(patrolTarget == character.transform.position)
+        {
+            SetNewPatrolTarget();
+        }
         patrolTime = Random.Range(2f, 4f);
         elapsedPatrolTime = 0f;
     }
