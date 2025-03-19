@@ -60,6 +60,6 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.25231397, g: 0.8490566, b: 0.5434956, a: 0}
     - _DeepWater: {r: 0.09198113, g: 0.3679245, b: 0.24249569, a: 0}
-    - _RippleColor: {r: 0.014073068, g: 0.05424528, b: 0.031431437, a: 0}
+    - _RippleColor: {r: 0.112584546, g: 0.43396223, b: 0.2514515, a: 0}
     - _ShallowWater: {r: 0.374466, g: 0.9339623, b: 0.6218623, a: 0}
   m_BuildTextureStacks: []

@@ -13,7 +13,6 @@ public class LightController : MonoBehaviour
 
     public LightData LightData => data;
 
-    [SerializeField] private Light spotLight;
     [SerializeField] private LayerMask mask;
 
     private UpgradeManager upgradeManager;
@@ -25,7 +24,7 @@ public class LightController : MonoBehaviour
     void Start()
     {
         upgradeManager = GameManager.Instance.UpgradeManager;
-        spotLight.gameObject.SetActive(false);
+        lightGeo.SetActive(false);
         mainCamera = Camera.main;
         ray = new Ray(transform.position, transform.forward);
         offset = lightGeo.transform.position - mainCamera.transform.position;
@@ -34,7 +33,7 @@ public class LightController : MonoBehaviour
 
     public void Initialize()
     {
-        spotLight.gameObject.SetActive(true);
+        lightGeo.SetActive(true);
     }
 
     void Update()
@@ -50,18 +49,9 @@ public class LightController : MonoBehaviour
                 lightGeo.transform.rotation = Quaternion.LookRotation(hit.point - lightGeo.transform.position);
                 lightGeo.transform.localScale = new Vector3(upgradeManager.Radius, upgradeManager.Radius, distance * 0.6f);
 
-                spotLight.range = distance * 1.25f;
-                spotLight.spotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);
-                spotLight.innerSpotAngle = 2 * (Mathf.Atan(upgradeManager.Radius / spotLight.range) * Mathf.Rad2Deg);
-                spotLight.intensity = spotLight.range * 30;
-                if (distance < 45)
-                {
-                    spotLight.intensity = 0; spotLight.range = 0;
-                }
             }
 
             Vector3 direction = hit.point - transform.position;
-            spotLight.transform.rotation = Quaternion.LookRotation(direction);
 
         }
     }

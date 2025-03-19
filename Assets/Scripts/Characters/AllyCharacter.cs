@@ -5,6 +5,8 @@ public class AllyCharacter : Character
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject geo;
 
+    [SerializeField] private Canvas canvas;
+
     private UpgradeManager upgradeManager;
     private LightData lightData;
     private Vector3 direction;
@@ -16,6 +18,7 @@ public class AllyCharacter : Character
     {
         upgradeManager = GameManager.Instance.UpgradeManager;
         lightData = GameManager.Instance.LightController.LightData;
+        canvas = GameManager.Instance.WorldSpaceCanvas;
         base.Initialize();
         lifeComponent = new LifeComponent();
         if (target == null)
@@ -23,9 +26,10 @@ public class AllyCharacter : Character
             target = GameManager.Instance.LightHouse;
         }
         
+        CharacterData.Healthbar.Initialize();
         movementComponent.Rotate(direction);
-
         sailed = new Vector3[4];
+        SetUpHealthbar();
     }
     public override void Update()
     {
@@ -65,5 +69,10 @@ public class AllyCharacter : Character
         Vector3 direction = target.transform.position - ghost.transform.position;
         ghost.transform.rotation = Quaternion.LookRotation(direction);
         GameManager.Instance.returnedShips.Add(ghost);
+    }
+
+    public void SetUpHealthbar()
+    {
+        CharacterData.Healthbar.transform.SetParent(canvas.transform);
     }
 }

@@ -27,6 +27,7 @@ public class LifeComponent : ILifeComponent
     }
 
     public event Action<Character> OnCharacterDeath;
+    public event Action<Character> OnCharacterHealthChange;
 
 
     public LifeComponent(float maxHealth = 50f)
@@ -43,6 +44,7 @@ public class LifeComponent : ILifeComponent
     public void SetDamage(float damage)
     {
         Health -= damage;
+        OnCharacterHealthChange?.Invoke(selfCharacter);
     }
 
     private void SetDeath()

@@ -86,6 +86,8 @@ public class EnemyCharacter : Character
         float elapsedTime = 0;
         while (elapsedTime < data.fearDuration)
         {
+            if(gameObject.activeSelf == false)
+                break;
             aiComponent.AIAction(Target, AIState.Fear, data);
             elapsedTime += Time.deltaTime;
             yield return null;

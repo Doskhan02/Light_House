@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicEnemyAIHandler : IAIComponent
@@ -7,14 +8,14 @@ public class BasicEnemyAIHandler : IAIComponent
     private float timeBetweenAttacks;
     private float timeBetweenBurn;
     private float timeBetweenHeal;
-    private float distanceToTarget;
     private Vector3 lightHit = GameManager.Instance.LightController.hit.point;
     private UpgradeManager upgradeManager = GameManager.Instance.UpgradeManager;
-    private Coroutine patrolRoutine;
+    private LevelManager levelManager = GameManager.Instance.LevelManager;
 
     private Vector3 patrolTarget;
     private float patrolTime;
     private float elapsedPatrolTime;
+
 
     public void Initialize(Character selfCharacter)
     {
@@ -55,7 +56,8 @@ public class BasicEnemyAIHandler : IAIComponent
 
                 Vector3 direction = character.transform.position - lightHit;
                 direction.Normalize();
-
+                if(character.isActiveAndEnabled == false)
+                    return;
                 character.movementComponent.Move(direction);
                 character.movementComponent.Rotate(direction);
                 break;
@@ -70,7 +72,8 @@ public class BasicEnemyAIHandler : IAIComponent
             case AIState.Attack:
                 if (timeBetweenAttacks <= 0)
                 {
-                    target.lifeComponent.SetDamage(data.damage);
+                    target.lifeComponent.SetDamage(data.damage * levelManager.GetDifficultyMultiplier());
+                    ParticleManager.Instance.PlayHitParticleEffect(target.transform);
                     timeBetweenAttacks = data.timeBetweenAttacks;
                 }
                 if (timeBetweenAttacks > 0)

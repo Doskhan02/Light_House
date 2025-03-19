@@ -10,6 +10,7 @@ public class CharacterData : MonoBehaviour
     [SerializeField] private Transform characterTransform;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private LayerMask characterMask;
+    [SerializeField] private ProgressBar healthbar;
 
     public Character Character => character;
     public CharacterType CharacterType => characterType;
@@ -17,4 +18,5 @@ public class CharacterData : MonoBehaviour
     public Transform CharacterTransform => characterTransform;
     public CharacterController CharacterController => characterController;
     public LayerMask CharacterMask => characterMask;
+    public ProgressBar Healthbar => healthbar;
 }

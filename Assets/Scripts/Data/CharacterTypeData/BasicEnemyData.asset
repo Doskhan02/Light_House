@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicEnemyData
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1
-  damage: 20
+  damage: 10
   attackDistance: 3
   fearDuration: 1
   healTime: 1

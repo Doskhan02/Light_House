@@ -18,5 +18,5 @@ MonoBehaviour:
   timeBetweenEnemySpawn: 3
   targetScore: 20
   sessionMaxTimeInMinutes: 2
-  sessionMaxTimeInSeconds: 30
+  sessionMaxTimeInSeconds: 0
   maxEnemyCount: 10

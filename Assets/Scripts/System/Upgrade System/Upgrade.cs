@@ -7,7 +7,5 @@ public abstract class Upgrade : ScriptableObject
     public string upgradeName;
     public string upgradeDescription;
 
-    public int maxLevel;
-
-    
+    public Sprite image;
 }
