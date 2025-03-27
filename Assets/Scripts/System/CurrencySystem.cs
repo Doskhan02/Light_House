@@ -46,12 +46,12 @@ public class CurrencySystem : MonoBehaviour, IDataPersistance
         return false;
     }
 
-    public void LoadData(GamePesistantData data)
+    public void LoadData(GamePersistantData data)
     {
         softCurrency= data.softCurrency;
     }
 
-    public void SaveData(ref GamePesistantData data)
+    public void SaveData(ref GamePersistantData data)
     {
         data.softCurrency = softCurrency;
     }

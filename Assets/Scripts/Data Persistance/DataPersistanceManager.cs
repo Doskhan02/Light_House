@@ -5,7 +5,7 @@ using System.Linq;
 
 public class DataPersistanceManager : MonoBehaviour
 {
-    private GamePesistantData gamePesistantData;
+    private GamePersistantData gamePesistantData;
 
     private List<IDataPersistance> dataPersistanceObjects;
 
@@ -34,7 +34,7 @@ public class DataPersistanceManager : MonoBehaviour
 
     public void NewGame()
     {
-        this.gamePesistantData = new GamePesistantData();
+        this.gamePesistantData = new GamePersistantData();
     }
     public void SaveGame()
     {

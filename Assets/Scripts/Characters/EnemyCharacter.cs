@@ -7,11 +7,8 @@ public class EnemyCharacter : Character
 {
     [SerializeField] private BasicEnemyData data;
 
-    private LightData LightData;
+    private UpgradeManager upgradeManager;
     private RaycastHit hit;
-    private Vector3 direction;
-    private float timeBetweenBurn;
-    private float timeBetweenHeal;
     private bool isCoroutineRunning = false;
 
     public override Character Target 
@@ -20,17 +17,15 @@ public class EnemyCharacter : Character
         {
             Character target = null;
             float minDistance = float.MaxValue;
-            List<Character> list = GameManager.Instance.ShipSpawnSystem.ActiveCharacters;
+            List<Character> list = CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally);
             for (int i = 0; i < list.Count; i++)
             {
                 if (!list[i].gameObject.activeSelf)
                     continue;
                 float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
-                if(distanceToLight < LightData.baseRadius)
+                if(distanceToLight < upgradeManager.Radius)
                     continue;
                 if (list[i].transform.position.z >= 60)
-                    continue;
-                if (list[i].CharacterData.CharacterType == CharacterType.Enemy)
                     continue;
                 float distanceBetween = Vector3.Distance(list[i].transform.position, transform.position);
                 if (distanceBetween < minDistance)
@@ -46,22 +41,30 @@ public class EnemyCharacter : Character
     {
         lifeComponent = new LifeComponent();
         aiComponent = new BasicEnemyAIHandler();
+        effectComponent = new EffectComponent();
         base.Initialize();
         movementComponent.Move(transform.position);
-        LightData = GameManager.Instance.LightController.LightData;
         isCoroutineRunning = false;
+        upgradeManager = GameManager.Instance.UpgradeManager;
     }
 
 
     public override void Update()
     {
-        if(isCoroutineRunning)
+        if (effectComponent != null)
+        {
+            effectComponent.CheckForEffectsInLight();
+
+            ((EffectComponent)effectComponent).EffectUpdate(Time.deltaTime);
+        }
+        if (isCoroutineRunning)
             return;
+
         hit = GameManager.Instance.LightController.hit;
 
         float distance = Vector3.Distance(hit.point, transform.position);
         
-        if (distance < LightData.baseRadius + 2)
+        if (distance < upgradeManager.Radius)
         {
             StartCoroutine(Fear());
         }

@@ -21,10 +21,10 @@ public class FileDataHandler : MonoBehaviour
         this.useEncryption = useEncryption;
     }
     
-    public GamePesistantData Load()
+    public GamePersistantData Load()
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        GamePesistantData loadedData = null;
+        GamePersistantData loadedData = null;
         if (File.Exists(fullPath))
         {
             try
@@ -44,7 +44,7 @@ public class FileDataHandler : MonoBehaviour
                     dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
-                loadedData = JsonUtility.FromJson<GamePesistantData>(dataToLoad);
+                loadedData = JsonUtility.FromJson<GamePersistantData>(dataToLoad);
             }
             catch (Exception e)
             {
@@ -56,7 +56,7 @@ public class FileDataHandler : MonoBehaviour
 
     }
 
-    public void Save(GamePesistantData data) 
+    public void Save(GamePersistantData data) 
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try

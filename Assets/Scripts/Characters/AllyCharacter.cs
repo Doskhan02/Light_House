@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AllyCharacter : Character
 {
-    [SerializeField] private GameObject target;
+    private GameObject target;
     [SerializeField] private GameObject geo;
 
     [SerializeField] private Canvas canvas;
@@ -23,7 +23,7 @@ public class AllyCharacter : Character
         lifeComponent = new LifeComponent();
         if (target == null)
         {
-            target = GameManager.Instance.LightHouse;
+            target = GameObject.FindGameObjectWithTag("ShipTarget");
         }
         
         CharacterData.Healthbar.Initialize();

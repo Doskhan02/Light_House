@@ -97,14 +97,14 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
         }
     }
 
-    public void LoadData(GamePesistantData data)
+    public void LoadData(GamePersistantData data)
     {
         damageLevel = data.damageUpgradeLevel;
         radiusLevel = data.radiusUpgradeLevel;
         attckRateLevel = data.attackRateUpgradeLevel;
     }
 
-    public void SaveData(ref GamePesistantData data)
+    public void SaveData(ref GamePersistantData data)
     {
         data.damageUpgradeLevel = damageLevel;
         data.radiusUpgradeLevel = radiusLevel;

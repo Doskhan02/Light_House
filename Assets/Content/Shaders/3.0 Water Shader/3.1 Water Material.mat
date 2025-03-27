@@ -52,14 +52,14 @@ Material:
     m_Floats:
     - _Density: 10
     - _Dissolve: 70
-    - _FoamAmount: 0.94
-    - _FoamCutoff: 1.2
-    - _FoamScale: 0.5
+    - _FoamAmount: 2
+    - _FoamCutoff: 1
+    - _FoamScale: 1
     - _FoamSpeed: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 1
-    - _WaterDepth: 1
+    - _WaterDepth: 3
     m_Colors:
     - _BaseColor: {r: 0.1716981, g: 1, b: 0.627664, a: 0}
     - _DeepWater: {r: 0.073513515, g: 0.22264126, b: 0.1548559, a: 1}

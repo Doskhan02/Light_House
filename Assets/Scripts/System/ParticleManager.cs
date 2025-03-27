@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem hitParticleEffect;
+    [SerializeField] private ParticleSystem dotParticleEffect;
 
     public static ParticleManager Instance;
 
@@ -23,6 +24,12 @@ public class ParticleManager : MonoBehaviour
     public void PlayHitParticleEffect(Transform parent)
     {
         ParticleSystem effect = Instantiate(hitParticleEffect, parent.position, Quaternion.identity, parent);
+        effect.Play();
+        Destroy(effect.gameObject, effect.main.duration);
+    }
+    public void PlayDOTParticleEffect(Transform parent)
+    {
+        ParticleSystem effect = Instantiate(dotParticleEffect, parent.position, Quaternion.identity, parent);
         effect.Play();
         Destroy(effect.gameObject, effect.main.duration);
     }

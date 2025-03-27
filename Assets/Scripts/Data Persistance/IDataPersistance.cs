@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDataPersistance
 {
-    void LoadData(GamePesistantData data);
+    void LoadData(GamePersistantData data);
 
-    void SaveData(ref GamePesistantData data);
+    void SaveData(ref GamePersistantData data);
 }

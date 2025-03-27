@@ -32,13 +32,13 @@ public class LevelManager : MonoBehaviour, IDataPersistance
         OnLevelChanged?.Invoke(CurrentLevel);
     }
 
-    public void LoadData(GamePesistantData data)
+    public void LoadData(GamePersistantData data)
     {
         CurrentLevel = data.currentGameLevel;
         CheckPointLevel = data.checkpointLevel;
     }
 
-    public void SaveData(ref GamePesistantData data)
+    public void SaveData(ref GamePersistantData data)
     {
         data.currentGameLevel = CurrentLevel;
         data.checkpointLevel = CheckPointLevel;
