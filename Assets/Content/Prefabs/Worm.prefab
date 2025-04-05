@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 4417240648873294034}
   characterType: 1
-  defaultSpeed: 6
+  defaultSpeed: 7
   characterTransform: {fileID: 2424929422948496409}
   characterController: {fileID: 6587682816598449622}
   characterMask:
@@ -99,6 +99,7 @@ MonoBehaviour:
   characterData: {fileID: 3894886706183249410}
   characterType: 1
   data: {fileID: 11400000, guid: 655b6902dd4af694f8920eb055bf64b2, type: 2}
+  enemyType: 1
 --- !u!114 &4546363254378649459
 MonoBehaviour:
   m_ObjectHideFlags: 0

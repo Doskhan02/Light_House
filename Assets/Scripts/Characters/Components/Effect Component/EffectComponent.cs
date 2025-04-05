@@ -9,10 +9,6 @@ public class EffectComponent : IEffectComponent
     private List<ActiveEffect> activeEffects = new List<ActiveEffect>();
     private Dictionary<Type, List<ActiveEffect>> effectsByType = new();
 
-    // Visual feedback
-    private Material originalMaterial;
-    private Color originalColor;
-
     public void Initialize(Character selfCharacter)
     {
         this.selfCharacter = selfCharacter;
@@ -57,9 +53,6 @@ public class EffectComponent : IEffectComponent
                 }
             }
         }
-
-        // Update visual appearance based on effects
-        UpdateVisualEffects();
     }
 
     /// <summary>
@@ -108,9 +101,6 @@ public class EffectComponent : IEffectComponent
             }
 
             existingEffect.remainingDuration = effect.duration;
-
-            // Apply the effect based on its type
-            //ApplyEffectImpact(existingEffect, true);
         }
         else
         {
@@ -125,20 +115,6 @@ public class EffectComponent : IEffectComponent
                 effectsByType[effectType] = new List<ActiveEffect>();
             }
             effectsByType[effectType].Add(newEffect);
-
-            // Spawn visual effect if specified
-            if (effect.effectParticlePrefab != null)
-            {
-                newEffect.visualEffectInstance = GameObject.Instantiate(
-                    effect.effectParticlePrefab,
-                    selfCharacter.transform.position,
-                    Quaternion.identity,
-                    selfCharacter.transform
-                );
-            }
-
-            // Apply the effect based on its type
-            //ApplyEffectImpact(newEffect, false);
         }
     }
 
@@ -155,9 +131,6 @@ public class EffectComponent : IEffectComponent
 
         if (activeEffect != null)
         {
-            // Remove effect impact
-            //RemoveEffectImpact(activeEffect);
-
             // Destroy any visual effect
             if (activeEffect.visualEffectInstance != null)
             {
@@ -188,9 +161,6 @@ public class EffectComponent : IEffectComponent
         {
             RemoveEffect(effect.effect);
         }
-
-        // Reset visual appearance
-        ResetVisualEffects();
     }
 
     public bool HasEffect(Effect effect)
@@ -210,34 +180,5 @@ public class EffectComponent : IEffectComponent
     public List<ActiveEffect> GetActiveEffects()
     {
         return new List<ActiveEffect>(activeEffects);
-    }
-
-    private void UpdateVisualEffects()
-    {
-        Renderer renderer = selfCharacter.GetComponentInChildren<Renderer>();
-        if (renderer == null)
-            return;
-
-        if (activeEffects.Count > 0)
-        {
-            // Choose the effect with highest priority (for now, just use the first one)
-            Effect primaryEffect = activeEffects[0].effect;
-
-            // Apply color tint
-            renderer.material.color = primaryEffect.effectColor;
-        }
-        else
-        {
-            // Restore original color
-            ResetVisualEffects();
-        }
-    }
-    private void ResetVisualEffects()
-    {
-        Renderer renderer = selfCharacter.GetComponentInChildren<Renderer>();
-        if (renderer != null && originalMaterial != null)
-        {
-            renderer.material.color = originalColor;
-        }
     }
 }

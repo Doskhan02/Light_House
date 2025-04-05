@@ -8,19 +8,16 @@ public class GameStateManager : MonoBehaviour
     public static GameStateManager Instance { get; private set; }
 
     [SerializeField] private CharacterSpawnSystem spawnSystem;
-    [SerializeField] private TimeManager timeManager;
+    [SerializeField] private GameData gameData;
     [SerializeField] private LightController lightController;
 
     private int sessionTimeInSeconds;
     private int sessionTimeInMinutes;
+    private float sessionTime;
     private GameState currentGameState = GameState.MainMenu;
     private bool isGameSessionActive;
 
     public GameState CurrentGameState => currentGameState;
-
-    public event Action<GameState> OnGameStateChanged;
-    public event Action OnGameSessionStarted;
-    public event Action OnGameSessionEnded;
 
     public void Awake()
     {
@@ -28,14 +25,36 @@ public class GameStateManager : MonoBehaviour
     }
     public void GameStart()
     {
-        timeManager.ResetTime();
+        sessionTime = 0;
+        sessionTimeInSeconds = 0;
+        sessionTimeInMinutes = 0;
     }
     void Update()
     {
         if (isGameSessionActive)
         {
-            timeManager.UpdateSessionTime();
-
+            sessionTime += Time.deltaTime;
+            if (sessionTime > 1)
+            {
+                sessionTimeInSeconds++;
+                sessionTime = 0;
+                if (sessionTimeInSeconds % 60 == 0)
+                {
+                    sessionTimeInMinutes++;
+                    sessionTimeInSeconds = 0;
+                }
+            }
+            if (sessionTimeInMinutes >= gameData.sessionMaxTimeInMinutes && 
+                sessionTimeInSeconds >= gameData.sessionMaxTimeInSeconds)
+            {
+                EndGameSession(false);
+            }
+        }
+        else
+        {
+            sessionTime = 0;
+            sessionTimeInSeconds = 0;
+            sessionTimeInMinutes = 0;
         }
     }
 
@@ -45,20 +64,15 @@ public class GameStateManager : MonoBehaviour
         switch(currentGameState)
         {
             case GameState.MainMenu:
-
+                ReturnToMainMenu();
                 break;
             case GameState.GameSessionStart:
-                timeManager.ResetTime();
-                OnGameSessionStarted?.Invoke();
                 break;
             case GameState.GameSessionPause:
                 PauseGameSession(false);
                 break;
             case GameState.GameSessionUnpause:
                 PauseGameSession(true);
-                break;
-            case GameState.GameSessionEnd:
-                OnGameSessionStarted = null;
                 break;
             case GameState.GameSessionRestart:
 
@@ -71,7 +85,7 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGameSession()
     {
-
+        isGameSessionActive = true;
     }
     public void PauseGameSession(bool IsCurrentlyPaused)
     {

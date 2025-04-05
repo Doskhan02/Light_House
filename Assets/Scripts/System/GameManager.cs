@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         if (Instance == null)
         {
             Instance = this;
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenEnemySpawn < 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "Worm");
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
             timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
         }
     }

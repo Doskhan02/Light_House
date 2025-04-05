@@ -37,6 +37,29 @@ public class CharacterSpawnSystem : MonoBehaviour
         character.lifeComponent.Initialize(character);
         character.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
     }
+    public void SpawnCharacter(CharacterType characterType)
+    {
+        Character character = characterFactory.GetCharacter(characterType);
+        if (character == null)
+            return;
+        if (characterType == CharacterType.Enemy)
+        {
+            character.transform.position = new Vector3(Random.Range(-30, 30), -0.4f, Random.Range(40, 50));
+        }
+        else if (characterType == CharacterType.Ally)
+        {
+            character.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, 100);
+        }
+        character.gameObject.SetActive(true);
+        character.Initialize();
+        if (characterType == CharacterType.Enemy)
+        {
+            character.effectComponent.Initialize(character);
+            character.aiComponent.Initialize(character);
+        }
+        character.lifeComponent.Initialize(character);
+        character.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
+    }
     public void CharacterDeathHandler(Character deathCharacter)
     {
         deathCharacter.StopAllCoroutines();

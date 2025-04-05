@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraService : MonoBehaviour
 {
     [SerializeField] GameObject target;
     private Camera mainCamera;
-    private float maxOffset;
     private Vector3 startPos;
     void Start()
     {

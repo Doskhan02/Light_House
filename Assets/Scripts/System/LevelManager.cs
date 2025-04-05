@@ -8,6 +8,21 @@ public class LevelManager : MonoBehaviour, IDataPersistance
     public int CurrentLevel { get; private set; } = 1;
     public int CheckPointLevel { get; private set; } = 1;
 
+    public static LevelManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private float difficultyMultiplier = 1;
 
     public event Action<int> OnLevelChanged;

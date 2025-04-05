@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +41,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
                 upgrade.level = attckRateLevel;
                 ApplyUpgrades(attckRateLevel, upgrade.Upgrade, false);
             }
-
+            upgrade.Initialize();
         }
 
     }
@@ -78,7 +77,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
             if (upgrade.upgradeName == "Radius Increase")
             {
                 currentRadius = LightData.baseRadius + (upgrade.incrementPerLevel * level);
-                radiusLevel = level ;
+                radiusLevel = level;
                 upgradeSuccessful = true;
                 Debug.Log("R: " + currentRadius);
             }

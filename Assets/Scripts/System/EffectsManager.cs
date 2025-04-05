@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +43,6 @@ public class EffectsManager : MonoBehaviour
         {
             ActivateEffect(availableEffects[i]);
         }
-        //UpdateEffectIcons();
     }
 
     public void UnlockEffect(Effect effect)
@@ -52,7 +50,6 @@ public class EffectsManager : MonoBehaviour
         if (!unlockedEffects.Contains(effect))
         {
             unlockedEffects.Add(effect);
-            //UpdateEffectIcons();
         }
     }
 
@@ -78,7 +75,6 @@ public class EffectsManager : MonoBehaviour
 
         _activeEffectTypes.Add(effect);
         OnEffectActivated?.Invoke(effect);
-        //UpdateEffectIcons();
 
         return true;
     }
@@ -89,7 +85,6 @@ public class EffectsManager : MonoBehaviour
         {
             _activeEffectTypes.Remove(effect);
             OnEffectDeactivated?.Invoke(effect);
-            //UpdateEffectIcons();
         }
     }
     public void DeactivateAllEffects()
@@ -107,46 +102,6 @@ public class EffectsManager : MonoBehaviour
             ActivateEffect(effect);
         }
     }
-
-    /*
-    private void UpdateEffectIcons()
-    {
-        if (effectIconsParent == null || effectIconPrefab == null)
-            return;
-
-        // Clear existing icons
-        foreach (Transform child in effectIconsParent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        // Create icon for each active effect
-        foreach (Effect effect in _activeEffectTypes)
-        {
-            GameObject iconObject = Instantiate(effectIconPrefab, effectIconsParent);
-            EffectIcon iconComponent = iconObject.GetComponent<EffectIcon>();
-
-            if (iconComponent != null)
-            {
-                iconComponent.SetEffect(effect);
-            }
-        }
-
-        // Create faded icons for unlocked but inactive effects
-        foreach (Effect effect in unlockedEffects)
-        {
-            if (!_activeEffectTypes.Contains(effect))
-            {
-                GameObject iconObject = Instantiate(effectIconPrefab, effectIconsParent);
-                EffectIcon iconComponent = iconObject.GetComponent<EffectIcon>();
-
-                if (iconComponent != null)
-                {
-                    iconComponent.SetEffect(effect, false);
-                }
-            }
-        }
-    }*/
 }
 public class ActiveEffect
 {

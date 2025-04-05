@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class EnemyCharacter : Character
 {
     [SerializeField] private BasicEnemyData data;
+    [SerializeField] private EnemyType enemyType;
 
     private UpgradeManager upgradeManager;
     private RaycastHit hit;
@@ -22,9 +22,12 @@ public class EnemyCharacter : Character
             {
                 if (!list[i].gameObject.activeSelf)
                     continue;
-                float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
-                if(distanceToLight < upgradeManager.Radius)
-                    continue;
+                if(enemyType == EnemyType.Basic)
+                {
+                    float distanceToLight = Vector3.Distance(list[i].transform.position, hit.point);
+                    if (distanceToLight < upgradeManager.Radius)
+                        continue;
+                }
                 if (list[i].transform.position.z >= 60)
                     continue;
                 float distanceBetween = Vector3.Distance(list[i].transform.position, transform.position);
@@ -40,7 +43,14 @@ public class EnemyCharacter : Character
     public override void Initialize()
     {
         lifeComponent = new LifeComponent();
-        aiComponent = new BasicEnemyAIHandler();
+        if(enemyType == EnemyType.Basic)
+        {
+            aiComponent = new BasicEnemyAIHandler();
+        }
+        else if (enemyType == EnemyType.Elite)
+        {
+            aiComponent = new EliteEnemyAIHandler();
+        }
         effectComponent = new EffectComponent();
         base.Initialize();
         movementComponent.Move(transform.position);
@@ -64,9 +74,13 @@ public class EnemyCharacter : Character
 
         float distance = Vector3.Distance(hit.point, transform.position);
         
-        if (distance < upgradeManager.Radius)
+        if (distance < upgradeManager.Radius && enemyType == EnemyType.Basic)
         {
             StartCoroutine(Fear());
+        }
+        else if (distance < upgradeManager.Radius && enemyType == EnemyType.Elite)
+        {
+             aiComponent.AIAction(Target, AIState.Fear, data);
         }
         else
         {

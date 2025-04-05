@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +18,7 @@ public class UpgradeBlock : MonoBehaviour
     public int level;
     private bool isNew;
 
-    void Start()
+    public void Initialize()
     {
         isNew = true;
         purchaseButton.onClick.RemoveAllListeners();
@@ -35,21 +32,16 @@ public class UpgradeBlock : MonoBehaviour
 
     private void PurchaseUpgrade()
     {
-        GameManager.Instance.UpgradeManager.ApplyUpgrades(level, upgrade, isNew);
+        GameManager.Instance.UpgradeManager.ApplyUpgrades(level + 1, upgrade, isNew);
         if (GameManager.Instance.UpgradeManager.UpgradeSuccessful)
         {
             level++;
+            UpdateUI();
         }
-        UpdateUI();
-
     }
     private void UpdateUI()
     {
-        upgradeLevel.text = level.ToString();
-        if (CurrencySystem.Instance.GetCurrency() > Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level)))
-        {
-            upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level)).ToString();
-        }
-        
+        upgradeLevel.text = (level + 1).ToString();
+        upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1))).ToString();
     }
 }

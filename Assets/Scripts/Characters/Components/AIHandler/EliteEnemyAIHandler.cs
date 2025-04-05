@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EliteEnemyAIHandler : IAIComponent
@@ -13,6 +11,7 @@ public class EliteEnemyAIHandler : IAIComponent
     private LevelManager levelManager = GameManager.Instance.LevelManager;
 
     private Vector3 patrolTarget;
+    private Vector3 direction;
     private float patrolTime;
     private float elapsedPatrolTime;
 
@@ -53,13 +52,24 @@ public class EliteEnemyAIHandler : IAIComponent
                 }
                 if (timeBetweenBurn > 0)
                     timeBetweenBurn -= Time.deltaTime;
+                if (target == null)
+                {
+                    AIAction(target, AIState.Idle, data);
+                }
+                else
+                {
+                    if (Vector3.Distance(character.transform.position, target.gameObject.transform.position) < data.attackDistance)
+                        AIAction(target, AIState.Attack, data);
+                    else
+                        AIAction(target, AIState.MoveToTarget, data);
+                }
                 break;
 
             case AIState.MoveToTarget:
-                Vector3 directionToTarget = target.transform.position - character.transform.position;
-                directionToTarget.Normalize();
-                character.movementComponent.Move(directionToTarget);
-                character.movementComponent.Rotate(directionToTarget);
+                direction = target.transform.position - character.transform.position;
+                direction.Normalize();
+                character.movementComponent.Move(direction);
+                character.movementComponent.Rotate(direction);
                 break;
 
             case AIState.Attack:
@@ -83,7 +93,7 @@ public class EliteEnemyAIHandler : IAIComponent
             SetNewPatrolTarget();
         }
 
-        Vector3 direction = patrolTarget - character.transform.position;
+        direction = patrolTarget - character.transform.position;
         direction.y = 0;
         direction.Normalize();
         character.movementComponent.Move(direction);

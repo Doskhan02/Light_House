@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +25,7 @@ public class Joystick : MonoBehaviour
         Vector3 newPosition = target.anchoredPosition + (direction * adjustedSpeed * Time.deltaTime);
 
         float halfWidth = canvasRect.rect.width / 2;
-        float halfHeight = canvasRect.rect.height / 2;
+        float halfHeight = canvasRect.rect.height / 3;
 
         float targetHalfWidth = target.rect.width / 2;
         float targetHalfHeight = target.rect.height / 2;
