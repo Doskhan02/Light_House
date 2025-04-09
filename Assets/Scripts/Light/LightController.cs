@@ -54,6 +54,7 @@ public class LightController : MonoBehaviour
             ray = mainCamera.ScreenPointToRay(target.transform.position);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask.value))
             {
+                offset = lightGeo.transform.position - mainCamera.transform.position;
                 Debug.DrawLine(ray.origin, hit.point);
                 float distance = hit.distance - offset.magnitude;
 
@@ -64,6 +65,10 @@ public class LightController : MonoBehaviour
 
             Vector3 direction = hit.point - transform.position;
 
+        }
+        else
+        {
+            lightGeo.SetActive(false);
         }
     }
 }

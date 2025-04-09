@@ -7,15 +7,18 @@ public class AllyCharacter : Character
 
     [SerializeField] private Canvas canvas;
 
+    [SerializeField] private BasicAllyData data;
+
     private UpgradeManager upgradeManager;
     private LightData lightData;
     private Vector3 direction;
     private Vector3[] sailed;
-    private readonly int score = 2;
+    private int score = 2;
 
 
     public override void Initialize()
     {
+        score = data.Score;
         upgradeManager = GameManager.Instance.UpgradeManager;
         lightData = GameManager.Instance.LightController.LightData;
         canvas = GameManager.Instance.WorldSpaceCanvas;
@@ -35,9 +38,6 @@ public class AllyCharacter : Character
     {
         float distance = Vector3.Distance(GameManager.Instance.LightController.hit.point, transform.position);
 
-        if((0.5f + direction.magnitude / 90) > 1)
-            geo.transform.localScale = new Vector3(0.5f + direction.magnitude/90, 0.5f + direction.magnitude / 90, 0.5f + direction.magnitude / 90);
-
         if (distance < upgradeManager.Radius)
         {
             movementComponent.Speed = CharacterData.DefaultSpeed + lightData.shipSpeedUpFactor;
@@ -52,7 +52,6 @@ public class AllyCharacter : Character
         movementComponent.Rotate(direction);
         if (direction.magnitude < 9)
         {
-            Returned();
             lifeComponent.SetDamage(lifeComponent.MaxHealth);
             GameManager.Instance.ScoreSystem.AddScore(score);
             gameObject.SetActive(false);
@@ -63,10 +62,10 @@ public class AllyCharacter : Character
 
     public void Returned()
     {
-        sailed[0] = new Vector3(6.83f, 1, 13);
-        sailed[1] = new Vector3(3.63f, 1, 12);
-        sailed[2] = new Vector3(-6.23f, 1, 13);
-        sailed[3] = new Vector3(-2, 1, 12);
+        sailed[0] = new Vector3(6.83f, 0, 13);
+        sailed[1] = new Vector3(3.63f, 0, 12);
+        sailed[2] = new Vector3(-6.23f, 0, 13);
+        sailed[3] = new Vector3(-2, 0, 12);
 
         // TODO: Make a SO to store positions of the sailed ships
 

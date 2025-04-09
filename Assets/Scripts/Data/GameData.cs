@@ -14,6 +14,4 @@ public class GameData : ScriptableObject
     public float targetScore;
     public float sessionMaxTimeInMinutes;
     public float sessionMaxTimeInSeconds;
-    public int maxEnemyCount;
-
 }

@@ -52,6 +52,7 @@ MonoBehaviour:
   characterType: 2
   geo: {fileID: 4017251488667602949}
   canvas: {fileID: 0}
+  data: {fileID: 11400000, guid: 9b9c099805b95d341baf359ac3d4d60d, type: 2}
 --- !u!143 &8215044995445011551
 CharacterController:
   m_ObjectHideFlags: 0
@@ -93,6 +94,7 @@ MonoBehaviour:
   character: {fileID: 2146644247430032085}
   characterType: 2
   defaultSpeed: 4
+  defaultMaxHP: 50
   characterTransform: {fileID: 4184794058148834470}
   characterController: {fileID: 8215044995445011551}
   characterMask:
@@ -254,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5def9d20e75b48045825dcbd250b3d75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5def9d20e75b48045825dcbd250b3d75, type: 3}
       propertyPath: m_LocalPosition.z

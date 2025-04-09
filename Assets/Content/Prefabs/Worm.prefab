@@ -52,6 +52,7 @@ MonoBehaviour:
   character: {fileID: 4417240648873294034}
   characterType: 1
   defaultSpeed: 7
+  defaultMaxHP: 30
   characterTransform: {fileID: 2424929422948496409}
   characterController: {fileID: 6587682816598449622}
   characterMask:

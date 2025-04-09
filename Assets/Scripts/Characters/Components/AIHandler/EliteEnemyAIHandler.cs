@@ -103,7 +103,7 @@ public class EliteEnemyAIHandler : IAIComponent
     private void SetNewPatrolTarget()
     {
         float GetOffset() => (Random.Range(0, 2) == 0 ? 1 : -1) * Random.Range(10, 30);
-        patrolTarget = new Vector3(GetOffset(), -0.4f, Random.Range(10, 30));
+        patrolTarget = new Vector3(GetOffset(), -0.4f, Random.Range(10, 60));
         if (patrolTarget == character.transform.position)
         {
             SetNewPatrolTarget();

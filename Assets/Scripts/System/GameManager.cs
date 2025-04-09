@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Canvas worldSpaceCanvas;
     [SerializeField] private LightController lh_Light;
-    [SerializeField] private GamePlayWindow gamePlayWindow;
-    [SerializeField] private VictoryWindow victoryWindow;
 
     #region Systems
     [SerializeField] private InputManager inputManager;
@@ -41,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> returnedShips;
 
+    public event Action<int, int> OnSessionTimeUpdated;
+
     public bool IsGameActive {  get { return isGameActive; } }
     public static GameManager Instance { get; private set; }
 
@@ -62,13 +63,15 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         scoreSystem = new ScoreSystem();
+        windowService.Initialize();
     }
 
     public void StartGame()
     {
+        if (isGameActive)
+            return;
         isGameActive = true;
         lh_Light.Initialize();
-        gamePlayWindow.Initialize();
         scoreSystem.StartGame();
         sessionTime = 0;
         sessionTimeInSeconds = 0;
@@ -93,13 +96,14 @@ public class GameManager : MonoBehaviour
         sessionTime += Time.deltaTime;
         if (sessionTime > 1)
         {
-            sessionTimeInSeconds = sessionTimeInSeconds + 1;
+            sessionTimeInSeconds ++;
             sessionTime = 0;
             if (sessionTimeInSeconds == 60)
             {
                 sessionTimeInMinutes = sessionTimeInMinutes + 1;
                 sessionTimeInSeconds = 0;
             }
+            OnSessionTimeUpdated?.Invoke(sessionTimeInSeconds, sessionTimeInMinutes);
         }
 
         if (sessionTimeInMinutes == GameData.sessionMaxTimeInMinutes && 
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenShipSpawn < 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat");
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
             timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         }
 
@@ -130,44 +134,68 @@ public class GameManager : MonoBehaviour
 
     private void GameVictory()
     {
-        victoryWindow.gameObject.SetActive(true);
-        victoryWindow.Initialize(ScoreSystem.Score,sessionTimeInSeconds,sessionTimeInMinutes, true);
         isGameActive = false;
+        windowService.HideAllWindows(true);
+        windowService.ShowWindow<GameVictoryWindow>(false);
+        ScoreSystem.Instance.CalculateReward();
+        LevelManager.Instance.NextLevel();
         CharacterSpawnSystem.Instance.CharacterWipe();
         for(int i = 0; i < returnedShips.Count; i++)
         {
             Destroy(returnedShips[i]);
         }
+        returnedShips.Clear();
+        Time.timeScale = 0;
     }
 
     public void GameOver()
     {
-        victoryWindow.gameObject.SetActive(true);
-        victoryWindow.Initialize(ScoreSystem.Score, sessionTimeInSeconds, sessionTimeInMinutes, false);
         isGameActive = false;
+        windowService.HideAllWindows(true);
+        windowService.ShowWindow<DefeatWindow>(false);  
         CharacterSpawnSystem.Instance.CharacterWipe();
         for (int i = 0; i < returnedShips.Count; i++)
         {
             Destroy(returnedShips[i]);
         }
+        returnedShips.Clear();
+        Time.timeScale = 0;
+    }
+    public void ReturnToMainMenu()
+    {
+        isGameActive = false;
+        windowService.HideAllWindows(true);
+        windowService.ShowWindow<MainMenuWindow>(false);
+        CharacterSpawnSystem.Instance.CharacterWipe();
+        for (int i = 0; i < returnedShips.Count; i++)
+        {
+            Destroy(returnedShips[i]);
+        }
+        returnedShips.Clear();
+        Time.timeScale = 0;
     }
 
     public void Restart()
     {
         timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
-        
-        victoryWindow.gameObject.SetActive(false);
         StartGame();
 
     }
     public void GameContinue()
     {
-        levelManager.NextLevel();
         timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
-
-        victoryWindow.gameObject.SetActive(false);
         StartGame();
+    }
+    public void GamePause()
+    {
+        isGameActive = false;
+        Time.timeScale = 0;
+    }
+    public void GameResume()
+    {
+        isGameActive = true;
+        Time.timeScale = 1;
     }
 }

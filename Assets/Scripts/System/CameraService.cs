@@ -4,11 +4,15 @@ public class CameraService : MonoBehaviour
 {
     [SerializeField] GameObject target;
     private Camera mainCamera;
-    private Vector3 startPos;
+    private Vector3 gameStartPos;
+    private Vector3 gameStartRot;
+    public Vector3 startPos;
+    public Vector3 startRot;
     void Start()
     {
         mainCamera = Camera.main;
-        startPos = mainCamera.transform.position;
+        gameStartPos = new Vector3 (0, 38, -14);
+        gameStartRot = new Vector3(35, 0, 0);
     }
 
     void LateUpdate()
@@ -28,8 +32,14 @@ public class CameraService : MonoBehaviour
             }
             else
             {
-                mainCamera.gameObject.transform.position = Vector3.Lerp(mainCamera.gameObject.transform.position, startPos, 0.01f);
+                mainCamera.gameObject.transform.position = Vector3.Lerp(mainCamera.gameObject.transform.position, gameStartPos, 0.01f);
+                mainCamera.gameObject.transform.rotation = Quaternion.Lerp(mainCamera.gameObject.transform.rotation, Quaternion.Euler(gameStartRot), 0.01f);
             }
+        }
+        else
+        {
+            mainCamera.gameObject.transform.position = Vector3.Lerp(mainCamera.gameObject.transform.position, startPos, 0.01f);
+            mainCamera.gameObject.transform.rotation = Quaternion.Lerp(mainCamera.gameObject.transform.rotation, Quaternion.Euler(startRot), 0.01f);
         }
     }
 }

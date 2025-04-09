@@ -16,7 +16,7 @@ public class EnemyCharacter : Character
         get 
         {
             Character target = null;
-            float minDistance = float.MaxValue;
+            float minDistance = 10;
             List<Character> list = CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally);
             for (int i = 0; i < list.Count; i++)
             {
@@ -28,13 +28,14 @@ public class EnemyCharacter : Character
                     if (distanceToLight < upgradeManager.Radius)
                         continue;
                 }
-                if (list[i].transform.position.z >= 60)
+                if (list[i].transform.position.z >= 80)
                     continue;
                 float distanceBetween = Vector3.Distance(list[i].transform.position, transform.position);
-                if (distanceBetween < minDistance)
+                if (distanceBetween > minDistance)
+                    continue;
+                else
                 {
                     target = list[i];
-                    minDistance = distanceBetween;
                 }
             }
             return target; 

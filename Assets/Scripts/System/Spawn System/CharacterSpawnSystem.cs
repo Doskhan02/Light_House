@@ -21,11 +21,11 @@ public class CharacterSpawnSystem : MonoBehaviour
             return;
         if (characterType == CharacterType.Enemy)
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), -0.4f, Random.Range(40, 50));
+            character.transform.position = new Vector3(Random.Range(-30, 30), -1.0f, Random.Range(40, 80));
         }
         else if (characterType == CharacterType.Ally) 
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, 100);
+            character.transform.position = new Vector3(Random.Range(-30, 30), 0f, 100);
         }
         character.gameObject.SetActive(true);
         character.Initialize();
@@ -44,11 +44,11 @@ public class CharacterSpawnSystem : MonoBehaviour
             return;
         if (characterType == CharacterType.Enemy)
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), -0.4f, Random.Range(40, 50));
+            character.transform.position = new Vector3(Random.Range(-30, 30), -1.0f, Random.Range(40, 50));
         }
         else if (characterType == CharacterType.Ally)
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), 0.5f, 100);
+            character.transform.position = new Vector3(Random.Range(-30, 30), 0f, 100);
         }
         character.gameObject.SetActive(true);
         character.Initialize();

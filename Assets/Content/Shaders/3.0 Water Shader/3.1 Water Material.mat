@@ -27,9 +27,9 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2999
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -52,18 +52,23 @@ Material:
     m_Floats:
     - _Density: 10
     - _Dissolve: 70
-    - _FoamAmount: 0.4
+    - _FoamAmount: 1.1
     - _FoamCutoff: 1
     - _FoamScale: 1
     - _FoamSpeed: 0.5
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: -1
+    - _RippleCutOff: 4
+    - _RippleScale: 0.03
+    - _RippleSpeed: 0.5
     - _Speed: 1
     - _WaterDepth: 7
+    - _WaveScale: 2.97
+    - _WavesSpeed: 0
     m_Colors:
     - _BaseColor: {r: 0.1716981, g: 1, b: 0.627664, a: 0}
-    - _DeepWater: {r: 0.067803465, g: 0.24341948, b: 0.335849, a: 1}
+    - _DeepWater: {r: 0.18039216, g: 0.25882354, b: 0.20392157, a: 0.16862746}
     - _FoamColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
-    - _RippleColor: {r: 0.3127976, g: 1.0202016, b: 0.6246138, a: 1}
-    - _ShallowWater: {r: 0.15639006, g: 0.5359627, b: 0.7207546, a: 0.12941177}
+    - _RippleColor: {r: 0.0056053917, g: 0.048171833, b: 0.09305898, a: 0.39215687}
+    - _ShallowWater: {r: 0.15639006, g: 0.5359627, b: 0.25882354, a: 0.1764706}
   m_BuildTextureStacks: []

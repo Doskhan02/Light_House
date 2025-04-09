@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Damage Increase
   upgradeDescription: Increases light's basic damage
-  maxLevel: 5
-  image: {fileID: 21300000, guid: a026f6b22517bd64a8df79f32113a300, type: 3}
+  image: {fileID: 21300000, guid: 7fb26a2eea0efad45a63bb185a69c3bb, type: 3}
+  maxLevel: 6
   incrementPerLevel: 0.5
   multiplier: 1.4
   cost: 200

@@ -48,7 +48,7 @@ Material:
     - Boolean_52C16ADA: 0
     - Vector1_C436030E: 50
     - Vector1_D9BD7578: 0.4
-    - _FresnelEffectPower: 0.49
+    - _FresnelEffectPower: 0.7
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

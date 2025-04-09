@@ -32,6 +32,11 @@ public class UpgradeBlock : MonoBehaviour
 
     private void PurchaseUpgrade()
     {
+        if ((level + 1) >= upgrade.maxLevel)
+        {
+            purchaseButton.interactable = false;
+            return;
+        }
         GameManager.Instance.UpgradeManager.ApplyUpgrades(level + 1, upgrade, isNew);
         if (GameManager.Instance.UpgradeManager.UpgradeSuccessful)
         {

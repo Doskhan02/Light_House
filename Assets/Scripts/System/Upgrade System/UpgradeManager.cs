@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
 {
     [SerializeField] private List<UpgradeBlock> upgrades;
     private LightData LightData;
+
+    public event Action<float, float, float> OnUpgradeApplied;
 
     private int damageLevel;
     private int radiusLevel;
@@ -88,6 +91,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
                 upgradeSuccessful = true;
                 Debug.Log("AR: " + currentAttackRate);
             }
+            OnUpgradeApplied?.Invoke(currentDamage, currentRadius, currentAttackRate);
         }
         else
         {

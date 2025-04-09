@@ -21,8 +21,10 @@ public class Joystick : MonoBehaviour
         float scaleFactor = canvasScaler.scaleFactor;
         float adjustedSpeed = speed / scaleFactor;
 
-        direction = inputManager.Joystick().normalized;
-        Vector3 newPosition = target.anchoredPosition + (direction * adjustedSpeed * Time.deltaTime);
+        direction = inputManager.Joystick();
+        adjustedSpeed *= direction.magnitude;
+        Vector3 newPosition = target.anchoredPosition + (direction.normalized * adjustedSpeed * Time.deltaTime);
+        
 
         float halfWidth = canvasRect.rect.width / 2;
         float halfHeight = canvasRect.rect.height / 3;

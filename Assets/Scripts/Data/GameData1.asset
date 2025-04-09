@@ -15,7 +15,7 @@ MonoBehaviour:
   sessionTimeInSeconds: 0
   sessionTimeInMinutes: 0
   timeBetweenShipSpawn: 4
-  timeBetweenEnemySpawn: 3
+  timeBetweenEnemySpawn: 2
   targetScore: 20
   sessionMaxTimeInMinutes: 2
   sessionMaxTimeInSeconds: 0

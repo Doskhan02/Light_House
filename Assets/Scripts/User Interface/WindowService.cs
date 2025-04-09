@@ -19,7 +19,7 @@ public class WindowService : MonoBehaviour
             window.Initialize();
         }
 
-        //ShowWindow<MainMenuWindow>(true);
+        ShowWindow<MainMenuWindow>(true);
     }
 
     public T GetWindow<T>() where T : Window
@@ -46,5 +46,12 @@ public class WindowService : MonoBehaviour
             return;
         }
         window.Hide(isImmediately);
+    }
+    public void HideAllWindows(bool isImmediately)
+    {
+        foreach (var window in windows)
+        {
+            window.Hide(isImmediately);
+        }
     }
 }
