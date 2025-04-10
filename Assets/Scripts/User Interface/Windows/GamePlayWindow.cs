@@ -56,8 +56,8 @@ public class GamePlayWindow : Window
     private void PauseHandler()
     {
         GameManager.Instance.GamePause();
-        GameManager.Instance.WindowService.ShowWindow<PauseWindow>(true);
         Hide(false);
+        GameManager.Instance.WindowService.ShowWindow<PauseWindow>(false);
     }
 
 }

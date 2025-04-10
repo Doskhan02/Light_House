@@ -33,6 +33,8 @@ public abstract class Window : MonoBehaviour
 
     public void Show(bool isImmediately)
     {
+        if (IsOpened)
+            return;
         OpenStart();
         WindowAnimator.Play(isImmediately ? idleAnimationName : openAnimationName);
 

@@ -45,12 +45,12 @@ public class PauseWindow : Window
     private void ReturnHandler()
     {
         Hide(false);
-        GameManager.Instance.GameContinue();
-        GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(true);
+        GameManager.Instance.GameResume();
+        GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
     }
     private void ReturnToMainMenuHandler()
     {
-        Hide(false);
         GameManager.Instance.ReturnToMainMenu();
+        Hide(false);
     }
 }

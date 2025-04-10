@@ -9,6 +9,8 @@ public class BestiaryWindow : Window
     [SerializeField] private Button nextPageButton;
     [SerializeField] private Button previousPageButton;
 
+    [SerializeField] private BestiaryController bestiaryController;
+
     public override void Initialize()
     {
         returnButton.onClick.AddListener(ReturnHandler);
@@ -43,10 +45,10 @@ public class BestiaryWindow : Window
     }
     private void NextPageHandler()
     {
-
+        bestiaryController.NextPage();
     }
     private void PreviousPageHandler()
     {
-
+        bestiaryController.PreviousPage();
     }
 }

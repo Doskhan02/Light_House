@@ -48,7 +48,6 @@ public class EffectComponent : IEffectComponent
 
                     selfCharacter.lifeComponent.SetDamage(damage);
                     ParticleManager.Instance.PlayDOTParticleEffect(selfCharacter.transform);
-                    Debug.Log($"{selfCharacter.name} took {damage} damage from {dotEffect.name}");
                     effect.properties["nextTickTime"] = dotEffect.tickRate;
                 }
             }

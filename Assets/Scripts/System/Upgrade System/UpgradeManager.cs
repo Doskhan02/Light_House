@@ -75,21 +75,18 @@ public class UpgradeManager : MonoBehaviour, IDataPersistance
                 currentDamage = LightData.baseDamage + (upgrade.incrementPerLevel * level);
                 damageLevel = level;
                 upgradeSuccessful = true;
-                Debug.Log("D: " + currentDamage);
             }
             if (upgrade.upgradeName == "Radius Increase")
             {
                 currentRadius = LightData.baseRadius + (upgrade.incrementPerLevel * level);
                 radiusLevel = level;
                 upgradeSuccessful = true;
-                Debug.Log("R: " + currentRadius);
             }
             if (upgrade.upgradeName == "Attack Rate Increase")
             {
                 currentAttackRate = LightData.baseAttackRate - (upgrade.incrementPerLevel * level);
                 attckRateLevel = level;
                 upgradeSuccessful = true;
-                Debug.Log("AR: " + currentAttackRate);
             }
             OnUpgradeApplied?.Invoke(currentDamage, currentRadius, currentAttackRate);
         }

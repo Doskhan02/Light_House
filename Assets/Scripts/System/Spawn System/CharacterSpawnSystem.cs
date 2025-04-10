@@ -21,7 +21,7 @@ public class CharacterSpawnSystem : MonoBehaviour
             return;
         if (characterType == CharacterType.Enemy)
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), -1.0f, Random.Range(40, 80));
+            character.transform.position = new Vector3(Random.Range(-30, 30), -1, Random.Range(40, 80));
         }
         else if (characterType == CharacterType.Ally) 
         {

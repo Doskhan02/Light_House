@@ -190,12 +190,10 @@ public class GameManager : MonoBehaviour
     }
     public void GamePause()
     {
-        isGameActive = false;
         Time.timeScale = 0;
     }
     public void GameResume()
     {
-        isGameActive = true;
         Time.timeScale = 1;
     }
 }

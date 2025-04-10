@@ -59,7 +59,8 @@ public class MovementComponent : IMovementComponent
         if (Physics.SphereCast(origin, radius, direction, out RaycastHit hit, radius, mask))
         {
             Vector3 normal = new Vector3(hit.normal.x, 0, hit.normal.z);
-            direction += normal;
+
+            direction = normal;
             direction.Normalize();
             Debug.DrawRay(hit.point, normal * 2, Color.red);
         }
@@ -70,7 +71,7 @@ public class MovementComponent : IMovementComponent
         if (Physics.SphereCast(origin, radius, rightOffset, out RaycastHit rightHit, radius, mask))
         {
             Vector3 normal = new Vector3(rightHit.normal.x, 0, rightHit.normal.z);
-            direction += normal;
+            direction = normal;
             direction.Normalize();
             Debug.DrawRay(rightHit.point, normal * 2, Color.green);
         }
@@ -78,7 +79,7 @@ public class MovementComponent : IMovementComponent
         if (Physics.SphereCast(origin, radius, leftOffset, out RaycastHit leftHit, radius, mask))
         {
             Vector3 normal = new Vector3(leftHit.normal.x, 0, leftHit.normal.z);
-            direction += normal;
+            direction = normal;
             direction.Normalize();
             Debug.DrawRay(leftHit.point, normal * 2, Color.blue);
         }
