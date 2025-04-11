@@ -29,6 +29,7 @@ public class BestiaryWindow : Window
         returnButton.interactable = true;
         nextPageButton.interactable = true;
         previousPageButton.interactable = true;
+        bestiaryController.Initialize();
     }
     protected override void CloseStart()
     {

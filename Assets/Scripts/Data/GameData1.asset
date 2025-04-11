@@ -19,4 +19,3 @@ MonoBehaviour:
   targetScore: 20
   sessionMaxTimeInMinutes: 2
   sessionMaxTimeInSeconds: 0
-  maxEnemyCount: 10

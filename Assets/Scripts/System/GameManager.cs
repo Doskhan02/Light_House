@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
             Destroy(returnedShips[i]);
         }
         returnedShips.Clear();
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
     public void Restart()

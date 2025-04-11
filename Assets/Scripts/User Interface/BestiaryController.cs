@@ -17,6 +17,13 @@ public class BestiaryController : MonoBehaviour
     {
         image.sprite = characters[currentPage];
     }
+    public void Initialize()
+    {
+        StopAllCoroutines();
+        image.sprite = characters[currentPage];
+        imageAnimator.Play("in");
+        pageAnimator.Play("Next");
+    }
 
     public void NextPage()
     {

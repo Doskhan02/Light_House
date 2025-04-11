@@ -21,6 +21,7 @@ public class GamePlayWindow : Window
     protected override void OpenStart()
     {
         base.OpenStart();
+        scoreText.text = 0 + " / " + GameManager.Instance.gameData.targetScore;
         OpenEnd();
     }
 

@@ -30,7 +30,7 @@ public class BoosterSelectWindow : Window
     private void ReturnHandler()
     {
         Hide(false);
-        GameManager.Instance.WindowService.ShowWindow<MainMenuWindow>(false);
+        GameManager.Instance.ReturnToMainMenu();
     }
     private void ContinueHandler()
     {
