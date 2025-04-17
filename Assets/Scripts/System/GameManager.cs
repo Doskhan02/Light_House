@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Canvas worldSpaceCanvas;
     [SerializeField] private LightController lh_Light;
+    [SerializeField] private GameObject volume;
 
     #region Systems
     [SerializeField] private InputManager inputManager;
     [SerializeField] private ScoreSystem scoreSystem;
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private LevelManager levelManager;
-    [SerializeField] private GameData GameData;
+    [SerializeField] private GameData[] datas;
     [SerializeField] private WindowService windowService; 
     
     public InputManager InputManager => inputManager;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public WindowService WindowService => windowService;
     #endregion
 
+    private GameData GameData;
     private bool isGameActive;
     private float timeBetweenShipSpawn;
     private float timeBetweenEnemySpawn;
@@ -63,6 +65,14 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         scoreSystem = new ScoreSystem();
+        if (LevelManager.CurrentLevel <= datas.Length)
+        {
+            GameData = datas[LevelManager.CurrentLevel - 1];
+        }
+        else
+        {
+            GameData = datas[datas.Length - 1];
+        }
         windowService.Initialize();
     }
 
@@ -77,8 +87,17 @@ public class GameManager : MonoBehaviour
         sessionTimeInSeconds = 0;
         sessionTimeInMinutes = 0;
         difficultyMultiplier = LevelManager.GetDifficultyMultiplier();
+        if(LevelManager.CurrentLevel <= datas.Length)
+        {
+            GameData = datas[LevelManager.CurrentLevel - 1];
+        }
+        else
+        {
+            GameData = datas[datas.Length - 1];
+        }
+        CharacterSpawnSystem.Instance.Initialize(LevelManager.CurrentLevel);
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
-        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
+        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         Time.timeScale = 1;
         
     }
@@ -121,14 +140,28 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenShipSpawn < 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
+            if (LevelManager.CurrentLevel == 1)
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat");
+            }
+            else
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
+            }
             timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         }
 
         if (timeBetweenEnemySpawn < 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
-            timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
+            if(LevelManager.CurrentLevel == 1)
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "Worm");
+            }
+            else
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
+            }   
+            timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         }
     }
 
@@ -177,14 +210,14 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
+        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         StartGame();
 
     }
     public void GameContinue()
     {
-        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn - difficultyMultiplier * 0.1f;
+        timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         StartGame();
     }
@@ -195,5 +228,14 @@ public class GameManager : MonoBehaviour
     public void GameResume()
     {
         Time.timeScale = 1;
+    }
+    public void HardReset()
+    {
+        DataPersistanceManager.Instance.ResetGame();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
     }
 }

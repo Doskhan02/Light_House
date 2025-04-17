@@ -30,6 +30,8 @@ public class DataPersistanceManager : MonoBehaviour
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName,useEncryption);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         LoadGame();
+        LevelManager.Instance.OnGameLevelChanged += SaveGame;
+        CurrencySystem.Instance.OnGameCurrencyChanged += SaveGame;
     }
 
     public void NewGame()
@@ -44,6 +46,10 @@ public class DataPersistanceManager : MonoBehaviour
         }
 
         fileDataHandler.Save(gamePesistantData);
+    }
+    public void ResetGame()
+    {
+        fileDataHandler.ResetData();
     }
     public void LoadGame() 
     {
@@ -60,7 +66,7 @@ public class DataPersistanceManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+/*    private void OnApplicationQuit()
     {
         SaveGame();
     }
@@ -78,7 +84,7 @@ public class DataPersistanceManager : MonoBehaviour
         {
             SaveGame();
         }
-    }
+    }*/
 
     private List<IDataPersistance> FindAllDataPersistanceObjects()
     {

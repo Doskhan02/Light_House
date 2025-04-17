@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class OptionsWindow : Window
 {
     [SerializeField] private Button returnButton;
+    [SerializeField] private Button hardResetButton;
+    [SerializeField] private Toggle postProcessButton;
     [SerializeField] private Toggle soundOnOffButton;
     [SerializeField] private Toggle musicOnOffButton;
     [SerializeField] private Slider soundSlider;
@@ -14,6 +16,7 @@ public class OptionsWindow : Window
     public override void Initialize()
     {
         returnButton.onClick.AddListener(ReturnHandler);
+        hardResetButton.onClick.AddListener(HardResetHandler);
     }
     protected override void OpenStart()
     {
@@ -44,4 +47,10 @@ public class OptionsWindow : Window
         Hide(false);
         GameManager.Instance.WindowService.ShowWindow<MainMenuWindow>(false);
     }
+
+    private void HardResetHandler()
+    {
+        GameManager.Instance.HardReset();
+    }
+    
 }

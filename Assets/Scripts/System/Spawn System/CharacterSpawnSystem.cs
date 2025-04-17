@@ -14,6 +14,18 @@ public class CharacterSpawnSystem : MonoBehaviour
         Instance = this;
     }
 
+    public void Initialize(int currentLevel)
+    {
+        GameData data = GameManager.Instance.gameData;
+        SetSpawnAmount(data.wormSpawnAmount, CharacterType.Enemy, "Worm");
+        SetSpawnAmount(data.deepGuardianSpawnAmount, CharacterType.Enemy, "DeepGuardian");
+    }
+
+    public void SetSpawnAmount(int amount, CharacterType characterType, string subType)
+    {
+        characterFactory.GetConfig(characterType, subType).maxActive = amount;
+    }
+
     public void SpawnCharacter(CharacterType characterType, string subType)
     {
         Character character = characterFactory.GetCharacter(characterType, subType);
@@ -21,7 +33,7 @@ public class CharacterSpawnSystem : MonoBehaviour
             return;
         if (characterType == CharacterType.Enemy)
         {
-            character.transform.position = new Vector3(Random.Range(-30, 30), -1, Random.Range(40, 80));
+            character.transform.position = new Vector3(Random.Range(-30, 30), -1, Random.Range(40, 50));
         }
         else if (characterType == CharacterType.Ally) 
         {

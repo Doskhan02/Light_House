@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour, IDataPersistance
     private float difficultyMultiplier = 1;
 
     public event Action<int> OnLevelChanged;
+    public event Action OnGameLevelChanged;
     public void NextLevel()
     {
         CurrentLevel++;
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour, IDataPersistance
             CheckPointSet();
         }
         OnLevelChanged?.Invoke(CurrentLevel);
+        OnGameLevelChanged?.Invoke();
     }
     
     public void CheckPointSet() 
@@ -45,6 +47,7 @@ public class LevelManager : MonoBehaviour, IDataPersistance
     {
         CurrentLevel = CheckPointLevel;
         OnLevelChanged?.Invoke(CurrentLevel);
+        OnGameLevelChanged?.Invoke();
     }
 
     public void LoadData(GamePersistantData data)

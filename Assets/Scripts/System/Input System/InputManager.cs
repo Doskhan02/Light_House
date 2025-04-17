@@ -12,11 +12,13 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         playerAction.Enable();
+        playerAction.TouchScreen.QuitApplication.performed += OnQuitPerformed;
     }
 
     private void OnDisable()
     {
         playerAction.Disable();
+        playerAction.TouchScreen.QuitApplication.performed -= OnQuitPerformed;
     }
 
     public Vector2 TouchPosition()
@@ -27,5 +29,9 @@ public class InputManager : MonoBehaviour
     public Vector2 Joystick()
     {
         return playerAction.TouchScreen.Move.ReadValue<Vector2>();
+    }
+    private void OnQuitPerformed(InputAction.CallbackContext context)
+    {
+        Application.Quit();
     }
 }

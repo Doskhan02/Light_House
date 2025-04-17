@@ -9,6 +9,7 @@ public class CurrencySystem : MonoBehaviour, IDataPersistance
 
 
     public event Action<int> OnCurrencyChanged;
+    public event Action OnGameCurrencyChanged;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class CurrencySystem : MonoBehaviour, IDataPersistance
     {
         softCurrency += amount;
         OnCurrencyChanged?.Invoke(softCurrency);
+        OnGameCurrencyChanged?.Invoke();
     }
 
     public bool SpendCurrency(int amount)
@@ -39,6 +41,7 @@ public class CurrencySystem : MonoBehaviour, IDataPersistance
         {
             softCurrency -= amount;
             OnCurrencyChanged?.Invoke(softCurrency);
+            OnGameCurrencyChanged?.Invoke();
             return true;
         }
         return false;
@@ -47,6 +50,7 @@ public class CurrencySystem : MonoBehaviour, IDataPersistance
     public void LoadData(GamePersistantData data)
     {
         softCurrency= data.softCurrency;
+        OnCurrencyChanged?.Invoke(softCurrency);
     }
 
     public void SaveData(ref GamePersistantData data)

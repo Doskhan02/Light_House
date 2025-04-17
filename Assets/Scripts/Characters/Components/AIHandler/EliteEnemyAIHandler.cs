@@ -75,6 +75,7 @@ public class EliteEnemyAIHandler : IAIComponent
             case AIState.Attack:
                 if (timeBetweenAttacks <= 0)
                 {
+                    character.CharacterData.Animator.SetTrigger("Attack");
                     target.lifeComponent.SetDamage(data.damage * levelManager.GetDifficultyMultiplier());
                     ParticleManager.Instance.PlayHitParticleEffect(target.transform);
                     timeBetweenAttacks = data.timeBetweenAttacks;

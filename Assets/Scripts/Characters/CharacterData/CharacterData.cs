@@ -12,6 +12,7 @@ public class CharacterData : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private LayerMask characterMask;
     [SerializeField] private ProgressBar healthbar;
+    [SerializeField] private Animator animator;
 
     public Character Character => character;
     public CharacterType CharacterType => characterType;
@@ -21,4 +22,5 @@ public class CharacterData : MonoBehaviour
     public CharacterController CharacterController => characterController;
     public LayerMask CharacterMask => characterMask;
     public ProgressBar Healthbar => healthbar;
+    public Animator Animator => animator;
 }

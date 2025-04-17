@@ -44,6 +44,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""QuitApplication"",
+                    ""type"": ""Button"",
+                    ""id"": ""b94d0de4-2637-4223-8c64-b1448c79e06d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3342e044-450e-4c86-a92b-00e517989c39"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitApplication"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_TouchScreen = asset.FindActionMap("TouchScreen", throwIfNotFound: true);
         m_TouchScreen_TouchPosition = m_TouchScreen.FindAction("TouchPosition", throwIfNotFound: true);
         m_TouchScreen_Move = m_TouchScreen.FindAction("Move", throwIfNotFound: true);
+        m_TouchScreen_QuitApplication = m_TouchScreen.FindAction("QuitApplication", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<ITouchScreenActions> m_TouchScreenActionsCallbackInterfaces = new List<ITouchScreenActions>();
     private readonly InputAction m_TouchScreen_TouchPosition;
     private readonly InputAction m_TouchScreen_Move;
+    private readonly InputAction m_TouchScreen_QuitApplication;
     public struct TouchScreenActions
     {
         private @PlayerInputActions m_Wrapper;
         public TouchScreenActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @TouchPosition => m_Wrapper.m_TouchScreen_TouchPosition;
         public InputAction @Move => m_Wrapper.m_TouchScreen_Move;
+        public InputAction @QuitApplication => m_Wrapper.m_TouchScreen_QuitApplication;
         public InputActionMap Get() { return m_Wrapper.m_TouchScreen; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @QuitApplication.started += instance.OnQuitApplication;
+            @QuitApplication.performed += instance.OnQuitApplication;
+            @QuitApplication.canceled += instance.OnQuitApplication;
         }
 
         private void UnregisterCallbacks(ITouchScreenActions instance)
@@ -172,6 +198,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @QuitApplication.started -= instance.OnQuitApplication;
+            @QuitApplication.performed -= instance.OnQuitApplication;
+            @QuitApplication.canceled -= instance.OnQuitApplication;
         }
 
         public void RemoveCallbacks(ITouchScreenActions instance)
@@ -193,5 +222,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnTouchPosition(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnQuitApplication(InputAction.CallbackContext context);
     }
 }

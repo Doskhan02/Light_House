@@ -241,6 +241,11 @@ public class CharacterFactory : MonoBehaviour
         return characterConfigs.Find(c => c.mainType == mainType && c.SubtypeName == subtypeName);
     }
 
+    public CharacterSubtypeConfig GetConfig(CharacterType mainType, string subtypeName)
+    {
+        return FindConfig(mainType, subtypeName);
+    }
+
     // Utility methods
 
     /// <summary>

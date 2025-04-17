@@ -50,6 +50,8 @@ public class AllyCharacter : Character
         direction = target.transform.position - transform.position;
         movementComponent.Move(direction);
         movementComponent.Rotate(direction);
+
+
         if (direction.magnitude < 9)
         {
             lifeComponent.SetDamage(lifeComponent.MaxHealth);

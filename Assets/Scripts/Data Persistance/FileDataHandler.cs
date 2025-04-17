@@ -56,6 +56,13 @@ public class FileDataHandler : MonoBehaviour
 
     }
 
+    public void ResetData()
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        File.Delete(fullPath);
+        Debug.Log("File deleted.");
+    }
+
     public void Save(GamePersistantData data) 
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
