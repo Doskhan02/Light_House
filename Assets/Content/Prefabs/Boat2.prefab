@@ -101,6 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   healthbar: {fileID: 8215267493637656932}
+  animator: {fileID: 0}
 --- !u!1001 &44319257752495435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7556685537115490049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

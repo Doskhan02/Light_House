@@ -53,5 +53,6 @@ public class LifeComponent : ILifeComponent
     public void Heal(float healPoints)
     {
         Health += healPoints;
+        OnCharacterHealthChange?.Invoke(selfCharacter);
     }
 }

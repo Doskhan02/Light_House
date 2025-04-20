@@ -48,7 +48,14 @@ public class ProgressBar : MonoBehaviour
     }
     public void UpdateUI(Character character)
     {
-        character.CharacterData.Healthbar.gameObject.SetActive(true);
+        if (character.lifeComponent.Health != character.lifeComponent.MaxHealth)
+        {
+            character.CharacterData.Healthbar.gameObject.SetActive(true);
+        }
+        else
+        {
+            character.CharacterData.Healthbar.gameObject.SetActive(false);
+        }
         character.CharacterData.Healthbar.SetProgress(character.lifeComponent.Health / character.lifeComponent.MaxHealth);
     }
 

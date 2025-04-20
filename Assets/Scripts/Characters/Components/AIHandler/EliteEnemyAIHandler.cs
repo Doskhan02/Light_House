@@ -32,7 +32,7 @@ public class EliteEnemyAIHandler : IAIComponent
                 character.StopAllCoroutines();
                 Patrol();
 
-                if (timeBetweenHeal <= 0)
+                if (timeBetweenHeal <= 0 && character.lifeComponent.Health < character.lifeComponent.MaxHealth)
                 {
                     character.lifeComponent.Heal(data.healAmount);
                     timeBetweenHeal = data.healTime;

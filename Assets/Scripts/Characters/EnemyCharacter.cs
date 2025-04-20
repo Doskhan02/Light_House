@@ -6,6 +6,7 @@ public class EnemyCharacter : Character
 {
     [SerializeField] private BasicEnemyData data;
     [SerializeField] private EnemyType enemyType;
+    [SerializeField] private Canvas canvas;
 
     private UpgradeManager upgradeManager;
     private RaycastHit hit;
@@ -43,6 +44,7 @@ public class EnemyCharacter : Character
     }
     public override void Initialize()
     {
+        canvas = GameManager.Instance.WorldSpaceCanvas;
         lifeComponent = new LifeComponent();
         if(enemyType == EnemyType.Basic)
         {
@@ -57,6 +59,8 @@ public class EnemyCharacter : Character
         movementComponent.Move(transform.position);
         isCoroutineRunning = false;
         upgradeManager = GameManager.Instance.UpgradeManager;
+        CharacterData.Healthbar.Initialize();
+        SetUpHealthbar();
     }
 
 
@@ -111,5 +115,10 @@ public class EnemyCharacter : Character
             yield return null;
         }
         isCoroutineRunning=false;
+    }
+
+    public void SetUpHealthbar()
+    {
+        CharacterData.Healthbar.transform.SetParent(canvas.transform);
     }
 }
