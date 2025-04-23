@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7228c7ae8ee93745a5f67ba09b9508e, type: 3}
   m_Name: EliteEnemyData 1
   m_EditorClassIdentifier: 
+  defaultSpeed: 3
+  defaultMaxHP: 60
   timeBetweenAttacks: 1
   damage: 20
   attackDistance: 3
   fearDuration: 0.1
-  healTime: 1
+  healTime: 3
   healAmount: 20

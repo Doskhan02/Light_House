@@ -35,7 +35,7 @@ public class LifeComponent : ILifeComponent
     public void Initialize(Character selfCharacter)
     {
         this.selfCharacter = selfCharacter;
-        MaxHealth = selfCharacter.CharacterData.DefaultMaxHP;
+        MaxHealth = selfCharacter.CharacterData.CharacterTypeData.defaultMaxHP;
         Health = MaxHealth;
     }
 

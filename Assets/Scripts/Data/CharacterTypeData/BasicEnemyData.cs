@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BasicEnemyData", menuName = "Scriptable Objects/Character Type Data/Basic Enemy Data")]
-public class BasicEnemyData : ScriptableObject
+public class BasicEnemyData : CharacterTypeData
 {
     public float timeBetweenAttacks;
     public float damage;

@@ -21,7 +21,7 @@ public class MovementComponent : IMovementComponent
     public void Initialize(CharacterData characterData)
     {
         this.characterData = characterData;
-        speed = characterData.DefaultSpeed;
+        speed = characterData.CharacterTypeData.defaultSpeed;
     }
 
     public void Initialize(Character selfCharacter)

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3d0123ac12cb643b5fe8c0056fc739, type: 3}
   m_Name: BasicShipData
   m_EditorClassIdentifier: 
+  defaultSpeed: 4
+  defaultMaxHP: 50
   Score: 2

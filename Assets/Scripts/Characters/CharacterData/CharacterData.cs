@@ -6,8 +6,7 @@ public class CharacterData : MonoBehaviour
 {
     [SerializeField] private Character character;
     [SerializeField] private CharacterType characterType;
-    [SerializeField] private float defaultSpeed;
-    [SerializeField] private float defaultMaxHP;
+    [SerializeField] private CharacterTypeData characterTypeData;
     [SerializeField] private Transform characterTransform;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private LayerMask characterMask;
@@ -16,8 +15,7 @@ public class CharacterData : MonoBehaviour
 
     public Character Character => character;
     public CharacterType CharacterType => characterType;
-    public float DefaultSpeed => defaultSpeed;
-    public float DefaultMaxHP => defaultMaxHP;
+    public CharacterTypeData CharacterTypeData => characterTypeData;
     public Transform CharacterTransform => characterTransform;
     public CharacterController CharacterController => characterController;
     public LayerMask CharacterMask => characterMask;

@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2146644247430032085}
   characterType: 2
+  characterTypeData: {fileID: 11400000, guid: 433f21708b1371e4696e70b621d47a2d, type: 2}
   defaultSpeed: 3
   defaultMaxHP: 65
   characterTransform: {fileID: 4184794058148834470}

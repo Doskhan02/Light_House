@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeName: Attack Rate Increase
   upgradeDescription: Time between attacks are decreased
   image: {fileID: 21300000, guid: 5d4f3c8fbc4c26141bea8af0c050e46d, type: 3}
-  maxLevel: 10
+  maxLevel: 11
   incrementPerLevel: 0.01
   multiplier: 1.2
   cost: 300

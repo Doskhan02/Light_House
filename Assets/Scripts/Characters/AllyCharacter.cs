@@ -40,11 +40,11 @@ public class AllyCharacter : Character
 
         if (distance < upgradeManager.Radius)
         {
-            movementComponent.Speed = CharacterData.DefaultSpeed + lightData.shipSpeedUpFactor;
+            movementComponent.Speed = CharacterData.CharacterTypeData.defaultSpeed + lightData.shipSpeedUpFactor;
         }
         else
         {
-            movementComponent.Speed = CharacterData.DefaultSpeed;
+            movementComponent.Speed = CharacterData.CharacterTypeData.defaultSpeed;
         }
 
         direction = target.transform.position - transform.position;
