@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicEnemyData
   m_EditorClassIdentifier: 
   defaultSpeed: 7
-  defaultMaxHP: 30
+  defaultMaxHP: 20
   timeBetweenAttacks: 1
   damage: 10
   attackDistance: 3

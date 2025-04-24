@@ -2990,6 +2990,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &355767932
 GameObject:
   m_ObjectHideFlags: 0
@@ -25748,9 +25749,11 @@ MonoBehaviour:
   upgradeManager: {fileID: 1611266764}
   levelManager: {fileID: 408649245}
   datas:
-  - {fileID: 11400000, guid: fc548220e220c0b46813fbe50f75e6d1, type: 2}
-  - {fileID: 11400000, guid: b5c9a9cdc6af7a14ebb64ef313b7f0f5, type: 2}
-  - {fileID: 11400000, guid: e82650cc11361554ab9eab6989e48b5e, type: 2}
+  - {fileID: 11400000, guid: 873914b8d1c3bf449931a1ab57878c52, type: 2}
+  - {fileID: 11400000, guid: 8be92243e4bab7d49bfa1c005fd3e696, type: 2}
+  - {fileID: 11400000, guid: 2001b50735359104380f076626fdf77c, type: 2}
+  - {fileID: 11400000, guid: 2f05c4120d3777f48a1821b08d322958, type: 2}
+  - {fileID: 11400000, guid: d316a5e78ee5aa840a46119fb485c7b6, type: 2}
   windowService: {fileID: 643402658}
   returnedShips: []
 --- !u!1 &1996620589

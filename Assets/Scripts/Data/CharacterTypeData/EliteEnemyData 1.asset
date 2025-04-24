@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EliteEnemyData 1
   m_EditorClassIdentifier: 
   defaultSpeed: 3
-  defaultMaxHP: 60
+  defaultMaxHP: 40
   timeBetweenAttacks: 1
   damage: 20
   attackDistance: 3
