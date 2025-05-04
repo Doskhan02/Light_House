@@ -18,8 +18,8 @@ public class LightController : MonoBehaviour
     private Camera mainCamera;
     public RaycastHit hit;
     private Vector3 offset;
-    Color baseColor = new Color32(251, 238, 127, 100);
-    Color DOTColor = new Color32(253, 110, 110, 100);
+    Color baseColor = new Color32(251, 238, 127, 20);
+    Color DOTColor = new Color32(253, 110, 110, 20);
 
     void Start()
     {

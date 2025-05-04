@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         {
             if (LevelManager.CurrentLevel == 1)
             {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat");
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat", new Vector3(UnityEngine.Random.Range(-30, 30), 0f, 100));
             }
             else
             {
@@ -155,7 +155,8 @@ public class GameManager : MonoBehaviour
         {
             if(LevelManager.CurrentLevel == 1)
             {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "Worm");
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "Worm", 
+                    new Vector3(UnityEngine.Random.Range(-30, 30), -1, UnityEngine.Random.Range(40, 50)));
             }
             else
             {

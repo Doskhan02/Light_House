@@ -18,5 +18,6 @@ MonoBehaviour:
   damage: 10
   attackDistance: 3
   fearDuration: 1
+  fearSpeedUpFactor: 4
   healTime: 1
   healAmount: 10

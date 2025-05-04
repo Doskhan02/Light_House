@@ -50,7 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData: {fileID: 2382913020897062257}
   characterType: 2
-  geo: {fileID: 890619745811224602}
   canvas: {fileID: 0}
   data: {fileID: 11400000, guid: 433f21708b1371e4696e70b621d47a2d, type: 2}
 --- !u!143 &8215044995445011551
@@ -94,8 +93,6 @@ MonoBehaviour:
   character: {fileID: 2146644247430032085}
   characterType: 2
   characterTypeData: {fileID: 11400000, guid: 433f21708b1371e4696e70b621d47a2d, type: 2}
-  defaultSpeed: 3
-  defaultMaxHP: 65
   characterTransform: {fileID: 4184794058148834470}
   characterController: {fileID: 8215044995445011551}
   characterMask:
@@ -103,6 +100,7 @@ MonoBehaviour:
     m_Bits: 512
   healthbar: {fileID: 8215267493637656932}
   animator: {fileID: 0}
+  characterModel: {fileID: 890619745811224602}
 --- !u!1001 &44319257752495435
 PrefabInstance:
   m_ObjectHideFlags: 0

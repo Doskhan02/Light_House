@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class EnemyCharacter : Character
 {
@@ -11,6 +13,8 @@ public class EnemyCharacter : Character
     private UpgradeManager upgradeManager;
     private RaycastHit hit;
     private bool isCoroutineRunning = false;
+    private bool isGettingHit = false;
+    private float timeBetweenBurn = 0;
 
     public override Character Target 
     { 
@@ -46,13 +50,15 @@ public class EnemyCharacter : Character
     {
         canvas = GameManager.Instance.WorldSpaceCanvas;
         lifeComponent = new LifeComponent();
-        if(enemyType == EnemyType.Basic)
+        if(enemyType != EnemyType.GhostShip)
         {
             aiComponent = new BasicEnemyAIHandler();
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
         }
-        else if (enemyType == EnemyType.Elite)
+        else if (enemyType == EnemyType.GhostShip)
         {
-            aiComponent = new EliteEnemyAIHandler();
+            aiComponent = new GhostShipAIHandler();
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyGhost");
         }
         effectComponent = new EffectComponent();
         base.Initialize();
@@ -60,7 +66,12 @@ public class EnemyCharacter : Character
         isCoroutineRunning = false;
         upgradeManager = GameManager.Instance.UpgradeManager;
         CharacterData.Healthbar.Initialize();
+        if(data.isMinionParent)
+        {
+            lifeComponent.OnCharacterDeath += SpawnMinions;
+        }
         SetUpHealthbar();
+        
     }
 
 
@@ -72,20 +83,30 @@ public class EnemyCharacter : Character
 
             ((EffectComponent)effectComponent).EffectUpdate(Time.deltaTime);
         }
-        if (isCoroutineRunning)
-            return;
 
         hit = GameManager.Instance.LightController.hit;
+        if (isActiveAndEnabled == false)
+            return;
+
+        if (Vector3.Distance(hit.point, transform.position) < upgradeManager.Radius && timeBetweenBurn <= 0)
+        {
+            lifeComponent.SetDamage(upgradeManager.Damage);
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyHit");
+            Invoke(nameof(ResetLayer), 0.1f);
+
+            timeBetweenBurn = upgradeManager.AttackRate;
+        }
+        else if (timeBetweenBurn > 0)
+            timeBetweenBurn -= Time.deltaTime;
+
+        if (isCoroutineRunning)
+            return;
 
         float distance = Vector3.Distance(hit.point, transform.position);
         
         if (distance < upgradeManager.Radius && enemyType == EnemyType.Basic)
         {
             StartCoroutine(Fear());
-        }
-        else if (distance < upgradeManager.Radius && enemyType == EnemyType.Elite)
-        {
-             aiComponent.AIAction(Target, AIState.Fear, data);
         }
         else
         {
@@ -100,7 +121,7 @@ public class EnemyCharacter : Character
                 else
                     aiComponent.AIAction(Target, AIState.MoveToTarget, data);
             }
-        }       
+        }
     }
     private IEnumerator Fear()
     {
@@ -114,11 +135,42 @@ public class EnemyCharacter : Character
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        isCoroutineRunning=false;
+        if (CharacterData.CharacterModel.layer != LayerMask.NameToLayer("Enemy"))
+        {
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
+        }
+        isCoroutineRunning =false;
     }
 
     public void SetUpHealthbar()
     {
         CharacterData.Healthbar.transform.SetParent(canvas.transform);
+    }
+    public void SpawnMinions(Character character)
+    {
+        if (data.isMinionParent)
+        {
+            for (int i = 0; i < data.maxMinions; i++)
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.EnemyMinion, "DGSlime(minion)", character.transform.position);
+            }
+        }
+    }
+    private void ResetLayer()
+    {
+        if(enemyType == EnemyType.GhostShip)
+        {
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyGhost");
+        }
+        else
+            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        if (lifeComponent != null)
+        {
+            lifeComponent.OnCharacterDeath -= SpawnMinions;
+        }
     }
 }

@@ -7,6 +7,9 @@ public class BasicEnemyData : CharacterTypeData
     public float damage;
     public float attackDistance;
     public float fearDuration;
+    public float fearSpeedUpFactor;
+    public bool isMinionParent;
+    public int maxMinions;
 
     public float healTime;
     public float healAmount;

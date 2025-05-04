@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BasicEnemyAIHandler : IAIComponent
@@ -44,20 +45,14 @@ public class BasicEnemyAIHandler : IAIComponent
             case AIState.Fear:
                 if (character.isActiveAndEnabled == false)
                     return;
-                if (Vector3.Distance(lightHit, character.transform.position) > upgradeManager.Radius && timeBetweenBurn <= 0)
-                {
-                    character.lifeComponent.SetDamage(upgradeManager.Damage);
-                    timeBetweenBurn = upgradeManager.AttackRate;
-                }
-                if (timeBetweenBurn > 0)
-                    timeBetweenBurn -= Time.deltaTime;
-
                 Vector3 direction = character.transform.position - lightHit;
                 direction.Normalize();
                 if(character.isActiveAndEnabled == false)
                     return;
+                character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed + data.fearSpeedUpFactor;
                 character.movementComponent.Move(direction);
                 character.movementComponent.Rotate(direction);
+                character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed;
                 break;
 
             case AIState.MoveToTarget:

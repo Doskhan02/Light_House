@@ -3,7 +3,6 @@ using UnityEngine;
 public class AllyCharacter : Character
 {
     private GameObject target;
-    [SerializeField] private GameObject geo;
 
     [SerializeField] private Canvas canvas;
 
@@ -57,8 +56,6 @@ public class AllyCharacter : Character
             lifeComponent.SetDamage(lifeComponent.MaxHealth);
             GameManager.Instance.ScoreSystem.AddScore(score);
             gameObject.SetActive(false);
-
-
         }
     }
 
@@ -71,7 +68,7 @@ public class AllyCharacter : Character
 
         // TODO: Make a SO to store positions of the sailed ships
 
-        GameObject ghost = Instantiate(geo, sailed[Random.Range(0, sailed.Length)], Quaternion.identity);
+        GameObject ghost = Instantiate(CharacterData.CharacterModel, sailed[Random.Range(0, sailed.Length)], Quaternion.identity);
         Vector3 direction = target.transform.position - ghost.transform.position;
         ghost.transform.rotation = Quaternion.LookRotation(direction);
         GameManager.Instance.returnedShips.Add(ghost);

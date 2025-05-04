@@ -20587,6 +20587,21 @@ MonoBehaviour:
     maxActive: 2
     initialPoolSize: 2
     description: Better ship
+  - mainType: 3
+    prefab: {fileID: 1300002311692861354, guid: 9fe0bd4f2b6c8334ab7998df7960e8c8, type: 3}
+    maxActive: -1
+    initialPoolSize: 6
+    description: Slime minion
+  - mainType: 1
+    prefab: {fileID: 6673858503775468408, guid: 5a4e2a17b431d5c4c85f887056aba631, type: 3}
+    maxActive: 2
+    initialPoolSize: 2
+    description: Slime parent
+  - mainType: 1
+    prefab: {fileID: 8632418638915921386, guid: 4e948675db080a24b90f58df6ad42976, type: 3}
+    maxActive: 2
+    initialPoolSize: 2
+    description: Ghost Ship
 --- !u!1 &1426703783
 GameObject:
   m_ObjectHideFlags: 0
@@ -24454,7 +24469,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 42d71b62cad2c614ea8544e44443940b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e523400e9e820a14c919c9583c5885d5, type: 3}
   m_Color: {r: 1, g: 0.9960722, b: 0.36037737, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0

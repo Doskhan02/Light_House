@@ -16,8 +16,8 @@ TagManager:
   - VolumetricLight
   - Enemy
   - Ally
-  - 
-  - 
+  - EnemyHit
+  - EnemyGhost
   - 
   - 
   - 

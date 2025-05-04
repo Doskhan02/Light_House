@@ -34,6 +34,8 @@ public class ScoreSystem : MonoBehaviour
     {
         Score += earnedScore;
         OnScoreUpdated?.Invoke(Score);
+        if(Score <= 0)
+            Score = 0;
     }
     public void CalculateReward()
     {

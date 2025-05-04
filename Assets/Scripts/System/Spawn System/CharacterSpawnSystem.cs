@@ -19,6 +19,7 @@ public class CharacterSpawnSystem : MonoBehaviour
         GameData data = GameManager.Instance.gameData;
         SetSpawnAmount(data.wormSpawnAmount, CharacterType.Enemy, "Worm");
         SetSpawnAmount(data.deepGuardianSpawnAmount, CharacterType.Enemy, "DeepGuardian");
+        SetSpawnAmount(data.deepGuardianSlimeSpawnAmount, CharacterType.Enemy, "DGSlime(parent)");
     }
 
     public void SetSpawnAmount(int amount, CharacterType characterType, string subType)
@@ -26,22 +27,17 @@ public class CharacterSpawnSystem : MonoBehaviour
         characterFactory.GetConfig(characterType, subType).maxActive = amount;
     }
 
-    public void SpawnCharacter(CharacterType characterType, string subType)
+    public void SpawnCharacter(CharacterType characterType, string subType, Vector3 position)
     {
         Character character = characterFactory.GetCharacter(characterType, subType);
         if (character == null)
             return;
-        if (characterType == CharacterType.Enemy)
-        {
-            character.transform.position = new Vector3(Random.Range(-30, 30), -1, Random.Range(40, 50));
-        }
-        else if (characterType == CharacterType.Ally) 
-        {
-            character.transform.position = new Vector3(Random.Range(-30, 30), 0f, 100);
-        }
+
+        character.transform.position = position;
+
         character.gameObject.SetActive(true);
         character.Initialize();
-        if (characterType == CharacterType.Enemy)
+        if (characterType == CharacterType.Enemy || characterType == CharacterType.EnemyMinion)
         {
             character.effectComponent.Initialize(character);
             character.aiComponent.Initialize(character);
@@ -61,6 +57,7 @@ public class CharacterSpawnSystem : MonoBehaviour
         else if (characterType == CharacterType.Ally)
         {
             character.transform.position = new Vector3(Random.Range(-30, 30), 0f, 100);
+            SpawnCharacter(CharacterType.Enemy, "GhostShip", new Vector3(Random.Range(-30, 30), 0f, 100));
         }
         character.gameObject.SetActive(true);
         character.Initialize();
@@ -83,6 +80,10 @@ public class CharacterSpawnSystem : MonoBehaviour
                 characterFactory.ReturnCharacter(deathCharacter);
                 break;
             case CharacterType.Enemy:
+                deathCharacter.gameObject.SetActive(false);
+                characterFactory.ReturnCharacter(deathCharacter);
+                break;
+            case CharacterType.EnemyMinion:
                 deathCharacter.gameObject.SetActive(false);
                 characterFactory.ReturnCharacter(deathCharacter);
                 break;

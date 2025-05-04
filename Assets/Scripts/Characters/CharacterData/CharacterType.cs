@@ -7,4 +7,5 @@ public enum CharacterType
     None = 0,
     Enemy = 1,
     Ally = 2,
+    EnemyMinion = 3,
 }
