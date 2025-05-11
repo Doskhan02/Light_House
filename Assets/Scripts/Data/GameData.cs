@@ -18,4 +18,5 @@ public class GameData : ScriptableObject
     public int wormSpawnAmount;
     public int deepGuardianSpawnAmount;
     public int deepGuardianSlimeSpawnAmount;
+    public int ghostShipSpawnAmount;
 }

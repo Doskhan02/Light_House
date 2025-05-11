@@ -29,13 +29,14 @@ public class ScoreSystem : MonoBehaviour
     {
         Instance = this;
         Score = 0;
+        OnScoreUpdated?.Invoke(Score);
     }
     public void AddScore(int earnedScore)
     {
         Score += earnedScore;
-        OnScoreUpdated?.Invoke(Score);
-        if(Score <= 0)
+        if (Score <= 0)
             Score = 0;
+        OnScoreUpdated?.Invoke(Score);
     }
     public void CalculateReward()
     {

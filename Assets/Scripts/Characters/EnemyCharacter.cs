@@ -13,7 +13,6 @@ public class EnemyCharacter : Character
     private UpgradeManager upgradeManager;
     private RaycastHit hit;
     private bool isCoroutineRunning = false;
-    private bool isGettingHit = false;
     private float timeBetweenBurn = 0;
 
     public override Character Target 
@@ -53,12 +52,10 @@ public class EnemyCharacter : Character
         if(enemyType != EnemyType.GhostShip)
         {
             aiComponent = new BasicEnemyAIHandler();
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
         }
         else if (enemyType == EnemyType.GhostShip)
         {
             aiComponent = new GhostShipAIHandler();
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyGhost");
         }
         effectComponent = new EffectComponent();
         base.Initialize();
@@ -91,9 +88,6 @@ public class EnemyCharacter : Character
         if (Vector3.Distance(hit.point, transform.position) < upgradeManager.Radius && timeBetweenBurn <= 0)
         {
             lifeComponent.SetDamage(upgradeManager.Damage);
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyHit");
-            Invoke(nameof(ResetLayer), 0.1f);
-
             timeBetweenBurn = upgradeManager.AttackRate;
         }
         else if (timeBetweenBurn > 0)
@@ -135,10 +129,6 @@ public class EnemyCharacter : Character
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        if (CharacterData.CharacterModel.layer != LayerMask.NameToLayer("Enemy"))
-        {
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
-        }
         isCoroutineRunning =false;
     }
 
@@ -155,15 +145,6 @@ public class EnemyCharacter : Character
                 CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.EnemyMinion, "DGSlime(minion)", character.transform.position);
             }
         }
-    }
-    private void ResetLayer()
-    {
-        if(enemyType == EnemyType.GhostShip)
-        {
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyGhost");
-        }
-        else
-            CharacterData.CharacterModel.layer = LayerMask.NameToLayer("Enemy");
     }
     private void OnDisable()
     {

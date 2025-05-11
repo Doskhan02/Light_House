@@ -140,28 +140,13 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenShipSpawn < 0)
         {
-            if (LevelManager.CurrentLevel == 1)
-            {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat", new Vector3(UnityEngine.Random.Range(-30, 30), 0f, 100));
-            }
-            else
-            {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
-            }
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
             timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         }
 
         if (timeBetweenEnemySpawn < 0)
         {
-            if(LevelManager.CurrentLevel == 1)
-            {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "Worm", 
-                    new Vector3(UnityEngine.Random.Range(-30, 30), -1, UnityEngine.Random.Range(40, 50)));
-            }
-            else
-            {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
-            }   
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
             timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         }
     }

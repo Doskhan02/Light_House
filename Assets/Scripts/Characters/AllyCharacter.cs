@@ -50,8 +50,7 @@ public class AllyCharacter : Character
         movementComponent.Move(direction);
         movementComponent.Rotate(direction);
 
-
-        if (direction.magnitude < 9)
+        if (direction.magnitude < 12)
         {
             lifeComponent.SetDamage(lifeComponent.MaxHealth);
             GameManager.Instance.ScoreSystem.AddScore(score);

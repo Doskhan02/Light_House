@@ -8,4 +8,6 @@ public enum CharacterType
     Enemy = 1,
     Ally = 2,
     EnemyMinion = 3,
+    AllyMinion = 4,
+    FakeAlly = 5,
 }

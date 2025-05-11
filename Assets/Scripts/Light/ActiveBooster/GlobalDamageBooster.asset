@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d00aacf1a3674982912fd2375d26c, type: 3}
+  m_Name: GlobalDamageBooster
+  m_EditorClassIdentifier: 
+  boosterType: 1
+  cooldown: 5
+  icon: {fileID: 21300000, guid: cdec13907ffc75749ab2ed436bec6b14, type: 3}
+  damage: 10
+  totalFadeDuration: 0.5
+  globalVolumeProfile: {fileID: 11400000, guid: 8fc9d9a6d87ed594f91c1ffbc23732ee, type: 2}

@@ -59,7 +59,7 @@ public class EffectComponent : IEffectComponent
     /// </summary>
     public void CheckForEffectsInLight()
     {
-        if (EffectsManager.Instance == null || selfCharacter.CharacterType != CharacterType.Enemy || selfCharacter.CharacterType != CharacterType.EnemyMinion)
+        if (EffectsManager.Instance == null || selfCharacter.CharacterType == CharacterType.Ally)
             return;
 
         Vector3 lightPosition = GameManager.Instance.LightController.hit.point;

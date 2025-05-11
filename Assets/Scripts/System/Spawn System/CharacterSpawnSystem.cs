@@ -20,6 +20,7 @@ public class CharacterSpawnSystem : MonoBehaviour
         SetSpawnAmount(data.wormSpawnAmount, CharacterType.Enemy, "Worm");
         SetSpawnAmount(data.deepGuardianSpawnAmount, CharacterType.Enemy, "DeepGuardian");
         SetSpawnAmount(data.deepGuardianSlimeSpawnAmount, CharacterType.Enemy, "DGSlime(parent)");
+        SetSpawnAmount(data.ghostShipSpawnAmount, CharacterType.FakeAlly, "GhostShip");
     }
 
     public void SetSpawnAmount(int amount, CharacterType characterType, string subType)
@@ -37,7 +38,7 @@ public class CharacterSpawnSystem : MonoBehaviour
 
         character.gameObject.SetActive(true);
         character.Initialize();
-        if (characterType == CharacterType.Enemy || characterType == CharacterType.EnemyMinion)
+        if (characterType != CharacterType.Ally)
         {
             character.effectComponent.Initialize(character);
             character.aiComponent.Initialize(character);
@@ -57,11 +58,11 @@ public class CharacterSpawnSystem : MonoBehaviour
         else if (characterType == CharacterType.Ally)
         {
             character.transform.position = new Vector3(Random.Range(-30, 30), 0f, 100);
-            SpawnCharacter(CharacterType.Enemy, "GhostShip", new Vector3(Random.Range(-30, 30), 0f, 100));
+            SpawnCharacter(CharacterType.FakeAlly, "GhostShip", new Vector3(Random.Range(-30, 30), 0f, 100));
         }
         character.gameObject.SetActive(true);
         character.Initialize();
-        if (characterType == CharacterType.Enemy)
+        if (characterType == CharacterType.Enemy || characterType == CharacterType.FakeAlly)
         {
             character.effectComponent.Initialize(character);
             character.aiComponent.Initialize(character);

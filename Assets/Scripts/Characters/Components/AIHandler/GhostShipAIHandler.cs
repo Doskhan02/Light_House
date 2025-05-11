@@ -73,7 +73,7 @@ public class GhostShipAIHandler : IAIComponent
                 
                 break;
         }
-        if (Vector3.Distance(character.transform.position, ghostShipTarget.transform.position) < 9)
+        if (Vector3.Distance(character.transform.position, ghostShipTarget.transform.position) < 12)
         {
             ScoreSystem.Instance.AddScore(-2);
             character.lifeComponent.SetDamage(character.lifeComponent.MaxHealth);

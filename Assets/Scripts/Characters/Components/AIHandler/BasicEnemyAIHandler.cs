@@ -5,10 +5,7 @@ public class BasicEnemyAIHandler : IAIComponent
 {
     private Character character;
     private float timeBetweenAttacks;
-    private float timeBetweenBurn;
-    private float timeBetweenHeal;
     private Vector3 lightHit = GameManager.Instance.LightController.hit.point;
-    private UpgradeManager upgradeManager = GameManager.Instance.UpgradeManager;
     private LevelManager levelManager = GameManager.Instance.LevelManager;
 
     private Vector3 patrolTarget;
@@ -29,17 +26,7 @@ public class BasicEnemyAIHandler : IAIComponent
                 break;
 
             case AIState.Idle:
-                character.StopAllCoroutines();
                 Patrol();
-
-                if (timeBetweenHeal <= 0 && character.lifeComponent.Health < character.lifeComponent.MaxHealth)
-                {
-                    character.lifeComponent.Heal(data.healAmount);
-                    timeBetweenHeal = data.healTime;
-                }
-                if (timeBetweenHeal > 0)
-                    timeBetweenHeal -= Time.deltaTime;
-
                 break;
 
             case AIState.Fear:

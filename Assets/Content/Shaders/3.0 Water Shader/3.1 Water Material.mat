@@ -63,8 +63,9 @@ Material:
     - _RippleSpeed: 0.5
     - _Speed: 1
     - _WaterDepth: 7
+    - _WaveMagnitude: 1
     - _WaveScale: 2.97
-    - _WavesSpeed: 0
+    - _WavesSpeed: 0.1
     m_Colors:
     - _BaseColor: {r: 0.1716981, g: 1, b: 0.627664, a: 0}
     - _DeepWater: {r: 0.09387043, g: 0.10188681, b: 0.07516555, a: 0.16862746}

@@ -136,7 +136,7 @@ public class CharacterFactory : MonoBehaviour
         }
 
         // Check if we've hit the limit for this subtype
-        if (config.maxActive > 0 && activeCharacters[mainType][subtypeName].Count >= config.maxActive)
+        if (config.maxActive >= 0 && activeCharacters[mainType][subtypeName].Count >= config.maxActive)
         {
             Debug.Log($"Cannot spawn more {mainType}/{subtypeName}: reached limit of {config.maxActive}");
             return null;
@@ -332,12 +332,16 @@ public class CharacterFactory : MonoBehaviour
     public bool IsSubtypeAtCapacity(CharacterType mainType, string subtypeName)
     {
         CharacterSubtypeConfig config = FindConfig(mainType, subtypeName);
-        if (config == null || config.maxActive <= 0)
+        if (config == null || config.maxActive < 0)
         {
             return false; // No limit or not configured
         }
+        else if (config.maxActive == 0)
+        {
+            return true; // No active allowed
+        }
 
-        return GetActiveCount(mainType, subtypeName) >= config.maxActive;
+            return GetActiveCount(mainType, subtypeName) >= config.maxActive;
     }
 
     /// <summary>
