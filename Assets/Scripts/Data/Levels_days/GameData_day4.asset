@@ -21,3 +21,9 @@ MonoBehaviour:
   sessionMaxTimeInSeconds: 30
   wormSpawnAmount: 13
   deepGuardianSpawnAmount: 7
+  deepGuardianSlimeSpawnAmount: 0
+  ghostShipSpawnAmount: 0
+  bossAmount: 0
+  bossAllyAmount: 0
+  basicShipAmount: -1
+  bigShipAmount: 2

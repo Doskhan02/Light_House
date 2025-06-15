@@ -13,4 +13,5 @@ public class BasicEnemyData : CharacterTypeData
 
     public float healTime;
     public float healAmount;
+    public float detectionRange;
 }

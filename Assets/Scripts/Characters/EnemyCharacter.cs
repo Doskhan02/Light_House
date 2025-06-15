@@ -6,7 +6,7 @@ using UnityEngine.TextCore.Text;
 
 public class EnemyCharacter : Character
 {
-    [SerializeField] private BasicEnemyData data;
+    [SerializeField] public BasicEnemyData data;
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private Canvas canvas;
 
@@ -20,11 +20,11 @@ public class EnemyCharacter : Character
         get 
         {
             Character target = null;
-            float minDistance = 10;
+            float minDistance = data.detectionRange;
             List<Character> list = CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally);
             for (int i = 0; i < list.Count; i++)
             {
-                if (!list[i].gameObject.activeSelf)
+                if (!list[i].gameObject)
                     continue;
                 if(enemyType == EnemyType.Basic)
                 {
@@ -32,13 +32,12 @@ public class EnemyCharacter : Character
                     if (distanceToLight < upgradeManager.Radius)
                         continue;
                 }
-                if (list[i].transform.position.z >= 80)
-                    continue;
+                /*if (list[i].transform.position.z >= 80)
+                    continue;*/
                 float distanceBetween = Vector3.Distance(list[i].transform.position, transform.position);
-                if (distanceBetween > minDistance)
-                    continue;
-                else
+                if (distanceBetween < minDistance)
                 {
+                    minDistance = distanceBetween;
                     target = list[i];
                 }
             }
@@ -110,7 +109,7 @@ public class EnemyCharacter : Character
             }
             else
             {
-                if (Vector3.Distance(transform.position, Target.gameObject.transform.position) < data.attackDistance)
+                if (Vector3.Distance(transform.position, Target.transform.position) < data.attackDistance)
                     aiComponent.AIAction(Target, AIState.Attack, data);
                 else
                     aiComponent.AIAction(Target, AIState.MoveToTarget, data);
@@ -138,11 +137,21 @@ public class EnemyCharacter : Character
     }
     public void SpawnMinions(Character character)
     {
+        float offset = 1f; // Make sure this is a float
         if (data.isMinionParent)
         {
             for (int i = 0; i < data.maxMinions; i++)
             {
-                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.EnemyMinion, "DGSlime(minion)", character.transform.position);
+                // Alternate direction: +offset for even, -offset for odd
+                float direction = (i % 2 == 0) ? 1f : -1f;
+
+                Vector3 spawnPosition = character.transform.position + new Vector3(offset * direction, 0, 0);
+
+                CharacterSpawnSystem.Instance.SpawnCharacter(
+                    CharacterType.EnemyMinion,
+                    "DGSlime(minion)",
+                    spawnPosition
+                );
             }
         }
     }

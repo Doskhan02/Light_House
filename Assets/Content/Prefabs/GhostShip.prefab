@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 8632418638915921386}
   characterType: 1
-  characterTypeData: {fileID: 11400000, guid: 9b9c099805b95d341baf359ac3d4d60d, type: 2}
+  characterTypeData: {fileID: 11400000, guid: 5378f1b2d59ae4c4ab303cc0e2d096b3, type: 2}
   characterTransform: {fileID: 4184794058148834470}
   characterController: {fileID: 8215044995445011551}
   characterMask:

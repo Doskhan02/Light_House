@@ -41,7 +41,7 @@ public class LightController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsGameActive)
+        if (GameManager.Instance.IsGameActive && !GameManager.Instance.IsCutsceenActive)
         {
             if (effectsManager.ActiveEffectTypes.Contains(poisonEffect))
             {
@@ -66,7 +66,7 @@ public class LightController : MonoBehaviour
             Vector3 direction = hit.point - transform.position;
 
         }
-        else
+        else if(!GameManager.Instance.IsGameActive)
         {
             lightGeo.SetActive(false);
         }

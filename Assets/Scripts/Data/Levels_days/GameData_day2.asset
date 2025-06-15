@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b4046cab467b478336f400083e370, type: 3}
   m_Name: GameData_day2
   m_EditorClassIdentifier: 
-  sessionTimeInSeconds: 0
-  sessionTimeInMinutes: 0
   timeBetweenShipSpawn: 3
   timeBetweenEnemySpawn: 2
   targetScore: 16
@@ -21,3 +19,10 @@ MonoBehaviour:
   sessionMaxTimeInSeconds: 30
   wormSpawnAmount: 7
   deepGuardianSpawnAmount: 3
+  deepGuardianSlimeSpawnAmount: 0
+  ghostShipSpawnAmount: 0
+  bossAmount: 0
+  bossAllyAmount: 1
+  basicShipAmount: 0
+  bigShipAmount: 0
+  ammoBoxAmount: 5

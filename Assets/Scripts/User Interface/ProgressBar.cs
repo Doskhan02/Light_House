@@ -42,6 +42,8 @@ public class ProgressBar : MonoBehaviour
 
     public void Initialize()
     {
+        if(character == null)
+            return;
         character.CharacterData.Healthbar.gameObject.SetActive(false);
         SetProgress(1,10);
         character.lifeComponent.OnCharacterHealthChange += UpdateUI;

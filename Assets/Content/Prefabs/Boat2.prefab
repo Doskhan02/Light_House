@@ -52,6 +52,7 @@ MonoBehaviour:
   characterType: 2
   canvas: {fileID: 0}
   data: {fileID: 11400000, guid: 433f21708b1371e4696e70b621d47a2d, type: 2}
+  allyType: 1
 --- !u!143 &8215044995445011551
 CharacterController:
   m_ObjectHideFlags: 0

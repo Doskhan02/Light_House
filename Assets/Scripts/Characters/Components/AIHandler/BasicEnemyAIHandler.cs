@@ -5,8 +5,8 @@ public class BasicEnemyAIHandler : IAIComponent
 {
     private Character character;
     private float timeBetweenAttacks;
-    private Vector3 lightHit = GameManager.Instance.LightController.hit.point;
-    private LevelManager levelManager = GameManager.Instance.LevelManager;
+    private readonly Vector3 lightHit = GameManager.Instance.LightController.hit.point;
+    private readonly LevelManager levelManager = LevelManager.Instance;
 
     private Vector3 patrolTarget;
     private float patrolTime;
@@ -18,49 +18,57 @@ public class BasicEnemyAIHandler : IAIComponent
         this.character = selfCharacter;
     }
 
-    public void AIAction(Character target, AIState currentState, BasicEnemyData data) 
+    public void AIAction(Character target, AIState currentState, CharacterTypeData data) 
     {
-        switch (currentState) 
+        if(data is BasicEnemyData basicEnemyData)
         {
-            case AIState.None:
-                break;
+            switch (currentState)
+            {
+                case AIState.None:
+                    break;
 
-            case AIState.Idle:
-                Patrol();
-                break;
+                case AIState.Idle:
+                    Patrol();
+                    break;
 
-            case AIState.Fear:
-                if (character.isActiveAndEnabled == false)
-                    return;
-                Vector3 direction = character.transform.position - lightHit;
-                direction.Normalize();
-                if(character.isActiveAndEnabled == false)
-                    return;
-                character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed + data.fearSpeedUpFactor;
-                character.movementComponent.Move(direction);
-                character.movementComponent.Rotate(direction);
-                character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed;
-                break;
+                case AIState.Fear:
+                    if (character.isActiveAndEnabled == false)
+                        return;
+                    Vector3 direction = character.transform.position - lightHit;
+                    direction.Normalize();
+                    if (character.isActiveAndEnabled == false)
+                        return;
+                    character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed + basicEnemyData.fearSpeedUpFactor;
+                    character.movementComponent.Move(direction);
+                    character.movementComponent.Rotate(direction);
+                    character.movementComponent.Speed = character.CharacterData.CharacterTypeData.defaultSpeed;
+                    break;
 
-            case AIState.MoveToTarget:
-                Vector3 directionToTarget = target.transform.position - character.transform.position;
-                directionToTarget.Normalize();
-                character.movementComponent.Move(directionToTarget);
-                character.movementComponent.Rotate(directionToTarget);
-                break;
+                case AIState.MoveToTarget:
+                    Vector3 directionToTarget = target.transform.position - character.transform.position;
+                    directionToTarget.Normalize();
+                    character.movementComponent.Move(directionToTarget);
+                    character.movementComponent.Rotate(directionToTarget);
+                    break;
 
-            case AIState.Attack:
-                if (timeBetweenAttacks <= 0)
-                {
-                    target.lifeComponent.SetDamage(data.damage * levelManager.GetDifficultyMultiplier());
-                    ParticleManager.Instance.PlayHitParticleEffect(target.transform);
-                    timeBetweenAttacks = data.timeBetweenAttacks;
-                }
-                if (timeBetweenAttacks > 0)
-                    timeBetweenAttacks -= Time.deltaTime;
-                
-                break;
+                case AIState.Attack:
+                    if (timeBetweenAttacks <= 0)
+                    {
+                        target.lifeComponent.SetDamage(basicEnemyData.damage * levelManager.GetDifficultyMultiplier());
+                        ParticleManager.Instance.PlayHitParticleEffect(target.transform);
+                        if (character.CharacterData.Animator != null)
+                        {
+                            character.CharacterData.Animator.SetTrigger("Attack");
+                        }
+                        timeBetweenAttacks = basicEnemyData.timeBetweenAttacks;
+                    }
+                    if (timeBetweenAttacks > 0)
+                        timeBetweenAttacks -= Time.deltaTime;
+
+                    break;
+            }
         }
+        
     }
     private void Patrol()
     {

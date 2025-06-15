@@ -51,6 +51,9 @@ public class LifeComponent : ILifeComponent
             case CharacterType.Ally:
                 originalLayer = LayerMask.NameToLayer("Ally");
                 break;
+            case CharacterType.EnemyMinion:
+                originalLayer = LayerMask.NameToLayer("Enemy");
+                break;
             default:
                 Debug.LogError($"Invalid character type: {selfCharacter.CharacterType}");
                 break;
@@ -66,7 +69,8 @@ public class LifeComponent : ILifeComponent
         if (resetLayerCoroutine != null)
             selfCharacter.StopCoroutine(resetLayerCoroutine);
 
-        resetLayerCoroutine = selfCharacter.StartCoroutine(ResetLayer());
+        if(selfCharacter.isActiveAndEnabled)
+            resetLayerCoroutine = selfCharacter.StartCoroutine(ResetLayer());
 
         OnCharacterHealthChange?.Invoke(selfCharacter);
     }
@@ -84,7 +88,7 @@ public class LifeComponent : ILifeComponent
 
     private IEnumerator ResetLayer()
     {
-        // flash into the “EnemyHit” layer
+        // flash into the ï¿½EnemyHitï¿½ layer
         selfCharacter.CharacterData.CharacterModel.layer = LayerMask.NameToLayer("EnemyHit");
 
         yield return new WaitForSeconds(0.1f);

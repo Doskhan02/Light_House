@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
+using Random = System.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WindowService windowService; 
     
     public InputManager InputManager => inputManager;
-    public GameData gameData => GameData;
+    public GameData gameData
+    {
+        get { return GameData;}
+        private set { GameData = value; }
+    }
     public Canvas WorldSpaceCanvas => worldSpaceCanvas;
     public LightController LightController => lh_Light;
     public ScoreSystem ScoreSystem => scoreSystem;
@@ -45,6 +48,11 @@ public class GameManager : MonoBehaviour
     public event Action<int, int> OnSessionTimeUpdated;
 
     public bool IsGameActive {  get { return isGameActive; } }
+
+    public bool IsCutsceenActive;
+
+    public event Action OnCutsceen;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -65,9 +73,9 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         scoreSystem = new ScoreSystem();
-        if (LevelManager.CurrentLevel <= datas.Length)
+        if (levelManager.CurrentLevel <= datas.Length)
         {
-            GameData = datas[LevelManager.CurrentLevel - 1];
+            GameData = datas[levelManager.CurrentLevel - 1];
         }
         else
         {
@@ -78,24 +86,28 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(levelManager.CurrentLevel == 6)
+        {
+            Cutsceen();
+        }
         if (isGameActive)
             return;
         isGameActive = true;
-        lh_Light.Initialize();
-        scoreSystem.StartGame();
-        sessionTime = 0;
-        sessionTimeInSeconds = 0;
-        sessionTimeInMinutes = 0;
-        difficultyMultiplier = LevelManager.GetDifficultyMultiplier();
-        if(LevelManager.CurrentLevel <= datas.Length)
+        if(levelManager.CurrentLevel <= datas.Length)
         {
-            GameData = datas[LevelManager.CurrentLevel - 1];
+            GameData = datas[levelManager.CurrentLevel - 1];
         }
         else
         {
             GameData = datas[datas.Length - 1];
         }
-        CharacterSpawnSystem.Instance.Initialize(LevelManager.CurrentLevel);
+        lh_Light.Initialize();
+        scoreSystem.StartGame();
+        difficultyMultiplier = LevelManager.GetDifficultyMultiplier();
+        sessionTime = 0;
+        sessionTimeInSeconds = (int)GameData.sessionMaxTimeInSeconds;
+        sessionTimeInMinutes = (int)GameData.sessionMaxTimeInMinutes;
+        CharacterSpawnSystem.Instance.Initialize();
         timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         Time.timeScale = 1;
@@ -107,6 +119,18 @@ public class GameManager : MonoBehaviour
         if(!isGameActive)
             return;
 
+        if (LevelManager.CurrentLevel % 6 == 0)
+        {
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat3", new Vector3(-70, 0, 40));
+            Invoke(nameof(SpawnBoss), 13f);
+
+        }
+
+        if (IsCutsceenActive)
+        {
+            return;
+        }
+
         timeBetweenShipSpawn -= Time.deltaTime;
         timeBetweenEnemySpawn -= Time.deltaTime;
 
@@ -115,24 +139,33 @@ public class GameManager : MonoBehaviour
         sessionTime += Time.deltaTime;
         if (sessionTime > 1)
         {
-            sessionTimeInSeconds ++;
             sessionTime = 0;
-            if (sessionTimeInSeconds == 60)
+            sessionTimeInSeconds--;
+
+            if (sessionTimeInSeconds < 0)
             {
-                sessionTimeInMinutes = sessionTimeInMinutes + 1;
-                sessionTimeInSeconds = 0;
+                if (sessionTimeInMinutes > 0)
+                {
+                    sessionTimeInMinutes--;
+                    sessionTimeInSeconds = 59;
+                }
+                else
+                {
+                    sessionTimeInSeconds = 0;
+                }
             }
+
             OnSessionTimeUpdated?.Invoke(sessionTimeInSeconds, sessionTimeInMinutes);
+
+            if (sessionTimeInMinutes == 0 && sessionTimeInSeconds == 0)
+            {
+                if (scoreSystem.Score < GameData.targetScore)
+                {
+                    GameOver();
+                }
+            }
         }
 
-        if (sessionTimeInMinutes == GameData.sessionMaxTimeInMinutes && 
-            sessionTimeInSeconds == GameData.sessionMaxTimeInSeconds)
-        {
-            if (scoreSystem.Score < GameData.targetScore)
-            {
-                GameOver();
-            }
-        }
         if (scoreSystem.Score >= GameData.targetScore)
         {
             GameVictory();
@@ -140,18 +173,42 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenShipSpawn < 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
+            if (LevelManager.CurrentLevel % 6 == 0)
+            {
+                float GetRandom(float min, float max)
+                {
+                    float randomValue = UnityEngine.Random.Range(min, max);
+                    int sign = UnityEngine.Random.value < 0.5f ? -1 : 1;
+                    return randomValue * sign;
+                }
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "AmmoBox", 
+                    new Vector3(GetRandom(0,30), 0, UnityEngine.Random.Range(60,20)));
+            }
+            else
+            {
+                CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally);
+            }
             timeBetweenShipSpawn = GameData.timeBetweenShipSpawn;
         }
 
         if (timeBetweenEnemySpawn < 0)
         {
+            if(LevelManager.CurrentLevel % 6 == 0)
+                return;
             CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
             timeBetweenEnemySpawn = GameData.timeBetweenEnemySpawn;
         }
     }
 
-    private void GameVictory()
+    private void SpawnBoss()
+    {
+        if (LevelManager.CurrentLevel % 6 == 0)
+        {
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "DT(BOSS)", new Vector3(0, 0, 180));
+        }
+    }
+
+    public void GameVictory()
     {
         isGameActive = false;
         windowService.HideAllWindows(true);
@@ -171,7 +228,8 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         windowService.HideAllWindows(true);
-        windowService.ShowWindow<DefeatWindow>(false);  
+        windowService.ShowWindow<DefeatWindow>(false);
+        LevelManager.Instance.CheckPointReset();
         CharacterSpawnSystem.Instance.CharacterWipe();
         for (int i = 0; i < returnedShips.Count; i++)
         {
@@ -215,6 +273,16 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void Cutsceen()
+    {
+        if (!IsCutsceenActive)
+            IsCutsceenActive = true;
+        OnCutsceen.Invoke();
+        windowService.HideAllWindows(true);
+        windowService.ShowWindow<CutsceenWindow>(false);
+    }
+
     public void HardReset()
     {
         DataPersistanceManager.Instance.ResetGame();

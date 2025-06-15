@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class Joystick : MonoBehaviour
 {
     [Header("Joystick Settings")]
-    [SerializeField] private Image joystick; // Only the handle now
+    [SerializeField] private Image joystickBackground; // Outer circle background
+    [SerializeField] private Image joystickHandle;     // Inner handle
     public RectTransform target;
     public RectTransform canvasRect;
     public CanvasScaler canvasScaler;
@@ -40,7 +41,11 @@ public class Joystick : MonoBehaviour
             HideJoystick();
         }
 
-        // Move the target based on input
+        MoveTarget();
+    }
+
+    private void MoveTarget()
+    {
         float scaleFactor = canvasScaler.scaleFactor;
         float adjustedSpeed = (speed / scaleFactor) * direction.magnitude;
         Vector3 newPosition = target.anchoredPosition + (direction.normalized * adjustedSpeed * Time.deltaTime);
@@ -66,7 +71,9 @@ public class Joystick : MonoBehaviour
             out startTouchPos
         );
 
-        joystick.rectTransform.anchoredPosition = startTouchPos;
+        // Position both background and handle
+        joystickBackground.rectTransform.anchoredPosition = startTouchPos;
+        joystickHandle.rectTransform.anchoredPosition = startTouchPos;
         SetJoystickVisible(true);
     }
 
@@ -81,7 +88,8 @@ public class Joystick : MonoBehaviour
 
         Vector2 delta = currentPos - startTouchPos;
         Vector2 clamped = Vector2.ClampMagnitude(delta, joystickRadius);
-        joystick.rectTransform.anchoredPosition = startTouchPos + clamped;
+
+        joystickHandle.rectTransform.anchoredPosition = startTouchPos + clamped;
         direction = clamped / joystickRadius;
     }
 
@@ -93,8 +101,13 @@ public class Joystick : MonoBehaviour
 
     private void SetJoystickVisible(bool visible)
     {
-        Color color = joystick.color;
-        color.a = visible ? 1f : 0f;
-        joystick.color = color;
+        float alpha = visible ? 1f : 0f;
+        Color bgColor = joystickBackground.color;
+        bgColor.a = alpha;
+        joystickBackground.color = bgColor;
+
+        Color handleColor = joystickHandle.color;
+        handleColor.a = alpha;
+        joystickHandle.color = handleColor;
     }
 }

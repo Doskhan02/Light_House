@@ -23,3 +23,7 @@ MonoBehaviour:
   deepGuardianSpawnAmount: 1
   deepGuardianSlimeSpawnAmount: 1
   ghostShipSpawnAmount: 2
+  bossAmount: 0
+  bossAllyAmount: 0
+  basicShipAmount: -1
+  bigShipAmount: 2

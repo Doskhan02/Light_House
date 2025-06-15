@@ -14,13 +14,19 @@ public class CharacterSpawnSystem : MonoBehaviour
         Instance = this;
     }
 
-    public void Initialize(int currentLevel)
+    public void Initialize()
     {
         GameData data = GameManager.Instance.gameData;
         SetSpawnAmount(data.wormSpawnAmount, CharacterType.Enemy, "Worm");
         SetSpawnAmount(data.deepGuardianSpawnAmount, CharacterType.Enemy, "DeepGuardian");
         SetSpawnAmount(data.deepGuardianSlimeSpawnAmount, CharacterType.Enemy, "DGSlime(parent)");
         SetSpawnAmount(data.ghostShipSpawnAmount, CharacterType.FakeAlly, "GhostShip");
+        SetSpawnAmount(data.bossAllyAmount, CharacterType.Ally, "Boat3");
+        SetSpawnAmount(data.bossAmount, CharacterType.Enemy, "DT(BOSS)");
+
+        SetSpawnAmount(data.basicShipAmount, CharacterType.Ally, "Boat");
+        SetSpawnAmount(data.bigShipAmount, CharacterType.Ally, "Boat2");
+        SetSpawnAmount(data.ammoBoxAmount, CharacterType.Ally, "AmmoBox");
     }
 
     public void SetSpawnAmount(int amount, CharacterType characterType, string subType)
@@ -41,8 +47,8 @@ public class CharacterSpawnSystem : MonoBehaviour
         if (characterType != CharacterType.Ally)
         {
             character.effectComponent.Initialize(character);
-            character.aiComponent.Initialize(character);
         }
+        character.aiComponent.Initialize(character);
         character.lifeComponent.Initialize(character);
         character.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
     }
@@ -65,8 +71,8 @@ public class CharacterSpawnSystem : MonoBehaviour
         if (characterType == CharacterType.Enemy || characterType == CharacterType.FakeAlly)
         {
             character.effectComponent.Initialize(character);
-            character.aiComponent.Initialize(character);
         }
+        character.aiComponent.Initialize(character);
         character.lifeComponent.Initialize(character);
         character.lifeComponent.OnCharacterDeath += CharacterDeathHandler;
     }
@@ -83,6 +89,10 @@ public class CharacterSpawnSystem : MonoBehaviour
             case CharacterType.Enemy:
                 deathCharacter.gameObject.SetActive(false);
                 characterFactory.ReturnCharacter(deathCharacter);
+                if (deathCharacter.gameObject.CompareTag("Boss"))
+                {
+                    GameManager.Instance.GameVictory();
+                }
                 break;
             case CharacterType.EnemyMinion:
                 deathCharacter.gameObject.SetActive(false);

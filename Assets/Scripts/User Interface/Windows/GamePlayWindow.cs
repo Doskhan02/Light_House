@@ -12,7 +12,9 @@ public class GamePlayWindow : Window
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button activeBoosterButton;
     [SerializeField] private TMP_Text activeBoosterText;
+    [SerializeField] private Slider bossHP;
 
+    private Character bossCharacter;
 
     public override void Initialize()
     {
@@ -29,11 +31,22 @@ public class GamePlayWindow : Window
 
     protected override void OpenEnd()
     {
-        base.OpenEnd();
         effectOffButton.interactable = true;
         effectOnButton.interactable = true;
         ScoreSystem.Instance.OnScoreUpdated += OnScoreChanged;
         GameManager.Instance.OnSessionTimeUpdated += OnSessionTimeChanged;
+
+
+
+        if (GameManager.Instance.LevelManager.CurrentLevel % 6 == 0)
+        {
+            Invoke(nameof(BossHandler), 20);
+        }
+        else
+        {
+            bossHP.gameObject.SetActive(false);
+        }
+
         if (ActiveBoosterManager.Instance != null)
         {
             activeBoosterButton.onClick.AddListener(ActiveBoosterManager.Instance.ApplyBooster);
@@ -45,6 +58,7 @@ public class GamePlayWindow : Window
         {
             Debug.LogError("ActiveBoosterManager.Instance is null when trying to add listener.");
         }
+        base.OpenEnd();
     }
 
     protected override void CloseStart()
@@ -85,5 +99,35 @@ public class GamePlayWindow : Window
     private void OnActiveBoosterTimerChanged(float time)
     {
         activeBoosterText.text = string.Format("{0:F1}", time);
+    }
+
+    private void BossHandler()
+    {
+        if (GameManager.Instance.LevelManager.CurrentLevel%6 == 0)
+        {
+            if (GameObject.FindGameObjectWithTag("Boss") == null)
+            {
+                Debug.LogError("Boss GameObject not found in the scene.");
+                return;
+            }
+            bossCharacter = GameObject.FindGameObjectWithTag("Boss").GetComponent<Character>();
+            if (bossCharacter == null)
+            {
+                Debug.LogError("Boss character not found in the scene.");
+                return;
+            }
+            bossHP.gameObject.SetActive(true);
+            bossHP.maxValue = bossCharacter.CharacterData.CharacterTypeData.defaultMaxHP;
+            bossHP.value = bossCharacter.lifeComponent.Health;
+            bossCharacter.lifeComponent.OnCharacterHealthChange += OnBossHealthChanged;
+        }
+        else
+        {
+            bossHP.gameObject.SetActive(false);
+        }
+    }
+    private void OnBossHealthChanged(Character character)
+    {
+        bossHP.value = character.lifeComponent.Health;
     }
 }

@@ -1,40 +1,54 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AllyCharacter : Character
 {
-    private GameObject target;
-
     [SerializeField] private Canvas canvas;
 
     [SerializeField] private BasicAllyData data;
+    [SerializeField] private AllyType allyType;
+    
+    public AllyType AllyType => allyType;
+    protected BasicAllyData Data => data;
 
     private UpgradeManager upgradeManager;
     private LightData lightData;
     private Vector3 direction;
-    private Vector3[] sailed;
-    private int score = 2;
+    //private Vector3[] sailed;
 
 
     public override void Initialize()
     {
-        score = data.Score;
         upgradeManager = GameManager.Instance.UpgradeManager;
         lightData = GameManager.Instance.LightController.LightData;
         canvas = GameManager.Instance.WorldSpaceCanvas;
         base.Initialize();
         lifeComponent = new LifeComponent();
-        if (target == null)
+
+        switch (allyType)
         {
-            target = GameObject.FindGameObjectWithTag("ShipTarget");
+            case AllyType.Basic:
+                aiComponent = new BasicShipAIHandler();
+                break;
+            case AllyType.Boss:
+                aiComponent = new BossShipAIHandler();
+                break;
+            case AllyType.Box:
+                aiComponent = new BasicShipAIHandler();
+                break;
         }
+        
         
         CharacterData.Healthbar.Initialize();
         movementComponent.Rotate(direction);
-        sailed = new Vector3[4];
         SetUpHealthbar();
     }
     public override void Update()
     {
+        if (allyType == AllyType.Box)
+        {
+            return;
+        }
         float distance = Vector3.Distance(GameManager.Instance.LightController.hit.point, transform.position);
 
         if (distance < upgradeManager.Radius)
@@ -45,20 +59,13 @@ public class AllyCharacter : Character
         {
             movementComponent.Speed = CharacterData.CharacterTypeData.defaultSpeed;
         }
-
-        direction = target.transform.position - transform.position;
-        movementComponent.Move(direction);
-        movementComponent.Rotate(direction);
-
-        if (direction.magnitude < 12)
+        if(allyType == AllyType.Basic)
         {
-            lifeComponent.SetDamage(lifeComponent.MaxHealth);
-            GameManager.Instance.ScoreSystem.AddScore(score);
-            gameObject.SetActive(false);
+            aiComponent.AIAction(this, AIState.MoveToTarget, Data);
         }
     }
 
-    public void Returned()
+    /*public void Returned()
     {
         sailed[0] = new Vector3(6.83f, 0, 13);
         sailed[1] = new Vector3(3.63f, 0, 12);
@@ -71,9 +78,9 @@ public class AllyCharacter : Character
         Vector3 direction = target.transform.position - ghost.transform.position;
         ghost.transform.rotation = Quaternion.LookRotation(direction);
         GameManager.Instance.returnedShips.Add(ghost);
-    }
+    }*/
 
-    public void SetUpHealthbar()
+    private void SetUpHealthbar()
     {
         CharacterData.Healthbar.transform.SetParent(canvas.transform);
     }

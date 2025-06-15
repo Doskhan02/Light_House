@@ -5,6 +5,9 @@ public class ScoreSystem : MonoBehaviour
 {
     public static ScoreSystem Instance { get; private set; }
 
+    private GameManager gameManager;
+    private CurrencySystem currencySystem;
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,7 +26,7 @@ public class ScoreSystem : MonoBehaviour
     public event Action<int> OnRewardUpdated;
 
     public int Score { get; private set; }
-    public int Reward { get; private set; }
+    private int Reward { get; set; }
 
     public void StartGame()
     {
@@ -42,7 +45,9 @@ public class ScoreSystem : MonoBehaviour
     {
         int timeInSec = GameManager.Instance.SessionTimeInSeconds;
         int timeInMin = GameManager.Instance.SessionTimeInMinutes;
-        Reward = (int)(Score * 6000 * 1f / (timeInSec + timeInMin * 60));
+        GameData data = GameManager.Instance.gameData;
+        float maxTimeInSec = data.sessionMaxTimeInMinutes * 60 + data.sessionMaxTimeInSeconds;
+        Reward = (int)(Score * 10 + (maxTimeInSec - (timeInSec + timeInMin * 60)) * 10);
         OnRewardUpdated?.Invoke(Reward);
         CurrencySystem.Instance.AddCurrency(Reward);
     }

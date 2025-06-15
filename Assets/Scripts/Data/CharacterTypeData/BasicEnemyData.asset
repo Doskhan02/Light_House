@@ -19,5 +19,8 @@ MonoBehaviour:
   attackDistance: 3
   fearDuration: 1
   fearSpeedUpFactor: 4
+  isMinionParent: 0
+  maxMinions: 0
   healTime: 1
   healAmount: 10
+  detectionRange: 10

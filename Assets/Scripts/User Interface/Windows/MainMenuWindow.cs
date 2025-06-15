@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,27 +10,28 @@ public class MainMenuWindow : Window
     [SerializeField] private Button bestiaryButton;
     [SerializeField] private Button shopButton;
 
-    [SerializeField] private RectTransform sliderContent;
-    [SerializeField] private Scrollbar scroll;
-    [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private RectTransform scrollContent;
+
+    private int currentLevel;
+
+    private Coroutine levelChangeCoroutine;
 
     public override void Initialize()
     {
-        scroll.value = 0;
-        scroll.interactable = false;
         startGameButton.onClick.AddListener(StartGameHandler);
         optionsGameButton.onClick.AddListener(OpenOptionsHandler);
         bestiaryButton.onClick.AddListener(OpenBestiaryHandler);
         shopButton.onClick.AddListener(OpenShopHandler);
+        LevelManager.Instance.OnLevelChanged += OnCurrentLevelChanged;
     }
     protected override void OpenStart()
     {
         base.OpenStart();
+        LevelHandler(currentLevel);
         OpenEnd();
     }
     protected override void OpenEnd()
     {
-        LevelManager.Instance.OnLevelChanged += LevelHandler;
         base.OpenEnd();
         startGameButton.interactable = true;
         optionsGameButton.interactable = true;
@@ -42,8 +45,8 @@ public class MainMenuWindow : Window
     }
     private void StartGameHandler()
     {
-        GameManager.Instance.StartGame();
         GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
+        GameManager.Instance.StartGame();
         Hide(false);
     }
     private void OpenOptionsHandler()
@@ -61,20 +64,59 @@ public class MainMenuWindow : Window
         GameManager.Instance.WindowService.ShowWindow<ShopWindow>(false);
         Hide(false);
     }
+    private void OnCurrentLevelChanged(int newLevel)
+    {
+        currentLevel = newLevel;
+    }
+
+    private void Start()
+    {
+        LevelHandler(currentLevel);
+    }
+
     private void LevelHandler(int level)
     {
-        scrollRect.horizontal = true;
-        scrollRect.vertical = true;
-        scroll.interactable = true;
 
-        if (level > 6)
+        if (level > 5)
         {
-            level = level - 6;
+            level = level - 5;
         }
-        scroll.value = scroll.value + (level * 0.15f + 0.01f);
 
-        scroll.interactable = false;
-        scrollRect.horizontal = false;
-        scrollRect.vertical = false;
+        // Stop existing coroutine if it's running
+        if (levelChangeCoroutine != null)
+        {
+            StopCoroutine(levelChangeCoroutine);
+        }
+
+        levelChangeCoroutine = StartCoroutine(LevelChange(level, scrollContent));
+    }
+
+    private IEnumerator LevelChange(int level, RectTransform scrollContent)
+    {
+        // Target local anchored position
+        float targetScrollValue = -level * 200f; // Move left by level * 200 pixels
+
+        float duration = 1.0f;
+        float elapsed = 0f;
+
+        // Use anchoredPosition for ScrollRect-based layouts
+        float initialScrollContentPos = scrollContent.anchoredPosition.x;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float newValue = Mathf.Lerp(initialScrollContentPos, targetScrollValue, elapsed / duration);
+
+            // Only update the local anchored position
+            Vector2 newPos = new Vector2(newValue, scrollContent.anchoredPosition.y);
+            scrollContent.anchoredPosition = newPos;
+
+            yield return null;
+        }
+
+        // Final snap to target value to avoid floating point inaccuracies
+        scrollContent.anchoredPosition = new Vector2(targetScrollValue, scrollContent.anchoredPosition.y);
+
+        levelChangeCoroutine = null;
     }
 }
