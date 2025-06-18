@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af76fb2b-6d3c-434b-aa0e-0da5a4a343f4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/WindowAnimations/MainMenu/idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/WindowAnimations/MainMenu/idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/tap to playyyy (3).png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/tap to playyyy (3).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/tap to playyyy (3).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/tap to playyyy (3).png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/Иллюстрация_без_названия.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Interface/UiElements/Иллюстрация_без_названия.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/frame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Interface/frame.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardian/Material.001.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardian/Material.001.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.001Slime.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.001Slime.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/HitMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Materials/HitMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/Boat2_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/Boat2_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/New Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/blinn3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/blinn3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.003.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.003.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.004.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.004.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.006.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.006.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.007.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.007.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.008.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.008.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.009.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.009.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.010.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.010.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/lambert1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/lambert1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/дереов.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/дереов.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/металл.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/металл.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/скала.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/скала.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/трава.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Materials/vishka/трава.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/DT(BOSS).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/DT(BOSS).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Shader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Shader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/Depth Fade.shadersubgraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/Depth Fade.shadersubgraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/GhostShipOutlines/GhostOutline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/GhostShipOutlines/GhostOutline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Misc/Lighting Settings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Misc/Lighting Settings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Global Volume Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BossShipAIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BossShipAIHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GlobalTentacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalTentacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterSpawnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterSpawnSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/UpgradeBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/UpgradeBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2yXxIozmElTeqG1mxWkvCED63US" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.59f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\dostr\OneDrive\Documents\GitHub\Light_House -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\dostr\OneDrive\Documents\GitHub\Light_House" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.59f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\dostr\OneDrive\Documents\GitHub\Light_House -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\dostr\OneDrive\Documents\GitHub\Light_House" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af76fb2b-6d3c-434b-aa0e-0da5a4a343f4" name="Changes" comment="" />
+      <created>1749994642924</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749994642924</updated>
+      <workItem from="1749994646767" duration="133000" />
+      <workItem from="1750101195532" duration="3188000" />
+      <workItem from="1750181921375" duration="941000" />
+      <workItem from="1750261038647" duration="1840000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -7,6 +7,9 @@ public class AllyBossCharacter : AllyCharacter
 {
     [SerializeField] private Turret[] turrets;
     [SerializeField] private float initAmmo;
+    [SerializeField] private Vector3[] waypoints;
+    
+    public Vector3[] Waypoints { get => waypoints; set => waypoints = value; }
 
     private float currentAmmo;
     
@@ -75,18 +78,14 @@ public class AllyBossCharacter : AllyCharacter
     public override void Update()
     {
         CheckForAmmo();
-        if (currentAmmo <= 0 && AmmoBox != null)
+        switch (currentAmmo)
         {
-            aiComponent.AIAction(AmmoBox,AIState.MoveToTarget,Data);
-            return;
-        }
-        if(Target == null)
-        {
-            aiComponent.AIAction(this, AIState.Idle, Data);
-        }
-        else
-        {
-            aiComponent.AIAction(Target, AIState.MoveToTarget, Data);
+            case <= 0 when AmmoBox != null:
+                aiComponent.AIAction(AmmoBox,AIState.MoveToTarget,Data);
+                return;
+            case > 0:
+                aiComponent.AIAction(this, AIState.Idle, Data);
+                break;
         }
     }
 

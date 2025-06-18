@@ -1,22 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossShipAIHandler : IAIComponent
 {
     private Character character;
-
-    private RaycastHit hit;
+    private AllyBossCharacter bossCharacter;
+    
+    private Vector3[] waypoints;
+    private int currentWaypointIndex = 0;
+    private readonly float waypointDistanceThreshold = 2f;
 
     public void Initialize(Character selfCharacter)
     {
         character = selfCharacter;
-        
+        if (selfCharacter is AllyBossCharacter enemyBossCharacter)
+        {
+            bossCharacter = enemyBossCharacter;
+            waypoints = bossCharacter.Waypoints;
+            currentWaypointIndex = 0; // Start from first waypoint
+        }
     }
 
     public void AIAction(Character target, AIState currentState, CharacterTypeData data)
     {
-        if(data is BasicAllyData _data)
+        if (data is BasicAllyData _data)
         {
             switch (currentState)
             {
@@ -27,15 +33,36 @@ public class BossShipAIHandler : IAIComponent
                         return;
                     character.movementComponent.Move(direction);
                     break;
+
                 case AIState.Attack:
+                    // Implement attack logic here
                     break;
+
                 case AIState.Idle:
-                    hit = GameManager.Instance.LightController.hit;
-                    var directionTolight = hit.point - character.transform.position;
-                    character.movementComponent.Move(directionTolight);
-                    character.movementComponent.Rotate(directionTolight);
+                    FollowWaypoints();
                     break;
             }
+        }
+    }
+
+    private void FollowWaypoints()
+    {
+        if (waypoints == null || waypoints.Length == 0)
+            return;
+
+        Vector3 currentWaypoint = waypoints[currentWaypointIndex];
+        Vector3 directionToWaypoint = currentWaypoint - character.transform.position;
+
+        // Rotate towards waypoint
+        character.movementComponent.Rotate(directionToWaypoint);
+
+        // Move towards waypoint
+        character.movementComponent.Move(directionToWaypoint);
+
+        // If close enough to waypoint, move to next one
+        if (directionToWaypoint.magnitude < waypointDistanceThreshold)
+        {
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
     }
 }

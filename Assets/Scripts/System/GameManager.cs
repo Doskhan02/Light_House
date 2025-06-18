@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     private int sessionTimeInMinutes;
     private float difficultyMultiplier;
 
+    private bool isBossFight;
+    
     public int SessionTimeInMinutes => sessionTimeInMinutes;
     public int SessionTimeInSeconds => sessionTimeInSeconds;
 
@@ -86,9 +88,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        if(levelManager.CurrentLevel == 6)
+        if(levelManager.CurrentLevel % 6 == 0)
         {
+            isBossFight = true;
             Cutsceen();
+        }
+        else
+        {
+            isBossFight = false;
         }
         if (isGameActive)
             return;
@@ -119,7 +126,7 @@ public class GameManager : MonoBehaviour
         if(!isGameActive)
             return;
 
-        if (LevelManager.CurrentLevel % 6 == 0)
+        if (isBossFight)
         {
             CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat3", new Vector3(-70, 0, 40));
             Invoke(nameof(SpawnBoss), 13f);
@@ -131,40 +138,19 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        timeBetweenShipSpawn -= Time.deltaTime;
-        timeBetweenEnemySpawn -= Time.deltaTime;
-
-
-
-        sessionTime += Time.deltaTime;
-        if (sessionTime > 1)
+        if (!isBossFight)
         {
-            sessionTime = 0;
-            sessionTimeInSeconds--;
+            Timer();
+        }
 
-            if (sessionTimeInSeconds < 0)
+        if (sessionTimeInMinutes == 0 && sessionTimeInSeconds == 0)
+        {
+            if (scoreSystem.Score < GameData.targetScore)
             {
-                if (sessionTimeInMinutes > 0)
-                {
-                    sessionTimeInMinutes--;
-                    sessionTimeInSeconds = 59;
-                }
-                else
-                {
-                    sessionTimeInSeconds = 0;
-                }
-            }
-
-            OnSessionTimeUpdated?.Invoke(sessionTimeInSeconds, sessionTimeInMinutes);
-
-            if (sessionTimeInMinutes == 0 && sessionTimeInSeconds == 0)
-            {
-                if (scoreSystem.Score < GameData.targetScore)
-                {
-                    GameOver();
-                }
+                GameOver();
             }
         }
+        
 
         if (scoreSystem.Score >= GameData.targetScore)
         {
@@ -204,7 +190,37 @@ public class GameManager : MonoBehaviour
     {
         if (LevelManager.CurrentLevel % 6 == 0)
         {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "DT(BOSS)", new Vector3(0, 0, 180));
+            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "DT(BOSS)", new Vector3(0, 0, 150));
+        }
+    }
+
+    private void Timer()
+    {
+        timeBetweenShipSpawn -= Time.deltaTime;
+        timeBetweenEnemySpawn -= Time.deltaTime;
+
+
+
+        sessionTime += Time.deltaTime;
+        if (sessionTime > 1)
+        {
+            sessionTime = 0;
+            sessionTimeInSeconds--;
+
+            if (sessionTimeInSeconds < 0)
+            {
+                if (sessionTimeInMinutes > 0)
+                {
+                    sessionTimeInMinutes--;
+                    sessionTimeInSeconds = 59;
+                }
+                else
+                {
+                    sessionTimeInSeconds = 0;
+                }
+            }
+
+            OnSessionTimeUpdated?.Invoke(sessionTimeInSeconds, sessionTimeInMinutes);
         }
     }
 

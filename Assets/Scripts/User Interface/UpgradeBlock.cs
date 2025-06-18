@@ -48,5 +48,7 @@ public class UpgradeBlock : MonoBehaviour
     {
         upgradeLevel.text = (level + 1).ToString();
         upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1))).ToString();
+        purchaseButton.interactable = CurrencySystem.Instance.GetCurrency() >=
+                                      Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1)));
     }
 }

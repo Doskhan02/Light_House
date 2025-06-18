@@ -28,7 +28,7 @@ public class GlobalTentacle : MonoBehaviour
                     float waveOffset = Mathf.Sin((x + z) * 0.5f) * waveSpeed;
                     yield return new WaitForSeconds(delayPerTile + waveOffset * 0.01f);
 
-                    Vector3 position = new Vector3(-30,0,20) + new Vector3(x * spacing, 0, z * spacing);
+                    Vector3 position = new Vector3(-20,0,20) + new Vector3(x * spacing, 0, z * spacing);
                     Instantiate(prefab, position, Quaternion.identity, transform);
                 }
             }

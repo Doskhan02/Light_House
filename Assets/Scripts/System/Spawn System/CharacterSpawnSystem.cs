@@ -29,7 +29,7 @@ public class CharacterSpawnSystem : MonoBehaviour
         SetSpawnAmount(data.ammoBoxAmount, CharacterType.Ally, "AmmoBox");
     }
 
-    public void SetSpawnAmount(int amount, CharacterType characterType, string subType)
+    private void SetSpawnAmount(int amount, CharacterType characterType, string subType)
     {
         characterFactory.GetConfig(characterType, subType).maxActive = amount;
     }

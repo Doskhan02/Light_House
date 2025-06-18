@@ -86,7 +86,17 @@ MonoBehaviour:
   allyType: 2
   turrets:
   - {fileID: 4913210735036869570}
-  initAmmo: 20
+  - {fileID: 3953219372738700490}
+  initAmmo: 100
+  waypoints:
+  - {x: 0, y: 0, z: 40}
+  - {x: 20, y: 0, z: 50}
+  - {x: 25, y: 0, z: 70}
+  - {x: 20, y: 0, z: 90}
+  - {x: 0, y: 0, z: 100}
+  - {x: -20, y: 0, z: 90}
+  - {x: -25, y: 0, z: 70}
+  - {x: -20, y: 0, z: 50}
 --- !u!143 &8215044995445011551
 CharacterController:
   m_ObjectHideFlags: 0
@@ -216,6 +226,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.3735125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2590296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.3735125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -249,7 +271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.11
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: 4457805487258241049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -279,13 +301,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7245708848269707825, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 5431698061192683910}
     - target: {fileID: 7556685537115490049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 7556685537115490049, guid: 408f4322eef401040bb52846d21be8d8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -318,7 +344,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -326,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -399,7 +425,7 @@ MonoBehaviour:
   maxRotation: 359
   minRotation: 180
   rotationSpeed: 60
-  spreadFactor: 0
+  spreadFactor: 3
   isShooting: 0
 --- !u!1001 &7161843246008610779
 PrefabInstance:
@@ -492,7 +518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.08
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -500,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.86
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -536,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a4a1f8fd2d738dd44abb31db2b2500b2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -574,8 +600,8 @@ MonoBehaviour:
   bullet: {fileID: 6000571249919291642, guid: 73ff90cabf9c54243a87716dbbf60734, type: 3}
   firePoint: {fileID: 5274152408586641012}
   fireRate: 0.2
-  maxRotation: 180
-  minRotation: 1
+  maxRotation: 1
+  minRotation: 180
   rotationSpeed: 60
-  spreadFactor: 10
+  spreadFactor: 3
   isShooting: 0
