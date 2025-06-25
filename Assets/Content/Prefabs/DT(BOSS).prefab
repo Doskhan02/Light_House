@@ -169,7 +169,7 @@ MonoBehaviour:
   width: 3
   height: 5
   spacing: 25
-  delayPerTile: 0.05
+  delayPerTile: 0.3
   waveSpeed: 2
 --- !u!1001 &3728241132051545973
 PrefabInstance:

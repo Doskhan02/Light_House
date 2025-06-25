@@ -28,6 +28,7 @@ public class UpgradeBlock : MonoBehaviour
         upgradeDescription.text = upgrade.upgradeDescription;
         upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, level)).ToString();
         UpdateUI();
+        CurrencySystem.Instance.OnGameCurrencyChanged += UpdateUI;
     }
 
     private void PurchaseUpgrade()

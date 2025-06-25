@@ -51,6 +51,16 @@ public class EffectComponent : IEffectComponent
                     effect.properties["nextTickTime"] = dotEffect.tickRate;
                 }
             }
+            else if (effect.effect is SlowEffect slowEffect)
+            {
+                float totalSlowAmount = slowEffect.slowAmount * (slowEffect.scaleWithStacks ? effect.stacks : 1);
+                selfCharacter.movementComponent.Speed = selfCharacter.CharacterData.CharacterTypeData.defaultSpeed - totalSlowAmount;
+                if (selfCharacter.movementComponent.Speed <= 1)
+                {
+                    selfCharacter.movementComponent.Speed = 1;
+                }
+                ParticleManager.Instance.PlaySlowParticleEffect(selfCharacter.transform);
+            }
         }
     }
 
@@ -128,6 +138,11 @@ public class EffectComponent : IEffectComponent
         // Find the effect instance
         ActiveEffect activeEffect = activeEffects.Find(e => e.effect == effect);
 
+        if (effect is SlowEffect slowEffect)
+        {
+            selfCharacter.movementComponent.Speed = selfCharacter.CharacterData.CharacterTypeData.defaultSpeed;
+        }
+        
         if (activeEffect != null)
         {
             // Destroy any visual effect

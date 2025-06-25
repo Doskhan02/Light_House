@@ -25,7 +25,7 @@ public class TentacleHit : MonoBehaviour
     private void Update()
     {
         lightHit = GameManager.Instance.LightController.hit;
-        if (Vector3.Distance(lightHit.point, transform.position) < 2f)
+        if (Vector3.Distance(lightHit.point, transform.position) < GameManager.Instance.UpgradeManager.Radius)
         {
             Destroy(gameObject);
         }
@@ -38,22 +38,24 @@ public class TentacleHit : MonoBehaviour
             sprite.color = Color.Lerp(Color.clear, baseColor, fadeAmount);
 
             elapsedTime -= Time.deltaTime;
+            if (Mathf.Round(elapsedTime) % 4 == 0)
+            {
+                animator.SetTrigger("Hit");
+                Invoke(nameof(Destroy),8f);
+            }
         }
         else
         {
             if(isHit)
                 return;
             sprite.color = Color.clear;
-            animator.SetTrigger("hit");
             foreach (Collider collider in Physics.OverlapSphere(transform.position, 5f))
             {
                 var ally = collider.gameObject.GetComponentInParent<AllyCharacter>();
                 if (ally != null)
                 {
-                    
                     ally.lifeComponent.SetDamage(damage);
                 }
-                Invoke(nameof(Destroy),8f);
             }
             isHit = true;
         }

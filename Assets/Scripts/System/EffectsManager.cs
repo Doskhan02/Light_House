@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectsManager : MonoBehaviour
+public class EffectsManager : MonoBehaviour, IDataPersistance
 {
     [Header("Available Effects")]
     [SerializeField] private List<Effect> availableEffects = new List<Effect>();
@@ -11,7 +11,7 @@ public class EffectsManager : MonoBehaviour
     [SerializeField] private List<Effect> unlockedEffects = new List<Effect>();
 
     [Header("Active Effect Limit")]
-    [SerializeField] private int maxActiveEffects = 3;
+    [SerializeField] private int maxActiveEffects = 2;
 
     [Header("Active Effect Display")]
     [SerializeField] private Transform effectIconsParent;
@@ -19,6 +19,8 @@ public class EffectsManager : MonoBehaviour
 
     private List<Effect> _activeEffectTypes = new List<Effect>();
     public List<Effect> ActiveEffectTypes => _activeEffectTypes;
+    
+    public List<Effect> UnlockedEffects => unlockedEffects;
 
     public event Action<Effect> OnEffectActivated;
     public event Action<Effect> OnEffectDeactivated;
@@ -101,6 +103,46 @@ public class EffectsManager : MonoBehaviour
         {
             ActivateEffect(effect);
         }
+    }
+
+    public void LoadData(GamePersistantData data)
+    {
+        // Загружаем активные эффекты
+        if (data.activeEffectIds != null)
+        {
+            _activeEffectTypes.Clear();
+            foreach (string effectId in data.activeEffectIds)
+            {
+                Effect effect = FindEffectById(effectId);
+                if (effect != null && unlockedEffects.Contains(effect))
+                {
+                    _activeEffectTypes.Add(effect);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GamePersistantData data)
+    {
+        // Сохраняем ID активных эффектов
+        data.activeEffectIds = new List<string>();
+        foreach (Effect effect in _activeEffectTypes)
+        {
+            data.activeEffectIds.Add(effect.effectId);
+        }
+    }
+    private Effect FindEffectById(string effectId)
+    {
+        foreach (Effect effect in availableEffects)
+        {
+            if (effect.effectId == effectId)
+            {
+                return effect;
+            }
+        }
+        
+        Debug.LogWarning($"Effect with ID '{effectId}' not found in available effects");
+        return null;
     }
 }
 public class ActiveEffect

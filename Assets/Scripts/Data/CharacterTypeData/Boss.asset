@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   defaultSpeed: 3
-  defaultMaxHP: 2000
+  defaultMaxHP: 1000
   timeBetweenAttacks: 10
   damage: 20
   attackDistance: 10

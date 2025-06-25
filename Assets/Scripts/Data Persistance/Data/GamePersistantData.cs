@@ -11,6 +11,7 @@ public class GamePersistantData
     public int attackRateUpgradeLevel;
     public int currentGameLevel;
     public int checkpointLevel;
+    public List<string> activeEffectIds;
 
     public GamePersistantData()
     {

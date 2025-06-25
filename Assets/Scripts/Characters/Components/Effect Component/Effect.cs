@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEffect", menuName = "Scriptable Objects/Effects/Base Effect")]
 public abstract class Effect : ScriptableObject
 {
-
+    [Header("Effect Identity")]
+    [SerializeField] private string _effectId;
+    public string effectId 
+    { 
+        get 
+        { 
+            // Если ID не задан, используем имя файла
+            if (string.IsNullOrEmpty(_effectId))
+                _effectId = name;
+            return _effectId;
+        } 
+    }
+    
     [Tooltip("Display name shown in UI")]
     public string displayName;
 
@@ -32,4 +45,12 @@ public abstract class Effect : ScriptableObject
 
     [Tooltip("Particle effect prefab to spawn on the affected character")]
     public GameObject effectParticlePrefab;
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(_effectId))
+        {
+            _effectId = name;
+        }
+    }
 }

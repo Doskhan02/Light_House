@@ -50,7 +50,10 @@ public class GamePlayWindow : Window
         if (ActiveBoosterManager.Instance != null)
         {
             activeBoosterButton.onClick.AddListener(ActiveBoosterManager.Instance.ApplyBooster);
-            activeBoosterButton.image.sprite = ActiveBoosterManager.Instance.CurrentActiveBooster.icon;
+            
+            if(ActiveBoosterManager.Instance.CurrentActiveBooster != null)
+                activeBoosterButton.image.sprite = ActiveBoosterManager.Instance.CurrentActiveBooster.icon;
+            
             ActiveBoosterManager.Instance.OnBoosterStateChanged += OnSkillActive;
             ActiveBoosterManager.Instance.OnCooldownUpdated += OnActiveBoosterTimerChanged;
         }

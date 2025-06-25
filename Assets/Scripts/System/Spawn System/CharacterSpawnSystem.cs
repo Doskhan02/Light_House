@@ -85,6 +85,10 @@ public class CharacterSpawnSystem : MonoBehaviour
             case CharacterType.Ally:
                 deathCharacter.gameObject.SetActive(false);
                 characterFactory.ReturnCharacter(deathCharacter);
+                if (deathCharacter.gameObject.CompareTag("Boss"))
+                {
+                    GameManager.Instance.GameOver();
+                }
                 break;
             case CharacterType.Enemy:
                 deathCharacter.gameObject.SetActive(false);
@@ -110,6 +114,11 @@ public class CharacterSpawnSystem : MonoBehaviour
 
         foreach (Character character in allCharacter)
         {
+            if (character.gameObject.CompareTag("Boss"))
+            {
+                Destroy(character.gameObject);
+                continue;
+            }
             CharacterDeathHandler(character);
             yield return null;
         }

@@ -12,6 +12,9 @@ public class ActiveBoosterManager : MonoBehaviour
     private ActiveBooster currentActiveBooster;
 
     public ActiveBooster CurrentActiveBooster => currentActiveBooster;
+    public List<ActiveBooster> UnlockedActiveBoosters => unlockedActiveBoosters;
+    
+    public event Action<ActiveBooster> OnCurrentActiveBoosterChanged;
 
     private float timeSinceLastUse = 0f; // Time since the last booster was used
 
@@ -29,7 +32,7 @@ public class ActiveBoosterManager : MonoBehaviour
         {
             UnlockBooster(booster);
         }
-        currentActiveBooster = unlockedActiveBoosters[0]; // Set the first unlocked booster as the current one
+        //currentActiveBooster = unlockedActiveBoosters[0]; // Set the first unlocked booster as the current one
     }
 
     public void UnlockBooster(ActiveBooster booster)
@@ -49,6 +52,7 @@ public class ActiveBoosterManager : MonoBehaviour
         if (unlockedActiveBoosters.Contains(booster))
         {
             currentActiveBooster = booster;
+            OnCurrentActiveBoosterChanged?.Invoke(currentActiveBooster);
         }
         else 
         { 

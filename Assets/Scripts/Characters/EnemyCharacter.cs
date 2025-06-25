@@ -24,7 +24,9 @@ public class EnemyCharacter : Character
             List<Character> list = CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally);
             for (int i = 0; i < list.Count; i++)
             {
-                if (!list[i].gameObject)
+                if(list[i] == null)
+                    continue;
+                if (list[i].gameObject == null)
                     continue;
                 if(enemyType == EnemyType.Basic)
                 {

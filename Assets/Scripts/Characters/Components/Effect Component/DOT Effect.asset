@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9004126fa1ef774882f6447793a4144, type: 3}
   m_Name: DOT Effect
   m_EditorClassIdentifier: 
+  _effectId: DOT Effect
   displayName: DOT
   description: Damage over time 3 damage per second over 3 seconds
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a026f6b22517bd64a8df79f32113a300, type: 3}
   canStack: 0
   maxStacks: 1
-  duration: 3
+  duration: 2
   effectColor: {r: 1, g: 1, b: 1, a: 1}
   effectParticlePrefab: {fileID: 0}
   damagePerSecond: 3

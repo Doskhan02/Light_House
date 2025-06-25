@@ -8,6 +8,8 @@ public abstract class ActiveBooster : ScriptableObject
     public BoosterType boosterType; // Type of the booster
     public float cooldown = 5f; // Cooldown time in seconds
     public Sprite icon; // Icon for the booster
+    public string description;
+    public string name;
     public virtual void ApplyBooster() { }
     public virtual void ApplyBooster(List<Character> targets) { }
 }

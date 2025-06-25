@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Data.SqlTypes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,12 @@ public class MainMenuWindow : Window
 
     [SerializeField] private RectTransform scrollContent;
 
+    [SerializeField] private TMP_Text level1;
+    [SerializeField] private TMP_Text level2;
+
+    [SerializeField] private Button boosterList;
+    [SerializeField] private Animator boosterListAnimator;
+
     private int currentLevel;
 
     private Coroutine levelChangeCoroutine;
@@ -23,6 +30,7 @@ public class MainMenuWindow : Window
         bestiaryButton.onClick.AddListener(OpenBestiaryHandler);
         shopButton.onClick.AddListener(OpenShopHandler);
         LevelManager.Instance.OnLevelChanged += OnCurrentLevelChanged;
+        boosterList.onClick.AddListener(BoosterListHandler);
     }
     protected override void OpenStart()
     {
@@ -74,13 +82,39 @@ public class MainMenuWindow : Window
         LevelHandler(currentLevel);
     }
 
+    private void BoosterListHandler()
+    {
+        boosterListAnimator.Play("Expand");
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.InputManager.TouchScreen())
+        {
+            boosterListAnimator.Play("Retract");
+        }
+    }
+    
+
     private void LevelHandler(int level)
     {
-
-        if (level > 5)
+        if (level < 10)
         {
-            level = level - 5;
+            level1.text = level.ToString();
+            level2.text = "0"; // Optional: clear the second digit
         }
+        else
+        {
+            int units = level % 10;
+            int tens = level / 10;
+
+            level1.text = units.ToString();
+            level2.text = tens.ToString();
+        }
+        
+        // Rotate every 3 levels back to the first (levels cycle: 1, 2, 3 -> 1, 2, 3...)
+        int maxLevels = 3;
+        int adjustedLevel = ((level - 1) % maxLevels) + 1;
 
         // Stop existing coroutine if it's running
         if (levelChangeCoroutine != null)
@@ -88,19 +122,19 @@ public class MainMenuWindow : Window
             StopCoroutine(levelChangeCoroutine);
         }
 
-        levelChangeCoroutine = StartCoroutine(LevelChange(level, scrollContent));
+        levelChangeCoroutine = StartCoroutine(LevelChange(adjustedLevel, scrollContent));
     }
 
     private IEnumerator LevelChange(int level, RectTransform scrollContent)
     {
         // Target local anchored position
-        float targetScrollValue = -level * 200f; // Move left by level * 200 pixels
+        float targetScrollValue = level * 110f; // Move left by level * 200 pixels
 
         float duration = 1.0f;
         float elapsed = 0f;
 
         // Use anchoredPosition for ScrollRect-based layouts
-        float initialScrollContentPos = scrollContent.anchoredPosition.x;
+        float initialScrollContentPos = scrollContent.anchoredPosition.y;
 
         while (elapsed < duration)
         {
@@ -108,14 +142,14 @@ public class MainMenuWindow : Window
             float newValue = Mathf.Lerp(initialScrollContentPos, targetScrollValue, elapsed / duration);
 
             // Only update the local anchored position
-            Vector2 newPos = new Vector2(newValue, scrollContent.anchoredPosition.y);
+            Vector2 newPos = new Vector2(scrollContent.anchoredPosition.x, newValue);
             scrollContent.anchoredPosition = newPos;
 
             yield return null;
         }
 
         // Final snap to target value to avoid floating point inaccuracies
-        scrollContent.anchoredPosition = new Vector2(targetScrollValue, scrollContent.anchoredPosition.y);
+        scrollContent.anchoredPosition = new Vector2(scrollContent.anchoredPosition.x, targetScrollValue);
 
         levelChangeCoroutine = null;
     }

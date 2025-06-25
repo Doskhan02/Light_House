@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Attack Rate Increase
   upgradeDescription: Time between attacks are decreased
-  image: {fileID: 21300000, guid: 5d4f3c8fbc4c26141bea8af0c050e46d, type: 3}
+  image: {fileID: 21300000, guid: d39bd6499d8e8fe46aeb874215cb85f9, type: 3}
   maxLevel: 11
   incrementPerLevel: 0.02
   multiplier: 1.2
