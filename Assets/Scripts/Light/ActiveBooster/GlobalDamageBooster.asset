@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boosterType: 1
   cooldown: 5
-  icon: {fileID: 21300000, guid: cdec13907ffc75749ab2ed436bec6b14, type: 3}
+  icon: {fileID: 21300000, guid: 309b822d9b166d343837ae4e618e34d3, type: 3}
   damage: 10
   totalFadeDuration: 0.5
   globalVolumeProfile: {fileID: 11400000, guid: 8fc9d9a6d87ed594f91c1ffbc23732ee, type: 2}
