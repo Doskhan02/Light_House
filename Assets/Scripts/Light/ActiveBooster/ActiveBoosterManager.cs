@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveBoosterManager : MonoBehaviour
+public class ActiveBoosterManager : MonoBehaviour, IDataPersistance
 {
     [Header("List of all active booster")]
     [SerializeField] private List<ActiveBooster> activeBoosters;
@@ -100,6 +100,37 @@ public class ActiveBoosterManager : MonoBehaviour
                 timeSinceLastUse = 0; // Reset the cooldown timer
                 OnBoosterStateChanged?.Invoke(false); // Notify that the booster is no longer applied
             }
+        }
+    }
+
+    public void LoadData(GamePersistantData data)
+    {
+        // Load the current active booster by name
+        if (!string.IsNullOrEmpty(data.activeBoosterName))
+        {
+            ActiveBooster savedBooster = activeBoosters.Find(booster => booster.name == data.activeBoosterName);
+            if (savedBooster != null)
+            {
+                ChooseActiveBooster(savedBooster);
+                Debug.Log($"Loaded active booster: {savedBooster.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"Could not find saved booster: {data.activeBoosterName}");
+            }
+        }
+    }
+
+    public void SaveData(ref GamePersistantData data)
+    {
+        // Save the current active booster name
+        if (currentActiveBooster != null)
+        {
+            data.activeBoosterName = currentActiveBooster.name;
+        }
+        else
+        {
+            data.activeBoosterName = string.Empty;
         }
     }
 }

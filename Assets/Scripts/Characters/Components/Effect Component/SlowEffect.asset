@@ -15,7 +15,7 @@ MonoBehaviour:
   _effectId: SlowEffect
   displayName: Cold Breeze
   description: Slows down enemies that are under the light
-  icon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
+  icon: {fileID: 21300000, guid: f1479dcb39f1d804cb4de4cca184b636, type: 3}
   canStack: 0
   maxStacks: 1
   duration: 2

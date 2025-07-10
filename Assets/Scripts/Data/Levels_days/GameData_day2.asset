@@ -26,3 +26,6 @@ MonoBehaviour:
   basicShipAmount: -1
   bigShipAmount: 2
   ammoBoxAmount: 0
+  characterSprite: {fileID: 21300000, guid: e344ece590d0f164391571370808c2d6, type: 3}
+  characterName: Elinor Del Vale
+  characterText: You did it. Or were you just lucky? We shall see hereafter

@@ -101,7 +101,7 @@ public class Joystick : MonoBehaviour
 
     private void SetJoystickVisible(bool visible)
     {
-        float alpha = visible ? 1f : 0f;
+        float alpha = visible ? 0.5f : 0f;
         Color bgColor = joystickBackground.color;
         bgColor.a = alpha;
         joystickBackground.color = bgColor;

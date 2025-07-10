@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -13,6 +14,8 @@ public class GamePlayWindow : Window
     [SerializeField] private Button activeBoosterButton;
     [SerializeField] private TMP_Text activeBoosterText;
     [SerializeField] private Slider bossHP;
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioClip gameplayMusic;
 
     private Character bossCharacter;
 
@@ -26,6 +29,9 @@ public class GamePlayWindow : Window
     {
         base.OpenStart();
         scoreText.text = 0 + " / " + GameManager.Instance.gameData.targetScore;
+        music.clip = gameplayMusic;
+        if(!music.isPlaying)
+            music.Play();
         OpenEnd();
     }
 
@@ -108,12 +114,8 @@ public class GamePlayWindow : Window
     {
         if (GameManager.Instance.LevelManager.CurrentLevel%6 == 0)
         {
-            if (GameObject.FindGameObjectWithTag("Boss") == null)
-            {
-                Debug.LogError("Boss GameObject not found in the scene.");
-                return;
-            }
-            bossCharacter = GameObject.FindGameObjectWithTag("Boss").GetComponent<Character>();
+            bossCharacter =
+                CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Enemy, "DT(BOSS)").First();
             if (bossCharacter == null)
             {
                 Debug.LogError("Boss character not found in the scene.");

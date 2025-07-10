@@ -54,8 +54,7 @@ public class CameraService : MonoBehaviour
     public IEnumerator Cutsceen()
     {
         cutsceenActive = true;
-
-
+        
         foreach (Transform t in transforms)
         {
             Vector3 targetPosition = t.position;
@@ -91,12 +90,12 @@ public class CameraService : MonoBehaviour
             }
 
             // Optional: wait before moving to next point
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         cutsceenActive = false;
         GameManager.Instance.IsCutsceenActive = false;
         GameManager.Instance.WindowService.HideWindow<CutsceenWindow>(false);
-        GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
+        GameManager.Instance.WindowService.ShowWindow<BossFightCanvas>(false);
     }
 }

@@ -12,6 +12,7 @@ public class GamePersistantData
     public int currentGameLevel;
     public int checkpointLevel;
     public List<string> activeEffectIds;
+    public string activeBoosterName;
 
     public GamePersistantData()
     {
@@ -21,6 +22,8 @@ public class GamePersistantData
         this.attackRateUpgradeLevel = 1;
         this.currentGameLevel = 1;
         this.checkpointLevel = 1;
+        this.activeEffectIds = new List<string>();
+        this.activeBoosterName = "";
     }
 
 }

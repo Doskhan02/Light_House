@@ -1,39 +1,85 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PassiveEffectsSlot : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
-    [SerializeField] private int index;
+    [SerializeField] private int slotIndex;
+    [SerializeField] private Color emptySlotColor = Color.clear;
+    [SerializeField] private Color activeSlotColor = Color.white;
+    
     private EffectsManager effectsManager;
-    private Effect effect;
+    private Effect currentEffect;
     
     private void Start()
     {
         effectsManager = EffectsManager.Instance;
-        if (effectsManager != null && effectsManager.ActiveEffectTypes.Count > 0)
+        if (effectsManager != null)
         {
-            effect = effectsManager.ActiveEffectTypes[index];
-            iconImage.sprite = effect.icon;
+            // Subscribe to events
+            effectsManager.OnEffectActivated += OnEffectActivated;
+            effectsManager.OnEffectDeactivated += OnEffectDeactivated;
+        }
+        
+        RefreshSlot();
+    }
+    
+    private void OnDestroy()
+    {
+        if (effectsManager != null)
+        {
+            effectsManager.OnEffectActivated -= OnEffectActivated;
+            effectsManager.OnEffectDeactivated -= OnEffectDeactivated;
+        }
+    }
+    
+    private void RefreshSlot()
+    {
+        if (effectsManager == null || effectsManager.ActiveEffectTypes == null)
+        {
+            SetEmptySlot();
+            return;
+        }
+        
+        // Check if we have an effect at this slot index
+        if (slotIndex < effectsManager.ActiveEffectTypes.Count)
+        {
+            Effect effect = effectsManager.ActiveEffectTypes[slotIndex];
+            SetActiveSlot(effect);
         }
         else
         {
-            iconImage.color = Color.clear;
-            iconImage.sprite = null;
+            SetEmptySlot();
         }
-
-        effectsManager.OnEffectActivated += OnEffectChanged;
     }
-
-    private void OnEffectChanged(Effect newEffect)
+    
+    private void SetActiveSlot(Effect effect)
     {
-        if (newEffect != effect && !effectsManager.ActiveEffectTypes.Contains(effect))
+        currentEffect = effect;
+        if (iconImage != null && effect != null)
         {
-            effect = newEffect;
             iconImage.sprite = effect.icon;
-            iconImage.color = Color.white;
+            iconImage.color = activeSlotColor;
         }
+    }
+    
+    private void SetEmptySlot()
+    {
+        currentEffect = null;
+        if (iconImage != null)
+        {
+            iconImage.sprite = null;
+            iconImage.color = emptySlotColor;
+        }
+    }
+    
+    private void OnEffectActivated(Effect newEffect)
+    {
+        RefreshSlot();
+    }
+    
+    private void OnEffectDeactivated(Effect removedEffect)
+    {
+        RefreshSlot();
     }
 }

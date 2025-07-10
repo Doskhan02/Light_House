@@ -23,6 +23,7 @@ public class CharacterSpawnSystem : MonoBehaviour
         SetSpawnAmount(data.ghostShipSpawnAmount, CharacterType.FakeAlly, "GhostShip");
         SetSpawnAmount(data.bossAllyAmount, CharacterType.Ally, "Boat3");
         SetSpawnAmount(data.bossAmount, CharacterType.Enemy, "DT(BOSS)");
+        SetSpawnAmount(data.wormBossSpawnAmount, CharacterType.Enemy, "Worm(BOSS)");
 
         SetSpawnAmount(data.basicShipAmount, CharacterType.Ally, "Boat");
         SetSpawnAmount(data.bigShipAmount, CharacterType.Ally, "Boat2");
@@ -122,5 +123,6 @@ public class CharacterSpawnSystem : MonoBehaviour
             CharacterDeathHandler(character);
             yield return null;
         }
+        characterFactory.ReInitializePools();
     }
 }

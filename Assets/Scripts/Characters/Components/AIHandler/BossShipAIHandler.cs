@@ -27,18 +27,18 @@ public class BossShipAIHandler : IAIComponent
             switch (currentState)
             {
                 case AIState.MoveToTarget:
+                    
                     var direction = target.transform.position - character.transform.position;
                     character.movementComponent.Rotate(direction);
-                    if (target is EnemyCharacter && Vector3.Distance(target.transform.position, character.transform.position) < 20)
-                        return;
                     character.movementComponent.Move(direction);
                     break;
 
-                case AIState.Attack:
-                    // Implement attack logic here
+                case AIState.Fear:
+                    character.movementComponent.Speed = 0;
                     break;
 
                 case AIState.Idle:
+                    character.movementComponent.Speed = _data.defaultSpeed;
                     FollowWaypoints();
                     break;
             }

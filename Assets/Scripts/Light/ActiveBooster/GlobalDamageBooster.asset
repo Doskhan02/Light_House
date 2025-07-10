@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boosterType: 1
   cooldown: 5
-  icon: {fileID: 21300000, guid: cdec13907ffc75749ab2ed436bec6b14, type: 3}
+  icon: {fileID: 21300000, guid: 162cda26ca5e8874ab1a44bd544a1e2b, type: 3}
   description: Global damage on all basic types of enemies
   name: 'Let there be a Light '
   damage: 10

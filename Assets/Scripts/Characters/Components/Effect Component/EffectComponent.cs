@@ -47,7 +47,7 @@ public class EffectComponent : IEffectComponent
                                   dotEffect.tickRate;
 
                     selfCharacter.lifeComponent.SetDamage(damage);
-                    ParticleManager.Instance.PlayDOTParticleEffect(selfCharacter.transform);
+                    //ParticleManager.Instance.PlayDOTParticleEffect(selfCharacter.transform);
                     effect.properties["nextTickTime"] = dotEffect.tickRate;
                 }
             }
@@ -59,7 +59,7 @@ public class EffectComponent : IEffectComponent
                 {
                     selfCharacter.movementComponent.Speed = 1;
                 }
-                ParticleManager.Instance.PlaySlowParticleEffect(selfCharacter.transform);
+                //ParticleManager.Instance.PlaySlowParticleEffect(selfCharacter.transform);
             }
         }
     }

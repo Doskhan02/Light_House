@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b4046cab467b478336f400083e370, type: 3}
   m_Name: GameData_day5
   m_EditorClassIdentifier: 
-  sessionTimeInSeconds: 0
-  sessionTimeInMinutes: 0
   timeBetweenShipSpawn: 3
   timeBetweenEnemySpawn: 2
   targetScore: 30
@@ -27,3 +25,7 @@ MonoBehaviour:
   bossAllyAmount: 0
   basicShipAmount: -1
   bigShipAmount: 2
+  ammoBoxAmount: 0
+  characterSprite: {fileID: 21300000, guid: 0a9738728aa67aa41838738cae9d4135, type: 3}
+  characterName: Yvar Brant
+  characterText: I have a feeling that this is just the beginning... We need prepare

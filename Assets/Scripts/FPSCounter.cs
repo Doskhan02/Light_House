@@ -26,10 +26,6 @@ public class FPSCounter : MonoBehaviour
 
     private void Update()
     {
-#if !UNITY_EDITOR && !DEVELOPMENT_BUILD
-        return;
-#endif
-
         m_FpsAccumulator++;
         float currentTime = Time.unscaledTime;
 

@@ -77,6 +77,8 @@ public class LifeComponent : ILifeComponent
 
     private void SetDeath()
     {
+        if(selfCharacter.CharacterType == CharacterType.Enemy)
+            ParticleManager.Instance.PlayDeadParticleEffect(selfCharacter.transform);
         OnCharacterDeath?.Invoke(selfCharacter);
     }
 

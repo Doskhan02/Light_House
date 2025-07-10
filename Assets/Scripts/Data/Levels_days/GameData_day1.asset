@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b4046cab467b478336f400083e370, type: 3}
   m_Name: GameData_day1
   m_EditorClassIdentifier: 
-  sessionTimeInSeconds: 0
-  sessionTimeInMinutes: 0
   timeBetweenShipSpawn: 3
   timeBetweenEnemySpawn: 2
   targetScore: 14
@@ -27,3 +25,8 @@ MonoBehaviour:
   bossAllyAmount: 0
   basicShipAmount: -1
   bigShipAmount: 2
+  ammoBoxAmount: 0
+  characterSprite: {fileID: 21300000, guid: 37b0d690b86d0f74099bc0c33fddcb21, type: 3}
+  characterName: Yan Fisher
+  characterText: On that boat I didn't just lose a net with fish. It was as if I
+    left a piece of my soul there.

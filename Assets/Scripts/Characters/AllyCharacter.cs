@@ -23,7 +23,7 @@ public class AllyCharacter : Character
         lightData = GameManager.Instance.LightController.LightData;
         canvas = GameManager.Instance.WorldSpaceCanvas;
         base.Initialize();
-        lifeComponent = new LifeComponent();
+        lifeComponent = new LifeComponent(data.defaultMaxHP);
 
         switch (allyType)
         {
@@ -37,9 +37,11 @@ public class AllyCharacter : Character
                 aiComponent = new BasicShipAIHandler();
                 break;
         }
-        
-        
-        CharacterData.Healthbar.Initialize();
+
+        if (CharacterData.Healthbar != null)
+        {
+            CharacterData.Healthbar.Initialize();
+        }
         movementComponent.Rotate(direction);
         SetUpHealthbar();
     }
@@ -82,6 +84,7 @@ public class AllyCharacter : Character
 
     private void SetUpHealthbar()
     {
-        CharacterData.Healthbar.transform.SetParent(canvas.transform);
+        if(CharacterData.Healthbar != null)
+            CharacterData.Healthbar.transform.SetParent(canvas.transform);
     }
 }

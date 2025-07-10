@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b4046cab467b478336f400083e370, type: 3}
   m_Name: GameData_day6
   m_EditorClassIdentifier: 
-  timeBetweenShipSpawn: 3
+  timeBetweenShipSpawn: 10
   timeBetweenEnemySpawn: 2
   targetScore: 30
   sessionMaxTimeInMinutes: 1
   sessionMaxTimeInSeconds: 30
-  wormSpawnAmount: 6
+  wormSpawnAmount: 0
   deepGuardianSpawnAmount: 0
   deepGuardianSlimeSpawnAmount: 0
   ghostShipSpawnAmount: 0
+  wormBossSpawnAmount: 6
   bossAmount: 1
   bossAllyAmount: 1
   basicShipAmount: 0
   bigShipAmount: 0
-  ammoBoxAmount: 4
+  ammoBoxAmount: 3
+  characterSprite: {fileID: 21300000, guid: 0a9738728aa67aa41838738cae9d4135, type: 3}
+  characterName: Yvar Brant
+  characterText: We did it! Now I can finally return to my family

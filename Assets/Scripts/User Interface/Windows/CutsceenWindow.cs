@@ -8,12 +8,11 @@ public class CutsceenWindow : Window
 {
     protected override void OpenStart()
     {
-        GameManager.Instance.WindowService.HideAllWindows(true);
         base.OpenStart();
         GameManager.Instance.IsCutsceenActive = true;
         
     }
-    protected override void CloseEnd()
+    protected override void CloseStart()
     {
         base.CloseEnd();
         GameManager.Instance.IsCutsceenActive = false;

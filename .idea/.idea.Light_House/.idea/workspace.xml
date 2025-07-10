@@ -6,74 +6,336 @@
   <component name="ChangeListManager">
     <list default="true" id="af76fb2b-6d3c-434b-aa0e-0da5a4a343f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Light_House/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Light_House/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/OctoAC.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/OctoAC.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/TentacleAC.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/TentacleAC.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Fonts/IslandofMisfitToysCyrillic-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Fonts/IslandofMisfitToysCyrillic-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Octopus_sample.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Octopus_sample.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Brawler.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Brawler/Brawler1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Brawler/Brawler1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Brawler/Brawler18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Brawler/Brawler18.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/DemonHunter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/DemonHunter/DemonHunter20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/DemonHunter/DemonHunter20.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/DemonHunter/DemonHunter8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/DemonHunter/DemonHunter8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Hunter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Hunter/Hunter1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Hunter/Hunter1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Hunter/Hunter10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Hunter/Hunter10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Ranger.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Ranger/Ranger2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Ranger/Ranger2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Ranger/Ranger7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Ranger/Ranger7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Rogue.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Rogue/Rogue11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Rogue/Rogue11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Rogue/Rogue3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Assassin/Rogue/Rogue3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Arcanist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Arcanist/Arcanist1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Arcanist/Arcanist1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Arcanist/Arcanist15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Arcanist/Arcanist15.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Cryomancer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Cryomancer/Cryomancer17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Cryomancer/Cryomancer17.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Cryomancer/Cryomancer4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Cryomancer/Cryomancer4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Electromancer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Electromancer/Electromancer16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Electromancer/Electromancer16.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Electromancer/Electromancer3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Electromancer/Electromancer3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Geomancer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Geomancer/Geomancer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Geomancer/Geomancer2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Geomancer/Geomancer5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Geomancer/Geomancer5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Pyromancer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Pyromancer/Pyromancer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Pyromancer/Pyromancer2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Pyromancer/Pyromancer7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Elementalist/Pyromancer/Pyromancer7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Cultist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Cultist/Cultist12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Cultist/Cultist12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Cultist/Cultist2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Cultist/Cultist2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Medium.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Medium/Medium10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Medium/Medium10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Medium/Medium15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Medium/Medium15.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Necromancer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Necromancer/Necromancer13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Necromancer/Necromancer13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Necromancer/Necromancer3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Necromancer/Necromancer3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Paladin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Paladin/Paladin10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Paladin/Paladin10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Paladin/Paladin14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Paladin/Paladin14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Priest.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Priest/Priest13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Priest/Priest13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Priest/Priest8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/HolyDarkness/Priest/Priest8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Beastmaster.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Beastmaster/BeastMaster19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Beastmaster/BeastMaster19.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Beastmaster/BeastMaster4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Beastmaster/BeastMaster4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Druid.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Druid/Druid2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Druid/Druid2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Druid/Druid9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Druid/Druid9.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Enchanter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Enchanter/Enchanter18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Enchanter/Enchanter18.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Enchanter/Enchanter2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Enchanter/Enchanter2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shaman.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shaman/Shaman1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shaman/Shaman1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shaman/Shaman17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shaman/Shaman17.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shapeshifter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shapeshifter/ShapeShifter20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shapeshifter/ShapeShifter20.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shapeshifter/ShapeShifter3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Symbiose/Shapeshifter/ShapeShifter3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Barbarian.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Barbarian/Barbarian14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Barbarian/Barbarian14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Barbarian/Barbarian20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Barbarian/Barbarian20.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Berserker.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Berserker/Berserker10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Berserker/Berserker10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Berserker/Berserker13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Berserker/Berserker13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Deathknight.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Deathknight/Deathknight14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Deathknight/Deathknight14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Deathknight/Deathknight8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Deathknight/Deathknight8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Dragonknight.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Dragonknight/Dragonknight18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Dragonknight/Dragonknight18.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Dragonknight/Dragonknight4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Dragonknight/Dragonknight4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Guardian.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Guardian/Guardian20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Guardian/Guardian20.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Guardian/Guardian8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Classes/Warrior/Guardian/Guardian8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Demo/FreeSpellIcons_Blink.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3rdParty Assets/Blink/Art/Icons/Demo/FreeSpellIcons_Blink.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_0_Front+Z.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_0_Front+Z.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_5_Down-Y.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_5_Down-Y.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/Expand.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/Expand.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/Retract.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/Retract.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/SlotsDrop.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/SlotsDrop.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/UI_Animations/idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Animations/WindowAnimations/CutcseenWindow/open.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Animations/WindowAnimations/CutcseenWindow/open.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Fonts/BullyG-b SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Fonts/BullyG-b SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/IMG_0890.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Interface/IMG_0890.PNG.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/FangsSlime.001.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/FangsSlime.001.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.001Slime.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.001Slime.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.003Slime.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Materials/DeepGuardianSlime/Material.003Slime.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Boats/BattleShip.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Boats/BattleShip.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Environment/lighthouse2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Environment/lighthouse2.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Deep Guardian Swim.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Deep Guardian Swim.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/Octo_Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/Octo_Test.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/aiStandardSurface1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/aiStandardSurface1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/eye_rig_wUV_aiStandardSurface1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Monsters/Kraken/eye_rig_wUV_aiStandardSurface1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/AmmoBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/AmmoBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Boat3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/DGSlime(minion).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/DGSlime(minion).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/DGSlime(parent).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/DGSlime(parent).prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/DT(BOSS).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/DT(BOSS).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Shader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/3.0 Water Shader/3.1 Water Shader.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Shaders/GhostShipOutlines/GhostOutline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Shaders/GhostShipOutlines/GhostOutline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/DeepGuardian.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/DeepGuardian.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/GhostShip.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/GhostShip.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Harpoon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Harpoon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/TentacleHit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/TentacleHit.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Worm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Worm.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Materials/nightsky1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Materials/nightsky1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Materials/nightsky2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Materials/nightsky2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky1_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FreeNightSky/Textures/nightsky2_up.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Global Volume Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/Lightmap-0_comp_light.exr.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActiveBoosterSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActiveBoosterSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AmmoBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AmmoBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/AllyCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BasicEnemyAIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BasicEnemyAIHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BossShipAIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BossShipAIHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/DOT Effect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/DOT Effect.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/Effect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/Effect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/EffectComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/EffectComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/SlowEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/SlowEffect.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Life Component/LifeComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Life Component/LifeComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyBossCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyBossCharacter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyCharacter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data Persistance/Data/GamePersistantData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data Persistance/Data/GamePersistantData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data Persistance/DataPersistanceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data Persistance/DataPersistanceManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterTypeData/Boat2Data 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterTypeData/Boat2Data 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterTypeData/Boss.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterTypeData/Boss.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/GameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day1.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GlobalTentacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalTentacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/ActiveBooster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/ActiveBooster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day5.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Levels_days/GameData_day6.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FPSCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FPSCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Joystick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Joystick.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/ActiveBoosterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/ActiveBoosterManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/GlobalDamageBooster.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/GlobalDamageBooster.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/EffectsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/EffectsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PassiveEffectsSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PassiveEffectsSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectableBooster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectableBooster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/CameraService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/CameraService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Input System/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Input System/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Input System/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Input System/PlayerInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Input System/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Input System/PlayerInputActions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/ParticleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/ParticleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterSpawnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Spawn System/CharacterSpawnSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/AttackRate.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/AttackRate.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/Damage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/Damage.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/Radius.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Upgrade System/Radius.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TentacleHit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TentacleHit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Turret/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Turret/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Turret/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Turret/Turret.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/UpgradeBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/UpgradeBlock.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/BoosterSelectWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/BoosterSelectWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/CutsceenWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/CutsceenWindow.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/GamePlayWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/GamePlayWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/GameVictoryWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/GameVictoryWindow.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/MainMenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/User Interface/Windows/MainMenuWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset_ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Ultra_PipelineAsset_ForwardRenderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Boat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Boat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_ContinuousRipple.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_ContinuousRipple.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_HideWaterShader.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_HideWaterShader.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RainDrop.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RainDrop.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RingRippleIntensive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RingRippleIntensive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RingRippleLite.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Materials/Custom_RingRippleLite.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/Boat.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/Boat.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/BoatCover.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/BoatCover.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/WaterPlane.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Meshes/WaterPlane.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/BoatControl.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/BoatControl.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/ContinuousRippleWaterPlane.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/ContinuousRippleWaterPlane.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/MouseInputRingRippleWaterPlane.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/MouseInputRingRippleWaterPlane.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/ObjectTriggeredRippleWaterPlane.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/ObjectTriggeredRippleWaterPlane.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/RaindropSurface.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Prefabs/RaindropSurface.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/ContinuousRipple.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/ContinuousRipple.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/MouseInputRingRipple.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/MouseInputRingRipple.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/ObjectTriggeredRipple.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/ObjectTriggeredRipple.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/RaindropRipple.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scenes/RaindropRipple.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/BoatControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/BoatControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/BoatFloatControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/BoatFloatControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/MouseInputForRipple.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/MouseInputForRipple.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/ObjectCollisionRipple.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/ObjectCollisionRipple.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/RaindropRipple.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Scripts/RaindropRipple.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/ContinuousRipple.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/ContinuousRipple.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/HideWaterShader.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/HideWaterShader.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/RingRipple_Intensive.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/RingRipple_Intensive.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/RingRipple_Lite.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Shader/RingRipple_Lite.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Asphalt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Asphalt.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Texture8x8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Texture8x8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Water.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Texture/Water.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Third-Party Notices.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/WaterRippleShader Eldvmo/Third-Party Notices.txt.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,10 +349,34 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2b1663220bc040c8b2cc78475bd09a7117a000/d2/761b1e0e/RenderChain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/356d430fdcb04bbf8dc54776e1d3627f46ac00/12/7df1764e/AppDomain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/356d430fdcb04bbf8dc54776e1d3627f46ac00/c2/269aaea5/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49d06c5d31414453afaa1a131f96044695ec00/b9/ba0eff84/Editor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/858b620aa0a44bcdb8f1c21b3231a7f23e000/b6/3c495777/Graph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/95971c1103884a7eb2035c95161bde2b177000/08/94ea54cd/ClassLibraryInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9aea1947a5a14e6e84f644786698b69110fc00/bb/bc30888d/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8f08c16f7494e2faa4efa89a46c1d0427800/30/cc0a3db3/Animator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff903867e6de47648af873ff344d15b7284800/32/5e73761c/Process.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ff903867e6de47648af873ff344d15b7284800/ec/979b7617/Socket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AmmoBox.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/QuickTimeEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/AllyCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Components/AIHandler/BossShipAIHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Components/Effect Component/SlowEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data Persistance/Data/GamePersistantData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Joystick.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Light/ActiveBooster/ActiveBoosterManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StunningHit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/System/BossHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/System/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/System/GameStateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/System/Input System/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UpgradeCurrentBoosters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.12/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualeffectgraph@14.0.12/Editor/ShaderGraph/VFXSubTarget.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Attributes/VisualScriptingHelpURLAttribute.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -100,22 +386,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "0.5582418",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Documents/LightHouse\LightHouse.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\dostr\Documents\LightHouse" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.59f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\dostr\OneDrive\Documents\GitHub\Light_House -debugCodeOptimization" />
@@ -152,10 +450,10 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6492">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="25656">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6492" />
+      <option name="pid" value="25656" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -182,7 +480,13 @@
       <workItem from="1750261038647" duration="1840000" />
       <workItem from="1750329123150" duration="10881000" />
       <workItem from="1750491579678" duration="21097000" />
-      <workItem from="1750843709005" duration="13283000" />
+      <workItem from="1750843709005" duration="14618000" />
+      <workItem from="1750914977046" duration="16949000" />
+      <workItem from="1751442547248" duration="16428000" />
+      <workItem from="1751568545860" duration="669000" />
+      <workItem from="1751647390971" duration="27066000" />
+      <workItem from="1752056420711" duration="13798000" />
+      <workItem from="1752094575749" duration="24895000" />
     </task>
     <servers />
   </component>
@@ -214,8 +518,8 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.NullReferenceException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.NullReferenceException" breakIfHandledByUserCode="true" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
             <option name="internal" value="false" />
           </properties>
           <option name="timeStamp" value="5" />
@@ -226,8 +530,8 @@
           </properties>
           <option name="timeStamp" value="12" />
         </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.InvalidOperationException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="InvalidOperationException" namespaceName="System">
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.InvalidOperationException" breakIfHandledByUserCode="true" isInternal="false" displayValue="InvalidOperationException" namespaceName="System">
             <option name="internal" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
@@ -244,19 +548,36 @@
           </properties>
           <option name="timeStamp" value="16" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/AllyBossCharacter.cs</url>
-          <line>83</line>
-          <properties documentPath="C:\Users\dostr\LightHouse\Light_House\Assets\Scripts\Characters\AllyBossCharacter.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="2428" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2484" />
-            </endOffsets>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEngine.UnassignedReferenceException" breakIfHandledByUserCode="true" isInternal="false" displayValue="UnassignedReferenceException" namespaceName="UnityEngine">
+            <option name="internal" value="false" />
           </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
+          <option name="timeStamp" value="18" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEngine.UIElements.ImmediateModeException" breakIfHandledByUserCode="true" isInternal="false" displayValue="ImmediateModeException" namespaceName="UnityEngine.UIElements">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="20" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEngine.MissingReferenceException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="MissingReferenceException" namespaceName="UnityEngine">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="33" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEditor.Editor+SerializedObjectNotCreatableException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="Editor+SerializedObjectNotCreatableException" namespaceName="UnityEditor">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="34" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.IO.FileNotFoundException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="FileNotFoundException" namespaceName="System.IO">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="35" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

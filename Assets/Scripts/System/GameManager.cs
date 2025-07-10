@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas worldSpaceCanvas;
     [SerializeField] private LightController lh_Light;
     [SerializeField] private GameObject volume;
+    [SerializeField] private int pieceAmount;
+    [SerializeField] private GameObject piecePrefab;
 
     #region Systems
     [SerializeField] private InputManager inputManager;
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
     public int SessionTimeInSeconds => sessionTimeInSeconds;
 
     public List<GameObject> returnedShips;
+    
+    public int PieceAmount => pieceAmount;
 
     public event Action<int, int> OnSessionTimeUpdated;
 
@@ -85,7 +89,9 @@ public class GameManager : MonoBehaviour
     {
         if(levelManager.CurrentLevel % 6 == 0)
         {
+            isGameActive = false;
             isBossFight = true;
+            SceenSetUp();
             Cutsceen();
         }
         else
@@ -120,13 +126,6 @@ public class GameManager : MonoBehaviour
     {
         if(!isGameActive)
             return;
-
-        if (isBossFight)
-        {
-            CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat3", new Vector3(-70, 0, 40));
-            Invoke(nameof(SpawnBoss), 13f);
-
-        }
 
         if (IsCutsceenActive)
         {
@@ -165,7 +164,7 @@ public class GameManager : MonoBehaviour
                     return randomValue * sign;
                 }
                 CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "AmmoBox", 
-                    new Vector3(GetRandom(0,30), 0, UnityEngine.Random.Range(60,20)));
+                    new Vector3(GetRandom(-10,10), 0, UnityEngine.Random.Range(40,90)));
             }
             else
             {
@@ -189,6 +188,13 @@ public class GameManager : MonoBehaviour
         {
             CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy, "DT(BOSS)", new Vector3(0, 0, 130));
         }
+    }
+
+    private void SceenSetUp()
+    {
+        CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "Boat3", new Vector3(-70, 0, 40));
+        Invoke(nameof(SpawnBoss), 13f);
+        CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Ally, "AmmoBox", new Vector3(0, 0, 40));
     }
 
     private void Timer()
@@ -284,8 +290,7 @@ public class GameManager : MonoBehaviour
 
     public void Cutsceen()
     {
-        if (!IsCutsceenActive)
-            IsCutsceenActive = true;
+        IsCutsceenActive = true;
         OnCutsceen.Invoke();
         windowService.HideAllWindows(true);
         windowService.ShowWindow<CutsceenWindow>(false);

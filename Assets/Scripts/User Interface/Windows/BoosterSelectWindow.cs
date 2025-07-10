@@ -6,96 +6,149 @@ public class BoosterSelectWindow : Window
 {
     [SerializeField] private Button returnButton;
     [SerializeField] private Button continueButton;
-    
-    [SerializeField] private Toggle ActiveBoosterToggle;
-    [SerializeField] private Toggle PassiveBoosterToggle1;
-    [SerializeField] private Toggle PassiveBoosterToggle2;
-    
     [SerializeField] private List<SelectableBooster> boosters;
+    
+    // Optional validation
+    [SerializeField] private bool requireSelection = true;
     
     public override void Initialize()
     {
-        returnButton.onClick.AddListener(ReturnHandler);
-        continueButton.onClick.AddListener(ContinueHandler);
+        if (returnButton != null)
+            returnButton.onClick.AddListener(ReturnHandler);
+        if (continueButton != null)
+            continueButton.onClick.AddListener(ContinueHandler);
+            
+        // Initialize all boosters
+        foreach (var booster in boosters)
+        {
+            if (booster != null)
+            {
+                booster.Reinitialize();
+            }
+        }
     }
+    
     protected override void OpenStart()
     {
         base.OpenStart();
+        RefreshContinueButton();
         OpenEnd();
     }
+    
     protected override void OpenEnd()
     {
         base.OpenEnd();
-        continueButton.interactable = true;
+        // Additional setup if needed
     }
+    
     protected override void CloseStart()
     {
         base.CloseStart();
-        continueButton.interactable = false;
+        if (continueButton != null)
+            continueButton.interactable = false;
         CloseEnd();
     }
-    private void ReturnHandler()
+    
+    private void Update()
     {
-        Hide(false);
-        ActivateSelectedBooster();
-        GameManager.Instance.ReturnToMainMenu();
-    }
-    private void ContinueHandler()
-    {
-        GameManager.Instance.GameContinue();
-        ActivateSelectedBooster();
-        Hide(false);
-        GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
-
+        // Continuously check if we should enable/disable continue button
+        if (requireSelection)
+        {
+            RefreshContinueButton();
+        }
     }
     
-    private void ActivateSelectedBooster()
+    private void RefreshContinueButton()
     {
-        var booster = GetSelectedBooster();
-        if (booster != null && booster.IsActiveBooster)
+        if (continueButton != null)
         {
-            ActiveBoosterManager.Instance.ChooseActiveBooster(booster.currentActiveBooster);
-            ActiveBoosterToggle.isOn = true;
-            PassiveBoosterToggle1.isOn = false;
-            PassiveBoosterToggle2.isOn = false;
-        }
-        else if(booster != null && !booster.IsActiveBooster)
-        {
-            int index = CheckEffect(booster.currentEffect);
-            
-            ActiveBoosterToggle.isOn = false;
-            if (PassiveBoosterToggle1.isOn || PassiveBoosterToggle2.isOn)
-            {
-                EffectsManager.Instance.ActivateEffect(booster.currentEffect);
-            }
+            continueButton.interactable = !requireSelection || HasValidSelection();
         }
     }
-
-    private SelectableBooster GetSelectedBooster()
+    
+    private bool HasValidSelection()
     {
-        SelectableBooster selectableBooster = null;
         foreach (var booster in boosters)
         {
-            if (booster.IsSelected)
+            if (booster != null && booster.IsSelected && booster.IsValid)
             {
-                selectableBooster = booster;
+                return true;
             }
         }
-        return selectableBooster;
+        return false;
     }
-
-    private int CheckEffect(Effect effect)
+    
+    private void ReturnHandler()
     {
-        int index = 0;
-        if (EffectsManager.Instance.ActiveEffectTypes.Count == 1)
+        ApplySelectedBooster();
+        Hide(false);
+        GameManager.Instance?.ReturnToMainMenu();
+    }
+    
+    private void ContinueHandler()
+    {
+        ApplySelectedBooster();
+        Hide(false);
+        
+        var gameManager = GameManager.Instance;
+        if (gameManager != null)
         {
-            return 0;
+            gameManager.GameContinue();
+            
+            // Show appropriate window based on level
+            if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel % 6 != 0)
+            {
+                gameManager.WindowService?.ShowWindow<GamePlayWindow>(false);
+            }
         }
-        if (EffectsManager.Instance.ActiveEffectTypes.Contains(effect))
+    }
+    
+    private void ApplySelectedBooster()
+    {
+        var selectedBooster = GetSelectedBooster();
+        if (selectedBooster == null || !selectedBooster.IsValid)
         {
-            index = EffectsManager.Instance.ActiveEffectTypes.IndexOf(effect);
+            Debug.LogWarning("No valid booster selected");
+            return;
         }
-
-        return index;
+        
+        if (selectedBooster.IsActiveBooster)
+        {
+            ApplyActiveBooster(selectedBooster.GetActiveBooster());
+        }
+        else
+        {
+            ApplyPassiveEffect(selectedBooster.GetCurrentEffect());
+        }
+    }
+    
+    private void ApplyActiveBooster(ActiveBooster activeBooster)
+    {
+        if (activeBooster != null && ActiveBoosterManager.Instance != null)
+        {
+            ActiveBoosterManager.Instance.ChooseActiveBooster(activeBooster);
+            Debug.Log($"Applied active booster: {activeBooster.name}");
+        }
+    }
+    
+    private void ApplyPassiveEffect(Effect effect)
+    {
+        if (effect != null && EffectsManager.Instance != null)
+        {
+            EffectsManager.Instance.ActivateEffect(effect);
+            Debug.Log($"Applied passive effect: {effect.name}");
+        }
+    }
+    
+    private SelectableBooster GetSelectedBooster()
+    {
+        foreach (var booster in boosters)
+        {
+            if (booster != null && booster.IsSelected)
+            {
+                return booster;
+            }
+        }
+        return null;
     }
 }

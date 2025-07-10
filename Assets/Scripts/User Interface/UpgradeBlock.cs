@@ -47,8 +47,9 @@ public class UpgradeBlock : MonoBehaviour
     }
     private void UpdateUI()
     {
+        var cost = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1)));
         upgradeLevel.text = (level + 1).ToString();
-        upgradeCost.text = Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1))).ToString();
+        upgradeCost.text = cost > 999 ? $"{cost /= 1000:f1}k" : cost.ToString();
         purchaseButton.interactable = CurrencySystem.Instance.GetCurrency() >=
                                       Mathf.RoundToInt(upgrade.cost * Mathf.Pow(upgrade.multiplier, (level + 1)));
     }

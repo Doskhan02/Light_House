@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class AllyBossCharacter : AllyCharacter
 {
-    [SerializeField] private Turret[] turrets;
-    [SerializeField] private float initAmmo;
+    [SerializeField] private bool[] turret;
+    [SerializeField] private GameObject turretGeo;
     [SerializeField] private Vector3[] waypoints;
+    private bool firePending = false;
+    private bool isStuned = false;
+    
+    private RaycastHit hit;
+    private UpgradeManager upgradeManager;
+    
+    public bool FirePending => firePending;
+    public bool[] Turret => turret;
     
     public Vector3[] Waypoints { get => waypoints; set => waypoints = value; }
-
-    private float currentAmmo;
     
     public override Character Target
     {
@@ -35,7 +41,7 @@ public class AllyBossCharacter : AllyCharacter
             return target;
         }
     }
-    public Character AmmoBox
+    private Character AmmoBox
     {
         get
         {
@@ -64,47 +70,107 @@ public class AllyBossCharacter : AllyCharacter
         }
     }
 
+    private GameObject safeZone
+    {
+        get
+        {
+            var safeZone = GameObject.FindWithTag("SafeZone");
+            return safeZone;
+        }
+    }
 
     public override void Initialize()
     {
         base.Initialize();
-        foreach (Turret turret in turrets)
-        {
-            turret.Initialize(initAmmo);
-            currentAmmo +=  turret.CurrentAmmo;
-        }
+        turret = new bool[GameManager.Instance.PieceAmount];
+        hit = GameManager.Instance.LightController.hit;
+        upgradeManager = GameManager.Instance.UpgradeManager;
     }
 
     public override void Update()
     {
-        CheckForAmmo();
-        switch (currentAmmo)
+        if (isStuned)
         {
-            case <= 0 when AmmoBox != null:
-                aiComponent.AIAction(AmmoBox,AIState.MoveToTarget,Data);
-                return;
-            case > 0:
-                aiComponent.AIAction(this, AIState.Idle, Data);
-                break;
-        }
-    }
-
-    private void CheckForAmmo()
-    {
-        if(turrets.Length == 0)
+            aiComponent.AIAction(this, AIState.Fear, Data);
             return;
-        currentAmmo = 0;
-        foreach (Turret turret in turrets)
+        }
+
+        if (Vector3.Distance(transform.position, hit.point) < upgradeManager.Radius)
         {
-            currentAmmo += turret.CurrentAmmo;
+            var newSpeed = CharacterData.CharacterTypeData.defaultSpeed + 2f;
+            movementComponent.Speed = newSpeed;
+        }
+        
+        if (!CheckTurret() && AmmoBox != null)
+        {
+            aiComponent.AIAction(AmmoBox,AIState.MoveToTarget,Data);
+        }
+        else if(AmmoBox == null || CheckTurret())
+        {
+            aiComponent.AIAction(this, AIState.Idle, Data);
+        }
+        turretGeo.gameObject.SetActive(CheckTurret());
+    }
+
+    public void Stun(bool stun)
+    {
+        isStuned = stun;
+        if (isStuned)
+        {
+            CancelInvoke(nameof(StopStun));
+            Invoke(nameof(StopStun), 4.5f);
         }
     }
 
-    public void ReloadTurrets(float ammo)
+    private void StopStun()
     {
-        foreach (Turret turret in turrets)
+        Stun(false);
+    }
+    
+    private bool CheckTurret()
+    {
+        for (int i = 0; i < turret.Length; i++)
         {
-            turret.Reload(ammo);
+            if (!turret[i])
+            {
+                firePending = false;
+                return false;
+            }
         }
+        firePending = true;
+        return true;
+    }
+
+    public void AddPiece()
+    {
+        for (int i = 0; i < turret.Length; i++)
+        {
+            if (!turret[i])
+            {
+                turret[i] = true;
+                break;
+            }
+        }
+    }
+
+    public void Fire()
+    {
+        if (turretGeo.gameObject.TryGetComponent<Turret>(out Turret turret))
+        {
+            if (firePending)
+            {
+                turret.Fire();
+                EmptyTurrets();
+            }
+        }
+    }
+
+    public void EmptyTurrets()
+    {
+        for (int i = 0; i < turret.Length; i++)
+        {
+            turret[i] = false;
+        }
+        firePending = false;
     }
 }

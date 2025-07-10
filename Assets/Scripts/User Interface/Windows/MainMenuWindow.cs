@@ -19,6 +19,9 @@ public class MainMenuWindow : Window
     [SerializeField] private Button boosterList;
     [SerializeField] private Animator boosterListAnimator;
 
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioClip mainMenuMusic;
+
     private int currentLevel;
 
     private Coroutine levelChangeCoroutine;
@@ -36,6 +39,9 @@ public class MainMenuWindow : Window
     {
         base.OpenStart();
         LevelHandler(currentLevel);
+        music.clip = mainMenuMusic;
+        if(!music.isPlaying)
+            music.Play();
         OpenEnd();
     }
     protected override void OpenEnd()
@@ -53,7 +59,8 @@ public class MainMenuWindow : Window
     }
     private void StartGameHandler()
     {
-        GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
+        if(LevelManager.Instance.CurrentLevel % 6 != 0)
+            GameManager.Instance.WindowService.ShowWindow<GamePlayWindow>(false);
         GameManager.Instance.StartGame();
         Hide(false);
     }
@@ -84,14 +91,14 @@ public class MainMenuWindow : Window
 
     private void BoosterListHandler()
     {
-        boosterListAnimator.Play("Expand");
+        boosterListAnimator.SetBool("Expand", true);
     }
 
     private void Update()
     {
         if (GameManager.Instance.InputManager.TouchScreen())
         {
-            boosterListAnimator.Play("Retract");
+            boosterListAnimator.SetBool("Expand", false);
         }
     }
     

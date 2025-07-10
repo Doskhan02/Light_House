@@ -8,6 +8,9 @@ public class GameVictoryWindow : Window
 {
     [SerializeField] private Button continueButton;
     [SerializeField] private TMP_Text coinText;
+    [SerializeField] private Image characterImage;
+    [SerializeField] private TextMeshProUGUI characterNameText;
+    [SerializeField] private TextMeshProUGUI characterText;
 
     public override void Initialize()
     {
@@ -16,6 +19,9 @@ public class GameVictoryWindow : Window
     protected override void OpenStart()
     {
         base.OpenStart();
+        characterImage.sprite = GameManager.Instance.gameData.characterSprite;
+        characterNameText.text = GameManager.Instance.gameData.characterName;
+        characterText.text = GameManager.Instance.gameData.characterText;
         OpenEnd();
     }
     protected override void OpenEnd()

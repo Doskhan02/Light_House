@@ -49,7 +49,7 @@ public class EnemyCharacter : Character
     public override void Initialize()
     {
         canvas = GameManager.Instance.WorldSpaceCanvas;
-        lifeComponent = new LifeComponent();
+        lifeComponent = new LifeComponent(data.defaultMaxHP);
         if(enemyType != EnemyType.GhostShip)
         {
             aiComponent = new BasicEnemyAIHandler();
@@ -63,7 +63,8 @@ public class EnemyCharacter : Character
         movementComponent.Move(transform.position);
         isCoroutineRunning = false;
         upgradeManager = GameManager.Instance.UpgradeManager;
-        CharacterData.Healthbar.Initialize();
+        if(CharacterData.Healthbar != null)
+            CharacterData.Healthbar.Initialize();
         if(data.isMinionParent)
         {
             lifeComponent.OnCharacterDeath += SpawnMinions;
@@ -135,7 +136,8 @@ public class EnemyCharacter : Character
 
     public void SetUpHealthbar()
     {
-        CharacterData.Healthbar.transform.SetParent(canvas.transform);
+        if(CharacterData.Healthbar != null)
+            CharacterData.Healthbar.transform.SetParent(canvas.transform);
     }
     public void SpawnMinions(Character character)
     {

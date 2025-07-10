@@ -19,6 +19,7 @@ public class GameData : ScriptableObject
     public int deepGuardianSpawnAmount;
     public int deepGuardianSlimeSpawnAmount;
     public int ghostShipSpawnAmount;
+    public int wormBossSpawnAmount;
     
     [Header("Boss Spawn Amounts")]
     public int bossAmount;
@@ -28,4 +29,9 @@ public class GameData : ScriptableObject
     public int basicShipAmount;
     public int bigShipAmount;
     public int ammoBoxAmount;
+    
+    [Header("Character")]
+    public Sprite characterSprite;
+    public string characterName;
+    [TextArea(3,6)]public string characterText;
 }

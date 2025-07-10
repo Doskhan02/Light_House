@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
 
         if(hit.collider.gameObject.TryGetComponent<Character>(out Character character))
         {
-            character.lifeComponent.SetDamage(damage); // Apply damage
+            character.lifeComponent.SetDamage(character.lifeComponent.MaxHealth/3); // Apply damage
         }
 
         // Optional: Do damage, instantiate explosion, etc.

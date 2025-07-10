@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b4046cab467b478336f400083e370, type: 3}
   m_Name: GameData_day3
   m_EditorClassIdentifier: 
-  sessionTimeInSeconds: 0
-  sessionTimeInMinutes: 0
   timeBetweenShipSpawn: 3
   timeBetweenEnemySpawn: 2
   targetScore: 20
@@ -27,3 +25,8 @@ MonoBehaviour:
   bossAllyAmount: 0
   basicShipAmount: -1
   bigShipAmount: 2
+  ammoBoxAmount: 0
+  characterSprite: {fileID: 21300000, guid: eda7a6da402958f4d89ca9bdfdabcd3c, type: 3}
+  characterName: Dr. Morbrand
+  characterText: Aristocracy, a lighthouse, and monsters. It's almost like a play.
+    Let's see where this is going...

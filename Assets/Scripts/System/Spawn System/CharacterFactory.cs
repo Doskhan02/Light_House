@@ -94,6 +94,57 @@ public class CharacterFactory : MonoBehaviour
         }
     }
 
+    public void ReInitializePools()
+    {
+        DestroyAllCharacters();
+        ClearAllCollections();
+        InitializePools();
+    }
+
+    private void DestroyAllCharacters()
+    {
+        Debug.Log($"Destroying all character instances");
+
+        // Destroy all pooled characters
+        foreach (var mainTypePool in pooledCharacters)
+        {
+            foreach (var subtypePool in mainTypePool.Value)
+            {
+                while (subtypePool.Value.Count > 0)
+                {
+                    Character character = subtypePool.Value.Dequeue();
+                    if (character != null)
+                    {
+                        if (Application.isPlaying)
+                            Destroy(character.gameObject);
+                        else
+                            DestroyImmediate(character.gameObject);
+                    }
+                }
+            }
+        }
+
+        // Destroy all active characters
+        foreach (var character in allActiveCharacters)
+        {
+            if (character != null)
+            {
+                if (Application.isPlaying)
+                    Destroy(character.gameObject);
+                else
+                    DestroyImmediate(character.gameObject);
+            }
+        }
+    }
+
+    private void ClearAllCollections()
+    {
+        pooledCharacters.Clear();
+        activeCharacters.Clear();
+        activeByMainType.Clear();
+        allActiveCharacters.Clear();
+    }
+
     public Character GetCharacter(CharacterType mainType)
     {
         // Find all subtypes for this main type

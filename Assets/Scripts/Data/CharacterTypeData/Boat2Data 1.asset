@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boat2Data 1
   m_EditorClassIdentifier: 
   defaultSpeed: 3
-  defaultMaxHP: 500
+  defaultMaxHP: 400
   Score: 4
