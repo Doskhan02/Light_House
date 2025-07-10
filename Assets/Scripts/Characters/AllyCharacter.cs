@@ -7,7 +7,9 @@ public class AllyCharacter : Character
 
     [SerializeField] private BasicAllyData data;
     [SerializeField] private AllyType allyType;
-    
+
+    [SerializeField] private Animator animator;
+
     public AllyType AllyType => allyType;
     protected BasicAllyData Data => data;
 
@@ -16,6 +18,7 @@ public class AllyCharacter : Character
     private Vector3 direction;
     //private Vector3[] sailed;
 
+    private static readonly int IsRowing = Animator.StringToHash("isRowing");
 
     public override void Initialize()
     {
@@ -44,6 +47,9 @@ public class AllyCharacter : Character
         }
         movementComponent.Rotate(direction);
         SetUpHealthbar();
+
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
     }
     public override void Update()
     {
@@ -65,6 +71,25 @@ public class AllyCharacter : Character
         {
             aiComponent.AIAction(this, AIState.MoveToTarget, Data);
         }
+
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        if (animator == null)
+        {
+            
+            return;
+        }
+
+        
+
+        bool isMoving = movementComponent.Speed > 0.01f;
+
+        Debug.Log("Setting isRowing: " + isMoving);
+        Debug.Log("Speed: " + movementComponent.Speed);
+        animator.SetBool(IsRowing, isMoving);
     }
 
     /*public void Returned()
