@@ -38,14 +38,7 @@ public class EffectsManager : MonoBehaviour, IDataPersistance
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
-    private void Start()
-    {
-        /*for (int i = 0; i < availableEffects.Count; i++)
-        {
-            ActivateEffect(availableEffects[i]);
-        }*/
-    }
+    
 
     public void UnlockEffect(Effect effect)
     {

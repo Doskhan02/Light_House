@@ -15,6 +15,7 @@ public class Joystick : MonoBehaviour
 
     private Vector2 direction;
     private Vector2 startTouchPos;
+    private bool isJoystickActive = false;
 
     void Start()
     {
@@ -22,6 +23,36 @@ public class Joystick : MonoBehaviour
     }
 
     void Update()
+    {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+        HandleMouseInput();
+#else
+        HandleTouchInput();
+#endif
+        MoveTarget();
+    }
+
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+    private void HandleMouseInput()
+    {
+        if (Mouse.current == null) return;
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            ShowJoystick(Mouse.current.position.ReadValue());
+        }
+        else if (Mouse.current.leftButton.isPressed && isJoystickActive)
+        {
+            UpdateJoystick(Mouse.current.position.ReadValue());
+        }
+        else if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            HideJoystick();
+        }
+    }
+#endif
+
+    private void HandleTouchInput()
     {
         if (Touchscreen.current == null || Touchscreen.current.primaryTouch == null)
             return;
@@ -40,8 +71,6 @@ public class Joystick : MonoBehaviour
         {
             HideJoystick();
         }
-
-        MoveTarget();
     }
 
     private void MoveTarget()
@@ -75,6 +104,7 @@ public class Joystick : MonoBehaviour
         joystickBackground.rectTransform.anchoredPosition = startTouchPos;
         joystickHandle.rectTransform.anchoredPosition = startTouchPos;
         SetJoystickVisible(true);
+        isJoystickActive = true;
     }
 
     private void UpdateJoystick(Vector2 screenPosition)
@@ -97,11 +127,12 @@ public class Joystick : MonoBehaviour
     {
         direction = Vector2.zero;
         SetJoystickVisible(false);
+        isJoystickActive = false;
     }
 
     private void SetJoystickVisible(bool visible)
     {
-        float alpha = visible ? 0.5f : 0f;
+        float alpha = visible ? 1f : 0f;
         Color bgColor = joystickBackground.color;
         bgColor.a = alpha;
         joystickBackground.color = bgColor;
@@ -109,5 +140,11 @@ public class Joystick : MonoBehaviour
         Color handleColor = joystickHandle.color;
         handleColor.a = alpha;
         joystickHandle.color = handleColor;
+    }
+
+    // Public method to get joystick direction for InputManager
+    public Vector2 GetDirection()
+    {
+        return direction;
     }
 }

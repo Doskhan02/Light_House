@@ -27,7 +27,7 @@ public class BossShipAIHandler : IAIComponent
             switch (currentState)
             {
                 case AIState.MoveToTarget:
-                    
+                    character.movementComponent.Speed = _data.defaultSpeed;
                     var direction = target.transform.position - character.transform.position;
                     character.movementComponent.Rotate(direction);
                     character.movementComponent.Move(direction);

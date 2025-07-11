@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int pieceAmount;
     [SerializeField] private GameObject piecePrefab;
 
+    [SerializeField] private GameObject[] sailedShips;
+
     #region Systems
     [SerializeField] private InputManager inputManager;
     [SerializeField] private ScoreSystem scoreSystem;
@@ -83,10 +85,18 @@ public class GameManager : MonoBehaviour
             _gameData = datas[datas.Length - 1];
         }
         windowService.Initialize();
+        foreach (GameObject ship in returnedShips)
+        {
+            ship.SetActive(false);
+        }
+        
     }
 
     public void StartGame()
     {
+        levelManager.ChangeLevel(6);
+        ResetCutsceneState();
+        ResetSailedShips();
         if(levelManager.CurrentLevel % 6 == 0)
         {
             isGameActive = false;
@@ -111,6 +121,8 @@ public class GameManager : MonoBehaviour
         }
         lh_Light.Initialize();
         scoreSystem.StartGame();
+        OnCurrentScoreChanged(0);
+        scoreSystem.OnScoreUpdated += OnCurrentScoreChanged;
         difficultyMultiplier = LevelManager.GetDifficultyMultiplier();
         sessionTime = 0;
         sessionTimeInSeconds = (int)_gameData.sessionMaxTimeInSeconds;
@@ -119,7 +131,42 @@ public class GameManager : MonoBehaviour
         timeBetweenShipSpawn = _gameData.timeBetweenShipSpawn;
         timeBetweenEnemySpawn = _gameData.timeBetweenEnemySpawn;
         Time.timeScale = 1;
-        
+    }
+
+    private void OnCurrentScoreChanged(int score)
+    {
+        // Calculate progress as a float between 0 and 1
+        float progress = (float)score / _gameData.targetScore;
+    
+        // Clamp progress to ensure it doesn't exceed 1.0
+        progress = Mathf.Clamp01(progress);
+    
+        // Calculate how many ships should be visible (one per 10% progress)
+        int shipsToShow = Mathf.FloorToInt(progress * 5);
+    
+        // Ensure we don't exceed the available ships array length
+        shipsToShow = Mathf.Min(shipsToShow, sailedShips.Length);
+    
+        // Show/hide ships based on progress
+        for (int i = 0; i < sailedShips.Length; i++)
+        {
+            if (i < shipsToShow)
+            {
+                sailedShips[i].SetActive(true);
+            }
+            else
+            {
+                sailedShips[i].SetActive(false);
+            }
+        }
+    }
+
+    public void ResetSailedShips()
+    {
+        foreach (GameObject ship in returnedShips)
+        {
+            ship.SetActive(false);
+        }
     }
 
     private void Update()
@@ -175,8 +222,6 @@ public class GameManager : MonoBehaviour
 
         if (timeBetweenEnemySpawn < 0)
         {
-            if(LevelManager.CurrentLevel % 6 == 0)
-                return;
             CharacterSpawnSystem.Instance.SpawnCharacter(CharacterType.Enemy);
             timeBetweenEnemySpawn = _gameData.timeBetweenEnemySpawn;
         }
@@ -254,6 +299,7 @@ public class GameManager : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
+        ResetCutsceneState();
         isGameActive = false;
         windowService.HideAllWindows(true);
         windowService.ShowWindow<MainMenuWindow>(false);
@@ -268,6 +314,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        ResetCutsceneState();
         timeBetweenEnemySpawn = _gameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = _gameData.timeBetweenShipSpawn;
         StartGame();
@@ -275,6 +322,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameContinue()
     {
+        ResetCutsceneState();
         timeBetweenEnemySpawn = _gameData.timeBetweenEnemySpawn;
         timeBetweenShipSpawn = _gameData.timeBetweenShipSpawn;
         StartGame();
@@ -294,6 +342,11 @@ public class GameManager : MonoBehaviour
         OnCutsceen.Invoke();
         windowService.HideAllWindows(true);
         windowService.ShowWindow<CutsceenWindow>(false);
+    }
+    private void ResetCutsceneState()
+    {
+        IsCutsceenActive = false;
+        isBossFight = false;
     }
 
     public void HardReset()

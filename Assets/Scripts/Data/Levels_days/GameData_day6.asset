@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData_day6
   m_EditorClassIdentifier: 
   timeBetweenShipSpawn: 10
-  timeBetweenEnemySpawn: 2
+  timeBetweenEnemySpawn: 4
   targetScore: 30
   sessionMaxTimeInMinutes: 1
   sessionMaxTimeInSeconds: 30

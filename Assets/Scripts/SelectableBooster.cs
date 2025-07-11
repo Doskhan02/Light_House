@@ -26,6 +26,9 @@ public class SelectableBooster : MonoBehaviour
     public bool IsActiveBooster => isActiveBooster;
     public bool IsValid => (isActiveBooster && currentActiveBooster != null) || (!isActiveBooster && currentEffect != null);
     
+    // Событие для уведомления о выборе
+    public System.Action<SelectableBooster> OnBoosterSelected;
+    
     private void Start()
     {
         activeBoosterManager = ActiveBoosterManager.Instance;
@@ -33,6 +36,21 @@ public class SelectableBooster : MonoBehaviour
         
         RefreshAvailableOptions();
         Initialize();
+        
+        // Добавляем слушатель для Toggle
+        if (toggle != null)
+        {
+            toggle.onValueChanged.AddListener(OnToggleChanged);
+        }
+    }
+    
+    private void OnToggleChanged(bool isOn)
+    {
+        if (isOn)
+        {
+            // Уведомляем о выборе этого бустера
+            OnBoosterSelected?.Invoke(this);
+        }
     }
     
     private void RefreshAvailableOptions()
@@ -47,7 +65,7 @@ public class SelectableBooster : MonoBehaviour
         if (availableActiveBoosters.Count == 0 && availableEffects.Count == 0)
         {
             Debug.LogWarning("No available boosters or effects to initialize SelectableBooster");
-            SetInvalidState();
+            //SetInvalidState();
             return;
         }
         
@@ -84,7 +102,7 @@ public class SelectableBooster : MonoBehaviour
         }
         else
         {
-            SetInvalidState();
+            //SetInvalidState();
         }
     }
     
@@ -97,7 +115,7 @@ public class SelectableBooster : MonoBehaviour
         }
         else
         {
-            SetInvalidState();
+            //SetInvalidState();
         }
     }
     
@@ -128,5 +146,22 @@ public class SelectableBooster : MonoBehaviour
     {
         RefreshAvailableOptions();
         Initialize();
+    }
+    
+    // Метод для программного выбора/снятия выбора
+    public void SetSelected(bool selected)
+    {
+        if (toggle != null)
+        {
+            toggle.isOn = selected;
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        if (toggle != null)
+        {
+            toggle.onValueChanged.RemoveListener(OnToggleChanged);
+        }
     }
 }

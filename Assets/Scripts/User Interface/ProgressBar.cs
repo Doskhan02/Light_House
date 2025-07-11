@@ -22,6 +22,11 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
+        if (!character)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         transform.position = character.transform.position + Vector3.up * 2;
         transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
         if (character.isActiveAndEnabled == false)

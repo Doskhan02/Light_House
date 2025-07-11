@@ -97,7 +97,7 @@ public class AllyBossCharacter : AllyCharacter
 
         if (Vector3.Distance(transform.position, hit.point) < upgradeManager.Radius)
         {
-            var newSpeed = CharacterData.CharacterTypeData.defaultSpeed + 2f;
+            var newSpeed = CharacterData.CharacterTypeData.defaultSpeed + 4f;
             movementComponent.Speed = newSpeed;
         }
         

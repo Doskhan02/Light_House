@@ -4,6 +4,7 @@ using UnityEngine.VFX;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem hitParticleEffect;
+    [SerializeField] private ParticleSystem explosionParticleEffect;
     [SerializeField] private ParticleSystem deadParticleEffect2;
     [SerializeField] private GameObject DOT_visualEffect;
     [SerializeField] private GameObject SlowVisualEffect;
@@ -40,6 +41,13 @@ public class ParticleManager : MonoBehaviour
     {
         GameObject effect = Instantiate(SlowVisualEffect, parent.position, Quaternion.identity, parent);
         effect.GetComponentInChildren<VisualEffect>().Play();
+        Destroy(effect.gameObject, 1f);
+    }
+
+    public void PlayExplosionParticleEffect(Transform position)
+    {
+        ParticleSystem effect = Instantiate(explosionParticleEffect, position.position, Quaternion.identity);
+        effect.Play();
         Destroy(effect.gameObject, 1f);
     }
 

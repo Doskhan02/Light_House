@@ -63,6 +63,11 @@ public class LevelManager : MonoBehaviour, IDataPersistance
         data.checkpointLevel = CheckPointLevel;
     }
 
+    public void ChangeLevel(int level)
+    {
+        CurrentLevel = level;
+    }
+
     public void DifficultyIncrease()
     {
         difficultyMultiplier++;

@@ -11,7 +11,7 @@ public class AllyCharacter : Character
     public AllyType AllyType => allyType;
     protected BasicAllyData Data => data;
 
-    private UpgradeManager upgradeManager;
+    private UpgradeManager _upgradeManager;
     private LightData lightData;
     private Vector3 direction;
     //private Vector3[] sailed;
@@ -19,7 +19,7 @@ public class AllyCharacter : Character
 
     public override void Initialize()
     {
-        upgradeManager = GameManager.Instance.UpgradeManager;
+        _upgradeManager = GameManager.Instance.UpgradeManager;
         lightData = GameManager.Instance.LightController.LightData;
         canvas = GameManager.Instance.WorldSpaceCanvas;
         base.Initialize();
@@ -53,7 +53,7 @@ public class AllyCharacter : Character
         }
         float distance = Vector3.Distance(GameManager.Instance.LightController.hit.point, transform.position);
 
-        if (distance < upgradeManager.Radius)
+        if (distance < _upgradeManager.Radius)
         {
             movementComponent.Speed = CharacterData.CharacterTypeData.defaultSpeed + lightData.shipSpeedUpFactor;
         }

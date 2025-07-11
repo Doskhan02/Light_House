@@ -22,7 +22,6 @@ public class QuickTimeEvent : MonoBehaviour
     
     [SerializeField] private GameObject bgPanel;
 
-
     private InputManager inputManager;
     private GameObject currentPoint;
     private RectTransform currentPointRect;
@@ -33,6 +32,10 @@ public class QuickTimeEvent : MonoBehaviour
     private Canvas canvas;
     private Camera uiCamera;
     private List<Vector2> usedPositions = new List<Vector2>(); // Позиции уже использованных точек
+    
+    // Переменные для анимации уменьшения спрайта
+    private Vector3 initialScale;
+    private Vector3 targetScale;
 
     void Start()
     {
@@ -99,8 +102,14 @@ public class QuickTimeEvent : MonoBehaviour
         currentPointRect.anchoredPosition = newPosition;
         usedPositions.Add(newPosition);
 
-        // Инициализируем таймер и визуал
+        // Инициализируем таймер и масштаб
         currentPointTimer = qteDelay;
+        
+        // Сохраняем изначальный масштаб и устанавливаем целевой масштаб
+        initialScale = currentPointRect.localScale;
+        targetScale = Vector3.zero; // Уменьшаем до нуля
+        
+        // Сбрасываем fillAmount, если используется Image типа Filled
         if (currentPointImage != null)
         {
             currentPointImage.fillAmount = 1f;
@@ -168,16 +177,17 @@ public class QuickTimeEvent : MonoBehaviour
 
     private void UpdateCurrentPoint()
     {
-        if (currentPoint == null) return;
+        if (currentPoint == null || currentPointRect == null) return;
 
         // Обновляем таймер
         currentPointTimer -= Time.deltaTime;
 
-        // Обновляем визуальный индикатор
-        if (currentPointImage != null)
-        {
-            currentPointImage.fillAmount = currentPointTimer / qteDelay;
-        }
+        // Вычисляем прогресс времени (от 1 до 0)
+        float timeProgress = currentPointTimer / qteDelay;
+        
+        // Интерполируем масштаб от изначального к целевому
+        Vector3 currentScale = Vector3.Lerp(targetScale, initialScale, timeProgress);
+        currentPointRect.localScale = currentScale;
 
         // Проверяем, истекло ли время
         if (currentPointTimer <= 0)
@@ -253,53 +263,5 @@ public class QuickTimeEvent : MonoBehaviour
         usedPositions.Clear();
         
         Time.timeScale = 1f;
-    }
-
-    // Публичные методы для внешнего управления
-    public void StopQTE()
-    {
-        ResetQTE();
-    }
-
-    public bool IsQTEActive()
-    {
-        return qteActive;
-    }
-
-    public int GetCompletedPoints()
-    {
-        return completedPoints;
-    }
-
-    public int GetRemainingPoints()
-    {
-        return numberOfPoints - completedPoints;
-    }
-
-    public float GetCurrentPointTimeRemaining()
-    {
-        return qteActive ? currentPointTimer : 0f;
-    }
-
-    // Вспомогательный метод для отладки
-    public void DebugPlacementArea()
-    {
-        RectTransform canvasRect = pointParent as RectTransform;
-        if (canvasRect == null && canvas != null)
-            canvasRect = canvas.GetComponent<RectTransform>();
-
-        float canvasWidth = canvasRect != null ? canvasRect.rect.width : Screen.width;
-        float canvasHeight = canvasRect != null ? canvasRect.rect.height : Screen.height;
-
-        float pointSize = touchRadius;
-        float minX = screenPadding.x + pointSize / 2;
-        float maxX = canvasWidth - screenPadding.x - pointSize / 2;
-        float minY = screenPadding.y + pointSize / 2;
-        float maxY = canvasHeight - screenPadding.y - pointSize / 2;
-
-        Debug.Log($"Canvas размер: {canvasWidth}x{canvasHeight}");
-        Debug.Log($"Доступная область для размещения: X({minX} - {maxX}), Y({minY} - {maxY})");
-        Debug.Log($"Размер доступной области: {maxX - minX} x {maxY - minY}");
-        Debug.Log($"Минимальное расстояние между точками: {minDistanceBetweenPoints}");
     }
 }

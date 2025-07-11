@@ -11,12 +11,15 @@ public class BoosterSelectWindow : Window
     // Optional validation
     [SerializeField] private bool requireSelection = true;
     
+    private SelectableBooster currentSelectedBooster;
+    
     public override void Initialize()
     {
         if (returnButton != null)
             returnButton.onClick.AddListener(ReturnHandler);
         if (continueButton != null)
             continueButton.onClick.AddListener(ContinueHandler);
+        LevelManager.Instance.OnLevelChanged += BlockContinueButton;
             
         // Initialize all boosters
         foreach (var booster in boosters)
@@ -24,21 +27,51 @@ public class BoosterSelectWindow : Window
             if (booster != null)
             {
                 booster.Reinitialize();
+                // Подписываемся на событие выбора бустера
+                booster.OnBoosterSelected += OnBoosterSelected;
             }
         }
+    }
+    
+    private void OnBoosterSelected(SelectableBooster selectedBooster)
+    {
+        // Снимаем выбор с других бустеров
+        foreach (var booster in boosters)
+        {
+            if (booster != null && booster != selectedBooster)
+            {
+                booster.SetSelected(false);
+            }
+        }
+        
+        currentSelectedBooster = selectedBooster;
+        RefreshContinueButton();
     }
     
     protected override void OpenStart()
     {
         base.OpenStart();
+        
+        // Сбрасываем выбор при открытии окна
+        currentSelectedBooster = null;
+        foreach (var booster in boosters)
+        {
+            if (booster != null)
+            {
+                booster.SetSelected(false);
+            }
+        }
+        
         RefreshContinueButton();
         OpenEnd();
     }
-    
-    protected override void OpenEnd()
+
+    private void BlockContinueButton(int level)
     {
-        base.OpenEnd();
-        // Additional setup if needed
+        if (level % 6 == 0)
+        {
+            continueButton.interactable = false;
+        }
     }
     
     protected override void CloseStart()
@@ -49,33 +82,18 @@ public class BoosterSelectWindow : Window
         CloseEnd();
     }
     
-    private void Update()
-    {
-        // Continuously check if we should enable/disable continue button
-        if (requireSelection)
-        {
-            RefreshContinueButton();
-        }
-    }
-    
     private void RefreshContinueButton()
     {
         if (continueButton != null)
         {
             continueButton.interactable = !requireSelection || HasValidSelection();
         }
+        BlockContinueButton(LevelManager.Instance.CurrentLevel);
     }
     
     private bool HasValidSelection()
     {
-        foreach (var booster in boosters)
-        {
-            if (booster != null && booster.IsSelected && booster.IsValid)
-            {
-                return true;
-            }
-        }
-        return false;
+        return currentSelectedBooster != null && currentSelectedBooster.IsValid;
     }
     
     private void ReturnHandler()
@@ -142,13 +160,18 @@ public class BoosterSelectWindow : Window
     
     private SelectableBooster GetSelectedBooster()
     {
+        return currentSelectedBooster;
+    }
+    
+    private void OnDestroy()
+    {
+        // Отписываемся от событий
         foreach (var booster in boosters)
         {
-            if (booster != null && booster.IsSelected)
+            if (booster != null)
             {
-                return booster;
+                booster.OnBoosterSelected -= OnBoosterSelected;
             }
         }
-        return null;
     }
 }

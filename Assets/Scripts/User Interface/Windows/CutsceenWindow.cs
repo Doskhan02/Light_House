@@ -10,11 +10,11 @@ public class CutsceenWindow : Window
     {
         base.OpenStart();
         GameManager.Instance.IsCutsceenActive = true;
-        
     }
+    
     protected override void CloseStart()
     {
-        base.CloseEnd();
+        base.CloseStart(); // Исправлено: было CloseEnd()
         GameManager.Instance.IsCutsceenActive = false;
     }
 }

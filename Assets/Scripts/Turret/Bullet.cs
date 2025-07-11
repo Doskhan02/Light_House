@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         }
 
         // Optional: Do damage, instantiate explosion, etc.
-
+        ParticleManager.Instance.PlayExplosionParticleEffect(transform);
         Destroy(gameObject);
     }
 }

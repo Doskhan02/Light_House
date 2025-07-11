@@ -73,7 +73,7 @@ public class BossFightCanvas : Window
             bossHP.value = bossCharacter.lifeComponent.Health / bossCharacter.CharacterData.CharacterTypeData.defaultMaxHP;
             bossCharacter.lifeComponent.OnCharacterHealthChange += OnBossHealthChanged;
             Character character =
-                CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally, "Boat3").First();
+                CharacterSpawnSystem.Instance.CharacterFactory.GetActiveCharacters(CharacterType.Ally, "Boat3").FirstOrDefault();
             if (character is AllyBossCharacter boss)
                 ship = boss;
         }
